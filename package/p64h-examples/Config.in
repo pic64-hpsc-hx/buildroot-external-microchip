@@ -1,0 +1,18 @@
+config BR2_PACKAGE_P64H_EXAMPLES
+	bool "p64h examples"
+	help
+	  Linux example applications package for P64H SoC.
+
+config BR2_PACKAGE_P64H_EXAMPLES_HELLO
+	bool "hello"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	default y if BR2_PACKAGE_P64H_EXAMPLES
+	help
+	  Hello World application for P64H SoC.
+
+config BR2_PACKAGE_P64H_EXAMPLES_SHAREDMEM
+	bool "sharedmem"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	default y if BR2_PACKAGE_P64H_EXAMPLES
+	help
+	  Shared Memory application for P64H SoC.
