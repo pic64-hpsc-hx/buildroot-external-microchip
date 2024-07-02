@@ -35,6 +35,11 @@ menu "EGT Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/egt-media-extra/Config.in"
 endmenu
 
+menu "P64H Applications"
+	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
+	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
+endmenu
+
 menu "Fonts"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/noto-fonts/Config.in"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/lohit-fonts/Config.in"
