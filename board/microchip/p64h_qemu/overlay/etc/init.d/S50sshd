@@ -1,0 +1,52 @@
+#!/bin/sh
+#
+# sshd        Starts sshd.
+#
+
+# Make sure the ssh-keygen progam exists
+[ -f /usr/bin/ssh-keygen ] || exit 0
+
+umask 077
+
+start() {
+	# Allow root login and empty passwords
+	sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+	sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/g' /etc/ssh/sshd_config
+	# Create any missing keys
+	printf "Starting sshd in background: "
+	/usr/bin/ssh-keygen -A && /usr/sbin/sshd &
+	if [ $? -eq 0 ]; then
+		touch /var/lock/sshd
+		printf "sshd OK"
+	else
+		printf "sshd FAILED"
+	fi
+}
+stop() {
+	printf "Stopping sshd: "
+	killall sshd
+	rm -f /var/lock/sshd
+	echo "OK"
+}
+restart() {
+	stop
+	start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
