@@ -1,18 +1,21 @@
 config BR2_PACKAGE_P64H_EXAMPLES
-	bool "p64h examples"
+	bool "P64H Examples"
 	help
 	  Linux example applications package for P64H SoC.
 
 config BR2_PACKAGE_P64H_EXAMPLES_HELLO
-	bool "hello"
+	bool "hello world"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
 	default y if BR2_PACKAGE_P64H_EXAMPLES
 	help
 	  Hello World application for P64H SoC.
 
-config BR2_PACKAGE_P64H_EXAMPLES_SHAREDMEM
-	bool "sharedmem"
+config BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM
+	bool "uio sharedmem"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
 	default y if BR2_PACKAGE_P64H_EXAMPLES
 	help
-	  Shared Memory application for P64H SoC.
+	  UIO Shared Memory demo application for P64H SoC.
+
+	  This application utilizes UIO (Userspace I/O) framework to manage
+	  shared memory operations on the P64H SoC platform.

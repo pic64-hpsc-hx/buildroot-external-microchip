@@ -4,9 +4,8 @@
 #
 ################################################################################
 
-P64H_EXAMPLES_VERSION = main
-P64H_EXAMPLES_SITE = "git@bitbucket.microchip.com:hpsc/p64h-linux-examples.git"
-P64H_EXAMPLES_SITE_METHOD = git
+P64H_EXAMPLES_SITE = $(P64H_TOPDIR)
+P64H_EXAMPLES_SITE_METHOD = local
 P64H_EXAMPLES_LICENSE = MIT
 P64H_EXAMPLES_LICENSE_FILES = LICENSE
 
@@ -38,8 +37,8 @@ endef
 
 # Generate post installation extra stages (used to build debian packages)
 ifeq ($(P64H_DEBPKG_BUILD),1)
-@$(foreach app,$(P64H_EXAMPLES_APP_LIST), \
-	$(eval P64H_EXAMPLES_POST_INSTALL_TARGET_HOOKS += P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_$(call UPPERCASE,$(app))) \
+$(foreach app,$(P64H_EXAMPLES_APP_LIST), \
+	$(eval P64H_EXAMPLES_POST_INSTALL_TARGET_HOOKS += P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_$(call UPPERCASE,$(app))); \
 )
 endif
 
