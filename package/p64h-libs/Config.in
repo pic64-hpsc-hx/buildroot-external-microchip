@@ -1,0 +1,49 @@
+config BR2_PACKAGE_P64H_LIBS
+	bool "P64H Shared Libraries"
+	help
+	  Enable this option to include shared libraries
+	  and dependencies for P64H SoC.
+
+	  This package provides essential libraries and 
+	  dependencies required for P64H SoC.
+
+	  If unsure, leave this option enabled.
+
+config BR2_PACKAGE_P64H_LIBS_OPENBLAS
+	bool "OpenBLAS"
+	depends on BR2_PACKAGE_P64H_LIBS
+	help
+	  Enable this option to include OpenBLAS,
+	  an optimized BLAS library for P64H SoC.
+	  
+	  If unsure, leave this option enabled.
+
+config BR2_PACKAGE_P64H_LIBS_OPENMPI
+	bool "OpenMPI"
+	depends on BR2_PACKAGE_P64H_LIBS
+	help
+	  Enable this option to include OpenMPI,
+	  a high-performance Message Passing Interface (MPI) library
+	  for parallel computing on the P64H SoC.
+	  
+	  If unsure, leave this option enabled.
+
+config BR2_PACKAGE_P64H_LIBS_LIBFORTRAN
+	bool "libfortran"
+	depends on BR2_PACKAGE_P64H_LIBS
+	help
+	  Enable this option to include libfortran,
+	  a library providing Fortran runtime support
+	  for applications on the P64H SoC.
+	  
+	  If unsure, leave this option enabled.
+
+config BR2_PACKAGE_P64H_LIBS_LIBC
+	bool "libc"
+	depends on BR2_PACKAGE_P64H_LIBS
+	help
+	  Enable this option to include the C Library (libc),
+	  providing fundamental routines for system programming
+	  on the P64H SoC.
+	  
+	  If unsure, leave this option enabled.

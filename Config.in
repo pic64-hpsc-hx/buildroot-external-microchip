@@ -38,6 +38,7 @@ endmenu
 menu "P64H Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
+	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
 endmenu
 
 menu "Fonts"
