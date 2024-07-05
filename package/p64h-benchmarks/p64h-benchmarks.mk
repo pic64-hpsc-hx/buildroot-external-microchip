@@ -4,11 +4,8 @@
 #
 ################################################################################
 
-## TODO fetching from git is not fully functional yet, there are libs dependencies that 
-# need to be installed (not the full installation).
-P64H_BENCHMARKS_VERSION = main
-P64H_BENCHMARKS_SITE = "git@bitbucket.microchip.com:hpsc/p64h-linux-examples.git"
-P64H_BENCHMARKS_SITE_METHOD = git
+P64H_BENCHMARKS_SITE = $(P64H_TOPDIR)
+P64H_BENCHMARKS_SITE_METHOD = local
 P64H_BENCHMARKS_LICENSE = MIT
 P64H_BENCHMARKS_LICENSE_FILES = LICENSE
 
@@ -49,10 +46,6 @@ ifeq ($(BR2_PACKAGE_P64H_BENCHMARKS_PERLIN),y)
 P64H_BENCHMARKS_APP_LIST += perlin
 endif
 
-#TODO
-ifeq ($(BR2_PACKAGE_P64H_BENCHMARKS_TFLITE),y)
-#P64H_BENCHMARKS_APP_LIST += TFLite
-endif
 
 # Invoke build stages
 define P64H_BENCHMARKS_BUILD_CMDS
