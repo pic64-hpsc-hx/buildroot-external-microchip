@@ -4,6 +4,7 @@
 #
 ################################################################################
 
+
 # OpenBLAS
 define P64H_LIBS_INSTALL_OPENBLAS
 	$(INSTALL) -D -m 0755 $(@D)/install/libs/openblas/build/lib/libopenblas_x280p-r0.3.20.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.20.so;
@@ -41,4 +42,17 @@ endef
 # libc
 define P64H_LIBS_INSTALL_LIBC
 	$(INSTALL) -D -m 0755 $(RISCV_PATH)/sysroot/usr/lib/libc.so $(TARGET_DIR)/usr/lib
+endef
+
+# llvm-devel
+define P64H_LIBS_INSTALL_LLVM_DEVEL
+	cp -a  $(RISCV_LLVM_PATH)/* $(STAGING_DIR)/usr/
+	cp     $(CROSS_LLVM_PATH)/bin/riscv64-unknown-linux-gnu-llvm-config $(STAGING_DIR)/usr/bin/
+	ln -fs ../usr/bin/riscv64-unknown-linux-gnu-llvm-config $(STAGING_DIR)/bin/riscv64-unknown-linux-gnu-llvm-config
+endef
+
+# std-devel-libs
+define P64H_LIBS_INSTALL_STD_DEVEL_LIBS
+	cp -a  $(CROSS_LLVM_PATH)/lib/gcc $(STAGING_DIR)/usr/lib
+	cp -a  $(CROSS_LLVM_PATH)/riscv64-unknown-linux-gnu/include/c++ $(STAGING_DIR)/usr/include/
 endef

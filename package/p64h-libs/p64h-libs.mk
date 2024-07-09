@@ -4,6 +4,8 @@
 #
 ################################################################################
 
+CROSS_LLVM_PATH:=$(RISCV_PATH)
+
 P64H_LIBS_SITE = $(P64H_TOPDIR)
 P64H_LIBS_SITE_METHOD = local
 P64H_LIBS_LICENSE = MIT
@@ -23,6 +25,21 @@ endif
 
 ifeq ($(BR2_PACKAGE_P64H_LIBS_LIBC),y)
 P64H_LIBS_LIST += libc
+endif
+ifeq ($(BR2_PACKAGE_P64H_LIBS_LLVM_DEVEL),y)
+ifeq ($(strip $(RISCV_LLVM_PATH)),)
+$(error RISCV_LLVM_PATH must be set to a valid path in order to build llvm-devel)
+endif
+ifeq ($(strip $(CROSS_LLVM_PATH)),)
+$(error CROSS_LLVM_PATH must be set to a valid path in order to build llvm-devel)
+endif
+P64H_LIBS_LIST += llvm_devel
+endif
+ifeq ($(BR2_PACKAGE_P64H_LIBS_STD_DEVEL_LIBS),y)
+ifeq ($(strip $(CROSS_LLVM_PATH)),)
+$(error CROSS_LLVM_PATH must be set to a valid path in order to build std-devel-libs)
+endif
+P64H_LIBS_LIST += std_devel_libs
 endif
 
 # Invoke install stages
