@@ -6,21 +6,18 @@ config BR2_PACKAGE_P64H_BENCHMARKS
 config BR2_PACKAGE_P64H_BENCHMARKS_COREMARK
 	bool "coremark"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  Coremark benchmark for P64H SoC.
 
 config BR2_PACKAGE_P64H_BENCHMARKS_HACC
 	bool "hacc"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  hacc benchmark for P64H SoC.
 
 config BR2_PACKAGE_P64H_BENCHMARKS_HPCC
 	bool "hpcc"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	select BR2_PACKAGE_P64H_LIBS
 	select BR2_PACKAGE_P64H_LIBS_OPENBLAS
 	select BR2_PACKAGE_P64H_LIBS_OPENMPI
@@ -32,28 +29,24 @@ config BR2_PACKAGE_P64H_BENCHMARKS_HPCC
 config BR2_PACKAGE_P64H_BENCHMARKS_HPEC_CHALLENGE
 	bool "hpec_challenge"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  HPEC Challenge benchmark for P64H SoC.
 
 config BR2_PACKAGE_P64H_BENCHMARKS_MICROBENCH
 	bool "microbench"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  Microbench benchmark for P64H SoC.
 
 config BR2_PACKAGE_P64H_BENCHMARKS_PERLIN
 	bool "perlin"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  Perlin benchmark for P64H SoC.
 
 config BR2_PACKAGE_P64H_BENCHMARKS_SPACEBENCH
 	bool "Spacebench"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	select BR2_PACKAGE_P64H_LIBS
 	select BR2_PACKAGE_P64H_LIBS_OPENBLAS
 	select BR2_PACKAGE_P64H_LIBS_LIBFORTRAN
@@ -63,34 +56,29 @@ config BR2_PACKAGE_P64H_BENCHMARKS_SPACEBENCH
 config BR2_PACKAGE_P64H_BENCHMARKS_STREAM
 	bool "STREAM"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
-	default y if BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  STREAM benchmark for P64H SoC.
 
 #config BR2_PACKAGE_P64H_BENCHMARKS_TFLITE
 #	bool "TFLite"
 #	depends on BR2_PACKAGE_P64H_BENCHMARKS
-#	default y if BR2_PACKAGE_P64H_BENCHMARKS
 #	help
 #	  TFLite benchmark for P64H SoC.
 
 #config BR2_PACKAGE_P64H_BENCHMARKS_ATOMICS
 #	bool "atomics"
 #	depends on BR2_PACKAGE_P64H_BENCHMARKS
-#	default y if BR2_PACKAGE_P64H_BENCHMARKS
 #	help
 #	  Atomics benchmark for P64H SoC.
 
 #config BR2_PACKAGE_P64H_BENCHMARKS_COREMARK_PRO
 #	bool "coremark-pro"
 #	depends on BR2_PACKAGE_P64H_BENCHMARKS
-#	default y if BR2_PACKAGE_P64H_BENCHMARKS
 #	help
 #	  Coremark-pro benchmark for P64H SoC.
 
 #config BR2_PACKAGE_P64H_BENCHMARKS_ROOFLINE
 #	bool "roofline"
 #	depends on BR2_PACKAGE_P64H_BENCHMARKS
-#	default y if BR2_PACKAGE_P64H_BENCHMARKS
 #	help
 #	  Roofline benchmark for P64H SoC.

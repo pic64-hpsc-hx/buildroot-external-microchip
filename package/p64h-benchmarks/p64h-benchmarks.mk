@@ -5,7 +5,6 @@
 ################################################################################
 
 P64H_BENCHMARKS_SITE = $(P64H_TOPDIR)
-P64H_BENCHMARKS_SITE_METHOD = local
 P64H_BENCHMARKS_LICENSE = MIT
 P64H_BENCHMARKS_LICENSE_FILES = LICENSE
 
