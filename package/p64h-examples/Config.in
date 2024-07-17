@@ -6,16 +6,33 @@ config BR2_PACKAGE_P64H_EXAMPLES
 config BR2_PACKAGE_P64H_EXAMPLES_HELLO
 	bool "hello world"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
-	default y if BR2_PACKAGE_P64H_EXAMPLES
 	help
 	  Hello World application for P64H SoC.
 
 config BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM
 	bool "uio sharedmem"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
-	default y if BR2_PACKAGE_P64H_EXAMPLES
+	select BR2_PACKAGE_P64H_LKMS
+	select BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER
 	help
 	  UIO Shared Memory demo application for P64H SoC.
 
 	  This application utilizes UIO (Userspace I/O) framework to manage
-	  shared memory operations on the P64H SoC platform.
+	  shared memory operations on the P64H SoC.
+
+config BR2_PACKAGE_P64H_EXAMPLES_UTILS
+	bool "utils"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	help
+	  Utility tool for P64H SoC.
+
+	  Enables file transfer between a host filesystem
+	  and a Linux filesystem on the target device. It leverages 
+	  p64h_semihost library internally.
+
+config BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION
+	bool "test automation tools"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	select BR2_PACKAGE_P64H_EXAMPLES_UTILS
+	help
+	  Utilities for helping to automate tests on the P64H SoC.

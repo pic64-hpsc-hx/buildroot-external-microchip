@@ -5,7 +5,6 @@
 ################################################################################
 
 P64H_EXAMPLES_SITE = $(P64H_TOPDIR)
-P64H_EXAMPLES_SITE_METHOD = local
 P64H_EXAMPLES_LICENSE = MIT
 P64H_EXAMPLES_LICENSE_FILES = LICENSE
 
@@ -16,8 +15,16 @@ ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_HELLO),y)
 P64H_EXAMPLES_APP_LIST += hello
 endif
 
-ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_SHAREDMEM),y)
+ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM),y)
 P64H_EXAMPLES_APP_LIST += sharedmem
+endif
+
+ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_UTILS),y)
+P64H_EXAMPLES_APP_LIST += utils
+endif
+
+ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION),y)
+P64H_EXAMPLES_APP_LIST += test_automation
 endif
 
 # Invoke build stages
@@ -31,7 +38,7 @@ endef
 # Invoke install stages
 define P64H_EXAMPLES_INSTALL_TARGET_CMDS
 	@$(foreach app,$(P64H_EXAMPLES_APP_LIST), \
-		$(call P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(app))) \
+		$(call P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(app))); \
 	)
 endef
 
