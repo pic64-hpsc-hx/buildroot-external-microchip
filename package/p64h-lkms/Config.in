@@ -1,0 +1,37 @@
+comment "p64h-lkms needs a Linux kernel to be built"
+	depends on !BR2_LINUX_KERNEL
+
+config BR2_PACKAGE_P64H_LKMS
+	bool "p64h kernel drivers"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Add custom Linux kernel drivers package for P64H SoC.
+
+config BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER
+	bool "Enable uio sharedmem driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+      Enable support for the uio-sharedmem-driver, necessary for the uio-sharedmem
+      userland application demo. This driver enables shared memory operations
+      using the UIO (Userspace I/O) framework.
+
+config BR2_PACKAGE_P64H_LKMS_UIO_GENDEV_DRIVER
+	bool "Enable uio gendev driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support to P64H Application Complex UIO Generic Device
+	  driver used to memory map any memory or peripheral in user space.
+
+config BR2_PACKAGE_P64H_LKMS_UIO_MESA_DRIVER
+	bool "Enable uio mesa driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex UIO MESA driver.
+
+config BR2_PACKAGE_P64H_LKMS_APPDMA_DRIVER
+	bool "Enable appdma driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex DMA driver.
+
+	  Based on Synopsys DesignWare AXI DMA controller DW-AXI-DMAC with minimal changes
