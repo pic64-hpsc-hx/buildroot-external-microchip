@@ -4,8 +4,7 @@
 #
 ################################################################################
 
-P64H_LIBS_SITE = $(P64H_TOPDIR)
-P64H_LIBS_SITE_METHOD = local
+P64H_LIBS_SITE = $(P64H_TOPDIR)/install/libs
 P64H_LIBS_LICENSE = MIT
 P64H_LIBS_LICENSE_FILES = LICENSE
 

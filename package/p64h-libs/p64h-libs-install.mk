@@ -6,28 +6,28 @@
 
 # OpenBLAS
 define P64H_LIBS_INSTALL_OPENBLAS
-	$(INSTALL) -D -m 0755 $(@D)/install/libs/openblas/build/lib/libopenblas_x280p-r0.3.20.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.20.so;
+	$(INSTALL) -D -m 0755 $(@D)/openblas/build/lib/libopenblas_x280p-r0.3.20.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.20.so;
 	ln -fs libopenblas_x280p-r0.3.20.so $(TARGET_DIR)/usr/lib/libopenblas.so.0;
 endef
 
 # OpenMPI
 define P64H_LIBS_INSTALL_OPENMPI
-	$(INSTALL) -D -m 0755 $(@D)/install/libs/openmpi/install/lib/libmpi.so.40.20.0 $(TARGET_DIR)/usr/lib/libmpi.so.40.20.0
+	$(INSTALL) -D -m 0755 $(@D)/openmpi/install/lib/libmpi.so.40.20.0 $(TARGET_DIR)/usr/lib/libmpi.so.40.20.0
 	ln -fs libmpi.so.40.20.0 $(TARGET_DIR)/usr/lib/libmpi.so.40
 	ln -fs libmpi.so.40.20.0 $(TARGET_DIR)/usr/lib/libmpi.so
 
-	$(INSTALL) -D -m 0755 $(@D)/install/libs/openmpi/install/lib/libopen-rte.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-rte.so.40.20.0
+	$(INSTALL) -D -m 0755 $(@D)/openmpi/install/lib/libopen-rte.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-rte.so.40.20.0
 	ln -fs libopen-rte.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-rte.so.40
 	ln -fs libopen-rte.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-rte.so
 
-	$(INSTALL) -D -m 0755 $(@D)/install/libs/openmpi/install/lib/libopen-pal.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-pal.so.40.20.0
+	$(INSTALL) -D -m 0755 $(@D)/openmpi/install/lib/libopen-pal.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-pal.so.40.20.0
 	ln -fs libopen-pal.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-pal.so.40
 	ln -fs libopen-pal.so.40.20.0 $(TARGET_DIR)/usr/lib/libopen-pal.so
 
 	# copy the mpi binaries, except (all variants of) the mpiCC compiler
-	$(INSTALL) -D -m 0755 $(@D)/install/libs/openmpi/install/bin/mpi[!Ccf]* \
-						  $(@D)/install/libs/openmpi/install/bin/or* \
-						  $(@D)/install/libs/openmpi/install/bin/ompi?[!w]* \
+	$(INSTALL) -D -m 0755 $(@D)/openmpi/install/bin/mpi[!Ccf]* \
+						  $(@D)/openmpi/install/bin/or* \
+						  $(@D)/openmpi/install/bin/ompi?[!w]* \
 						  $(TARGET_DIR)/usr/bin/
 endef
 
