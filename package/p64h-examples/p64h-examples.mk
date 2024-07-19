@@ -1,6 +1,6 @@
 ################################################################################
 #
-# p64h-examples: Linux userland demo applications for P64H SoC.
+# p64h-examples: Linux userland demo applications for PIC64-HPSC-HX SoC.
 #
 ################################################################################
 

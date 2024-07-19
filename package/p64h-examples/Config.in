@@ -1,13 +1,13 @@
 config BR2_PACKAGE_P64H_EXAMPLES
-	bool "P64H Examples"
+	bool "PIC64-HPSC-HX Examples"
 	help
-	  Linux example applications package for P64H SoC.
+	  Linux example applications package for PIC64-HPSC-HX SoC.
 
 config BR2_PACKAGE_P64H_EXAMPLES_HELLO
 	bool "hello world"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
 	help
-	  Hello World application for P64H SoC.
+	  Hello World application for PIC64-HPSC-HX SoC.
 
 config BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM
 	bool "uio sharedmem"
@@ -15,16 +15,17 @@ config BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM
 	select BR2_PACKAGE_P64H_LKMS
 	select BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER
 	help
-	  UIO Shared Memory demo application for P64H SoC.
+	  This application demonstrates shared memory operations between
+	  the application clusters on PIC64-HPSC-HX SoC.
 
 	  This application utilizes UIO (Userspace I/O) framework to manage
-	  shared memory operations on the P64H SoC.
+	  shared memory operations on the PIC64-HPSC-HX SoC.
 
 config BR2_PACKAGE_P64H_EXAMPLES_UTILS
 	bool "utils"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
 	help
-	  Utility tool for P64H SoC.
+	  Utility tool for PIC64-HPSC-HX SoC.
 
 	  Enables file transfer between a host filesystem
 	  and a Linux filesystem on the target device. It leverages 
@@ -34,5 +35,6 @@ config BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION
 	bool "test automation tools"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
 	select BR2_PACKAGE_P64H_EXAMPLES_UTILS
+	select BR2_PACKAGE_PYTHON3
 	help
-	  Utilities for helping to automate tests on the P64H SoC.
+	  Utilities for helping to automate tests on the PIC64-HPSC-HX SoC.

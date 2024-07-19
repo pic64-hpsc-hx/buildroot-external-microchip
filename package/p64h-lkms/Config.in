@@ -2,10 +2,10 @@ comment "p64h-lkms needs a Linux kernel to be built"
 	depends on !BR2_LINUX_KERNEL
 
 config BR2_PACKAGE_P64H_LKMS
-	bool "p64h kernel drivers"
+	bool "PIC64-HPSC-HX Kernel Drivers"
 	depends on BR2_LINUX_KERNEL
 	help
-	  Add custom Linux kernel drivers package for P64H SoC.
+	  Add custom Linux kernel drivers package for PIC64-HPSC-HX SoC.
 
 config BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER
 	bool "Enable uio sharedmem driver"
@@ -13,7 +13,7 @@ config BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER
 	help
       Enable support for the uio-sharedmem-driver, necessary for the uio-sharedmem
       userland application demo. This driver enables shared memory operations
-      using the UIO (Userspace I/O) framework.
+	  between the application clusters using the UIO (Userspace I/O) framework.
 
 config BR2_PACKAGE_P64H_LKMS_UIO_GENDEV_DRIVER
 	bool "Enable uio gendev driver"

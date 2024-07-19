@@ -35,7 +35,7 @@ menu "EGT Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/egt-media-extra/Config.in"
 endmenu
 
-menu "P64H Applications"
+menu "PIC64-HPSC-HX Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"

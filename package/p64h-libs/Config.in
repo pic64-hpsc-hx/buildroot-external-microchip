@@ -1,11 +1,11 @@
 config BR2_PACKAGE_P64H_LIBS
-	bool "P64H Shared Libraries"
+	bool "PIC64-HPSC-HX Shared Libraries"
 	help
 	  Enable this option to include shared libraries
-	  and dependencies for P64H SoC.
+	  and dependencies for PIC64-HPSC-HX SoC.
 
 	  This package provides essential libraries and 
-	  dependencies required for P64H SoC.
+	  dependencies required for PIC64-HPSC-HX SoC.
 
 	  If unsure, leave this option enabled.
 
@@ -14,7 +14,7 @@ config BR2_PACKAGE_P64H_LIBS_OPENBLAS
 	depends on BR2_PACKAGE_P64H_LIBS
 	help
 	  Enable this option to include OpenBLAS,
-	  an optimized BLAS library for P64H SoC.
+	  an optimized BLAS library for PIC64-HPSC-HX SoC.
 	  
 	  If unsure, leave this option enabled.
 
@@ -24,7 +24,7 @@ config BR2_PACKAGE_P64H_LIBS_OPENMPI
 	help
 	  Enable this option to include OpenMPI,
 	  a high-performance Message Passing Interface (MPI) library
-	  for parallel computing on the P64H SoC.
+	  for parallel computing on the PIC64-HPSC-HX SoC.
 	  
 	  If unsure, leave this option enabled.
 
@@ -34,7 +34,7 @@ config BR2_PACKAGE_P64H_LIBS_LIBFORTRAN
 	help
 	  Enable this option to include libfortran,
 	  a library providing Fortran runtime support
-	  for applications on the P64H SoC.
+	  for applications on the PIC64-HPSC-HX SoC.
 	  
 	  If unsure, leave this option enabled.
 
@@ -44,7 +44,7 @@ config BR2_PACKAGE_P64H_LIBS_LIBC
 	help
 	  Enable this option to include the C Library (libc),
 	  providing fundamental routines for system programming
-	  on the P64H SoC.
+	  on the PIC64-HPSC-HX SoC.
 	  
 	  If unsure, leave this option enabled.
 
