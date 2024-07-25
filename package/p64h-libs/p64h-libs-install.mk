@@ -6,8 +6,8 @@
 
 # OpenBLAS
 define P64H_LIBS_INSTALL_OPENBLAS
-	$(INSTALL) -D -m 0755 $(@D)/openblas/build/lib/libopenblas_x280p-r0.3.20.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.20.so;
-	ln -fs libopenblas_x280p-r0.3.20.so $(TARGET_DIR)/usr/lib/libopenblas.so.0;
+	$(INSTALL) -D -m 0755 $(@D)/openblas/build/lib/libopenblas_x280p-r0.3.27.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.27.so;
+	ln -fs libopenblas_x280p-r0.3.27.so $(TARGET_DIR)/usr/lib/libopenblas.so.0;
 endef
 
 # OpenMPI
