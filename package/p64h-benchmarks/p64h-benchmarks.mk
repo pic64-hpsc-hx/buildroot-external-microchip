@@ -7,6 +7,7 @@
 P64H_BENCHMARKS_SITE = $(P64H_TOPDIR)
 P64H_BENCHMARKS_LICENSE = MIT
 P64H_BENCHMARKS_LICENSE_FILES = LICENSE
+P64H_BENCHMARKS_DEPENDENCIES = hwloc libzlib
 
 # Target installation dir
 P64H_BENCHMARKS_TARGET_DIR = /opt/microchip/benchmarks
@@ -64,7 +65,7 @@ endef
 # Generate post installation extra stages (used to build debian packages)
 ifeq ($(P64H_DEBPKG_BUILD),1)
 $(foreach app,$(P64H_BENCHMARKS_APP_LIST), \
-	$(eval P64H_EXAMPLES_POST_INSTALL_TARGET_HOOKS += P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_$(call UPPERCASE,$(app))) \
+	$(eval P64H_BENCHMARKS_POST_INSTALL_TARGET_HOOKS += P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_$(call UPPERCASE,$(app))); \
 )
 endif
 

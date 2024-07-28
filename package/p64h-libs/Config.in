@@ -28,11 +28,11 @@ config BR2_PACKAGE_P64H_LIBS_OPENMPI
 	  
 	  If unsure, leave this option enabled.
 
-config BR2_PACKAGE_P64H_LIBS_LIBFORTRAN
-	bool "libfortran"
+config BR2_PACKAGE_P64H_LIBS_LIBGFORTRAN
+	bool "libgfortran"
 	depends on BR2_PACKAGE_P64H_LIBS
 	help
-	  Enable this option to include libfortran,
+	  Enable this option to include libgfortran,
 	  a library providing Fortran runtime support
 	  for applications on the PIC64-HPSC-HX SoC.
 	  
