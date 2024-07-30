@@ -32,7 +32,6 @@ define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_PERLIN
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/lib; \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(@D)/examples/benchmarks/perlin/perlin $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/perlin/perlin; \
 	$(INSTALL) -D -m 0755 $(@D)/examples/benchmarks/perlin/run_perlin.sh $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/perlin/run_perlin.sh; \
-	$(INSTALL) -D -m 0755 $(BR2_ROOTFS_OVERLAY)/lib/libomp.so $(P64H_DEB_DIR)/lib/libomp.so; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 

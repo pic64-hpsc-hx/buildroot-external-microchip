@@ -9,7 +9,6 @@ define P64H_LIBS_DEBIAN_PACKAGE_BUILD_OPENBLAS
 	$(call P64H_DEBIAN_PACKAGE_SETUP,$(@D)/debian_packages/hpsc-libopenblas) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR); \
 	$(INSTALL) -D -m 0755 $(@D)/openblas/build/lib/libopenblas_x280p-r0.3.27.so $(P64H_DEB_DIR)/usr/lib/libopenblas_x280p-r0.3.27.so; \
-	ln -fs libopenblas_x280p-r0.3.27.so $(P64H_DEB_DIR)/usr/lib/libopenblas.so.0;
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 
@@ -43,5 +42,12 @@ define P64H_LIBS_DEBIAN_PACKAGE_BUILD_LIBC
 	$(call P64H_DEBIAN_PACKAGE_SETUP,$(@D)/debian_packages/hpsc-libc)
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/usr/lib
 	$(INSTALL) -D -m 0755 $(RISCV_PATH)/sysroot/usr/lib/libc.so $(P64H_DEB_DIR)/usr/lib
+	$(call P64H_DEBIAN_PACKAGE_BUILD)
+endef
+
+# Build hpsc-libopenmp Debian package
+define P64H_LIBS_DEBIAN_PACKAGE_BUILD_OPENMP
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(@D)/debian_packages/hpsc-libopenmp) \
+	$(INSTALL) -D -m 0755 $(BR2_ROOTFS_OVERLAY)/lib/libomp.so $(P64H_DEB_DIR)/lib/libomp.so; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef

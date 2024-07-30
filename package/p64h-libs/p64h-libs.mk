@@ -33,6 +33,10 @@ ifeq ($(BR2_PACKAGE_P64H_LIBS_LIBC),y)
 P64H_LIBS_LIST += libc
 endif
 
+ifeq ($(BR2_PACKAGE_P64H_LIBS_OPENMP),y)
+P64H_LIBS_LIST += openmp
+endif
+
 ifeq ($(BR2_PACKAGE_P64H_LIBS_LLVM_DEVEL),y)
 ifeq ($(call qstrip,$(RISCV_LLVM_PATH)),)
 $(error RISCV_LLVM_PATH must be set to a valid path in order to build llvm-devel)
