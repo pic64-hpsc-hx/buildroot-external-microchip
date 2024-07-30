@@ -15,8 +15,6 @@ define P64H_LIBS_EXTRAS
 	$(call P64H_DEBIAN_PACKAGE_DEPS,$(@D))
 endef
 
-P64H_LIBS_POST_RSYNC_HOOKS += P64H_LIBS_EXTRAS
-
 ifeq ($(BR2_PACKAGE_P64H_LIBS_OPENBLAS),y)
 P64H_LIBS_LIST += openblas
 endif
@@ -63,6 +61,7 @@ endef
 
 # Generate post installation extra stages (used to build debian packages)
 ifeq ($(P64H_DEBPKG_BUILD),1)
+P64H_LIBS_POST_RSYNC_HOOKS += P64H_LIBS_EXTRAS
 $(foreach lib,$(P64H_LIBS_LIST), \
 	$(eval P64H_LIBS_POST_INSTALL_TARGET_HOOKS += P64H_LIBS_DEBIAN_PACKAGE_BUILD_$(call UPPERCASE,$(lib))); \
 )
