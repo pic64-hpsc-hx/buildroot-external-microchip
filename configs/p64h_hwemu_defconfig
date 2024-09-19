@@ -22,6 +22,7 @@ BR2_TARGET_GENERIC_ISSUE="Welcome to PIC64 HPSC/HX HWEMU Buildroot"
 BR2_ROOTFS_DEVICE_CREATION_STATIC=y
 BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/hwemu/overlay/"
 BR2_PACKAGE_BUSYBOX_CONFIG="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/hwemu/busybox.config"
+BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/common-scripts/copy_toolchain_sysroot.sh"
 #
 # Linux Kernel
 #
