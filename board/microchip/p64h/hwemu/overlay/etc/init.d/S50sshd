@@ -14,13 +14,15 @@ start() {
 	sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/g' /etc/ssh/sshd_config
 	# Create any missing keys
 	printf "Starting sshd in background: "
-	/usr/bin/ssh-keygen -A && /usr/sbin/sshd &
+	/usr/sbin/sshd &
 	if [ $? -eq 0 ]; then
 		touch /var/lock/sshd
 		printf "sshd OK"
 	else
 		printf "sshd FAILED"
 	fi
+	printf "ssh-key generation is deferred"
+	# /usr/bin/ssh-keygen -A 
 }
 stop() {
 	printf "Stopping sshd: "
