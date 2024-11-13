@@ -13,16 +13,15 @@ start() {
 	sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 	sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/g' /etc/ssh/sshd_config
 	# Create any missing keys
-	printf "Starting sshd in background: "
-	/usr/sbin/sshd &
-	if [ $? -eq 0 ]; then
-		touch /var/lock/sshd
-		printf "sshd OK"
-	else
-		printf "sshd FAILED"
-	fi
-	printf "ssh-key generation is deferred"
-	# /usr/bin/ssh-keygen -A 
+	printf "Starting sshd: "
+	echo "skipped (run '/usr/bin/ssh-keygen -A && /usr/sbin/sshd' post-boot)"
+	# /usr/bin/ssh-keygen -A && /usr/sbin/sshd 
+	# if [ $? -eq 0 ]; then
+	# 	touch /var/lock/sshd
+	# 	echo "OK"
+	# else
+	# 	echo "FAILED"
+	# fi
 }
 stop() {
 	printf "Stopping sshd: "
