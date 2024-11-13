@@ -15,3 +15,7 @@ endef
 define P64H_LKMS_INSTALL_UIO_MESA
 	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03uiomesa $(TARGET_DIR)/etc/init.d/S03uiomesa
 endef
+
+define P64H_LKMS_INSTALL_UIO_SPI
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03uiospi $(TARGET_DIR)/etc/init.d/S03uiospi
+endef
