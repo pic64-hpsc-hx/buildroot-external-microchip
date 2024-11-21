@@ -30,7 +30,7 @@ P64H_LKMS_MODULE_SUBDIRS += appdma
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_UIO_SPI_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += uio_spi
+P64H_LKMS_MODULE_SUBDIRS += spi-microchip-p64h_xspi
 endif
 
 # Fixup Linux Kernel configuration
