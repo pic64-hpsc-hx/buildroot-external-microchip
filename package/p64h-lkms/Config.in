@@ -36,8 +36,8 @@ config BR2_PACKAGE_P64H_LKMS_APPDMA_DRIVER
 
 	  Based on Synopsys DesignWare AXI DMA controller DW-AXI-DMAC with minimal changes
 
-config BR2_PACKAGE_P64H_LKMS_UIO_SPI_DRIVER
-	bool "Enable uio spi driver"
+config BR2_PACKAGE_P64H_LKMS_UIO_XSPI_DRIVER
+	bool "Enable P64H uio xspi driver"
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
-	  Enable support for P64H Application Complex UIO SPI driver.
+	  Enable support for P64H Application Complex UIO XSPI driver.
