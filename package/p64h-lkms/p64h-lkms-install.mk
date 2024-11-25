@@ -17,5 +17,5 @@ define P64H_LKMS_INSTALL_UIO_MESA
 endef
 
 define P64H_LKMS_INSTALL_SPI_MICROCHIP_P64H_XSPI
-	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64huioxspi $(TARGET_DIR)/etc/init.d/S03p64huioxspi
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64hxspi $(TARGET_DIR)/etc/init.d/S03p64hxspi
 endef
