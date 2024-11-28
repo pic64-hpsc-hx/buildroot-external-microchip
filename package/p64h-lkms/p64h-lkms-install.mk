@@ -19,3 +19,7 @@ endef
 define P64H_LKMS_INSTALL_SPI_MICROCHIP_P64H_XSPI
 	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64hxspi $(TARGET_DIR)/etc/init.d/S03p64hxspi
 endef
+
+define P64H_LKMS_INSTALL_P64H_GPIO
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64hgpio $(TARGET_DIR)/etc/init.d/S03p64hgpio
+endef

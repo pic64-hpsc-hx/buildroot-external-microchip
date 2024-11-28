@@ -33,6 +33,10 @@ ifeq ($(BR2_PACKAGE_P64H_LKMS_XSPI_DRIVER),y)
 P64H_LKMS_MODULE_SUBDIRS += spi-microchip-p64h_xspi
 endif
 
+ifeq ($(BR2_PACKAGE_P64H_LKMS_GPIO_DRIVER),y)
+P64H_LKMS_MODULE_SUBDIRS += p64h_gpio
+endif
+
 # Fixup Linux Kernel configuration
 define P64H_LKMS_LINUX_CONFIG_FIXUPS
 	$(call KCONFIG_ENABLE_OPT,CONFIG_MODULES)

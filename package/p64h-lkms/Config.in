@@ -41,3 +41,9 @@ config BR2_PACKAGE_P64H_LKMS_XSPI_DRIVER
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex XSPI driver.
+
+config BR2_PACKAGE_P64H_LKMS_GPIO_DRIVER
+	bool "Enable P64H gpio driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex GPIO driver.
