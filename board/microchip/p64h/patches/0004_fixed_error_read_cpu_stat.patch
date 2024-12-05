@@ -1,0 +1,11 @@
+--- src/read_cpu_stat.c	2024-11-15 21:54:17.217242000 -0800
++++ src/read_cpu_stat.c.patch	2024-11-15 21:54:09.986297000 -0800
+@@ -46,7 +46,7 @@
+ 	fclose(file);
+ 
+ 	if (cpu > cpus -1) {
+-		error("too many cpus");
++		perror("too many cpus");
+ 		exit(1);
+ 	}
+ 

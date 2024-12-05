@@ -8,7 +8,7 @@
 define P64H_LIBS_DEBIAN_PACKAGE_BUILD_OPENBLAS
 	$(call P64H_DEBIAN_PACKAGE_SETUP,$(@D)/debian_packages/hpsc-libopenblas) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR); \
-	$(INSTALL) -D -m 0755 $(@D)/openblas/build/lib/libopenblas_x280p-r0.3.27.so $(P64H_DEB_DIR)/usr/lib/libopenblas_x280p-r0.3.27.so; \
+	$(INSTALL) -D -m 0755 $(@D)/openblas/build/lib/libopenblas_x280p-r0.3.28.so $(P64H_DEB_DIR)/usr/lib/libopenblas_x280p-r0.3.28.so; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 
