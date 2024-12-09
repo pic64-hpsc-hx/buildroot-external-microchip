@@ -48,6 +48,6 @@ endef
 # Build hpsc-libopenmp Debian package
 define P64H_LIBS_DEBIAN_PACKAGE_BUILD_OPENMP
 	$(call P64H_DEBIAN_PACKAGE_SETUP,$(@D)/debian_packages/hpsc-libopenmp) \
-	$(INSTALL) -D -m 0755 $(BR2_ROOTFS_OVERLAY)/lib/libomp.so $(P64H_DEB_DIR)/lib/libomp.so; \
+	$(INSTALL) -D -m 0755 $(RISCV_PATH)/sysroot/lib/libomp.so $(P64H_DEB_DIR)/lib/libomp.so; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
