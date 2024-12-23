@@ -8,8 +8,8 @@ define P64H_LKMS_INSTALL_UIO_SHAREDMEM
 	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03uiosharedmem $(TARGET_DIR)/etc/init.d/S03uiosharedmem
 endef
 
-define P64H_LKMS_INSTALL_UIO_GENDEV
-	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03uiogendev $(TARGET_DIR)/etc/init.d/S03uiogendev
+define P64H_LKMS_INSTALL_P64H_UIO
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64h_uio $(TARGET_DIR)/etc/init.d/S03p64h_uio
 endef
 
 define P64H_LKMS_INSTALL_UIO_MESA

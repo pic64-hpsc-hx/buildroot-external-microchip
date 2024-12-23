@@ -15,8 +15,8 @@ config BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER
       userland application demo. This driver enables shared memory operations
 	  between the application clusters using the UIO (Userspace I/O) framework.
 
-config BR2_PACKAGE_P64H_LKMS_UIO_GENDEV_DRIVER
-	bool "Enable uio gendev driver"
+config BR2_PACKAGE_P64H_LKMS_P64H_UIO_DRIVER
+	bool "Enable uio p64h Generic driver"
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support to P64H Application Complex UIO Generic Device

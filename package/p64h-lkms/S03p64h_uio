@@ -1,10 +1,10 @@
 #!/bin/sh
 
-DRIVER="uio_gendev"
+DRIVER="p64h_uio"
 
 start() {
 	printf 'Load kernel module %s: ' "$DRIVER"
-	modprobe uio_gendev
+	modprobe p64h_uio
 	status=$?
 	if [ "$status" -eq 0 ]; then
 		echo "OK"
