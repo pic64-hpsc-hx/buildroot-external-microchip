@@ -47,3 +47,9 @@ config BR2_PACKAGE_P64H_LKMS_GPIO_DRIVER
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex GPIO driver.
+
+config BR2_PACKAGE_P64H_LKMS_WDT_DRIVER
+	bool "Enable P64H watchdog driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex watchdog driver.
