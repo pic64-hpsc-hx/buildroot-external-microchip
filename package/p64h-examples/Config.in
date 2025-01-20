@@ -20,6 +20,12 @@ config BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM
 
 	  This application utilizes UIO (Userspace I/O) framework to manage
 	  shared memory operations on the PIC64-HPSC-HX SoC.
+		
+config BR2_PACKAGE_P64H_EXAMPLES_SPW
+	bool "SpaceWire"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	help
+	  SpaceWire test application for PIC64-HPSC-HX SoC.
 
 config BR2_PACKAGE_P64H_EXAMPLES_UTILS
 	bool "utils"
