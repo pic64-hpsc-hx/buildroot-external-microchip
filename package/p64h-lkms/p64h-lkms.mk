@@ -44,7 +44,7 @@ endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_WDT_DRIVER),y)
 P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_wdt
-P64H_LKMS_MODULE_LIST += p64h_gpio
+P64H_LKMS_MODULE_LIST += p64h_wdt
 endif
 
 # Fixup Linux Kernel configuration
