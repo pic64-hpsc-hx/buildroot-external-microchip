@@ -35,12 +35,7 @@ menu "EGT Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/egt-media-extra/Config.in"
 endmenu
 
-menu "PIC64-HPSC-HX Applications"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-lkms/Config.in"
-endmenu
+source "$BR2_EXTERNAL_MCHP_PATH/package/p64h/Config.in"
 
 menu "Fonts"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/noto-fonts/Config.in"

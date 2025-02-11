@@ -4,10 +4,8 @@
 #
 ################################################################################
 
-P64H_BENCHMARKS_SITE = $(P64H_TOPDIR)
-P64H_BENCHMARKS_LICENSE = MIT
-P64H_BENCHMARKS_LICENSE_FILES = LICENSE
-P64H_BENCHMARKS_DEPENDENCIES = hwloc libzlib
+P64H_BENCHMARKS_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)/examples/benchmarks
+P64H_BENCHMARKS_DEPENDENCIES = hwloc libzlib p64h
 
 # Target installation dir
 P64H_BENCHMARKS_TARGET_DIR = /opt/microchip/benchmarks

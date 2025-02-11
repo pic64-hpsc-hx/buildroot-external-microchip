@@ -1,0 +1,26 @@
+menu "P64H"
+
+config BR2_PACKAGE_P64H
+    bool "P64H"
+    help
+      Container for P64H packages. Includes p64h-benchmarks, p64h-examples, p64h-libs, and p64h-lkms.
+
+if BR2_PACKAGE_P64H
+    menu "P64H-benchmarks" 
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
+    endmenu
+
+    menu "P64H-examples"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
+    endmenu
+
+    menu "P64H-libs"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
+    endmenu
+    
+    menu "P64H-drivers"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-lkms/Config.in"
+    endmenu
+endif
+
+endmenu

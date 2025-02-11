@@ -5,7 +5,7 @@
 ################################################################################
 
 # Default output directory for Debian package builds
-P64H_DEBPKG_OUTPUT_DIR ?= $(P64H_TOPDIR)/build/debian_packages
+P64H_DEBPKG_OUTPUT_DIR ?= $(BUILD_DIR)/p64h-$(P64H_VERSION)/build/debian_packages
 
 # Setup Debian package build environment
 define P64H_DEBIAN_PACKAGE_SETUP
@@ -25,7 +25,7 @@ define P64H_DEBIAN_PACKAGE_SETUP
 		rm -rf $(TEMP_DIR); \
 		exit 1; \
 	fi; \
-	docker build -t hpsc_debian_pkgbuild:11-1 $(@D)/debian_packages/Dockerfiles; \
+	docker build -t hpsc_debian_pkgbuild:11-1 $(P64H_EXAMPLES_BUILD_DIR)/debian_packages/Dockerfiles; \
 	mkdir -p -m 0755 $(P64H_DEBPKG_OUTPUT_DIR); \
 	mkdir -p -m 0755 $(P64H_DEB_DIR); \
 	cp -r $(1)/* $(P64H_DEB_DIR);
@@ -49,5 +49,5 @@ endef
 define P64H_DEBIAN_PACKAGE_DEPS
 	rm -rf $(1)/debian_packages
 	mkdir -p $(1)/debian_packages
-	cp -r $(P64H_TOPDIR)/debian_packages/* $(1)/debian_packages
+	cp -r $(BUILD_DIR)/p64h-$(P64H_VERSION)/debian_packages/* $(1)/debian_packages
 endef

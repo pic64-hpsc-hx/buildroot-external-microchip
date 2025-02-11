@@ -4,41 +4,47 @@
 #
 ################################################################################
 
-P64H_LKMS_SITE = $(P64H_TOPDIR)/drivers
-P64H_LKMS_LICENSE = MIT
-P64H_LKMS_LICENSE_FILES = LICENSE
+P64H_LKMS_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)/drivers
+P64H_LKMS_MODULE_LIST = 
 
 # Copy debian_package build dependencies
 define P64H_LKMS_EXTRAS
-	$(call P64H_DEBIAN_PACKAGE_DEPS,$(@D))
+	$(call P64H_DEBIAN_PACKAGE_DEPS,$(P64H_LKMS_BUILD_DIR))
 endef
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += uio_sharedmem
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/uio_sharedmem
+P64H_LKMS_MODULE_LIST += uio_sharedmem
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_P64H_UIO_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += p64h_uio
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_uio
+P64H_LKMS_MODULE_LIST += p64h_uio
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_UIO_MESA_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += uio_mesa
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/uio_mesa
+P64H_LKMS_MODULE_LIST += uio_mesa
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_APPDMA_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += appdma
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/appdma
+P64H_LKMS_MODULE_LIST += appdma
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_XSPI_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += spi-microchip-p64h_xspi
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/spi-microchip-p64h_xspi
+P64H_LKMS_MODULE_LIST += spi-microchip-p64h_xspi
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_GPIO_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += p64h_gpio
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_gpio
+P64H_LKMS_MODULE_LIST += p64h_gpio
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_WDT_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += p64h_wdt
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_wdt
+P64H_LKMS_MODULE_LIST += p64h_gpio
 endif
 
 # Fixup Linux Kernel configuration
@@ -55,7 +61,7 @@ define P64H_LKMS_LINUX_CONFIG_FIXUPS
 endef
 
 # Post build installation stages (per module)
-$(foreach d,$(P64H_LKMS_MODULE_SUBDIRS), \
+$(foreach d,$(P64H_LKMS_MODULE_LIST), \
 	$(eval P64H_LKMS_POST_BUILD_HOOKS += P64H_LKMS_INSTALL_$(call UPPERCASE,$(d))); \
 )
 
@@ -63,7 +69,7 @@ $(eval $(kernel-module))
 
 # Post kernel installation stage
 define P64H_LKMS_DEBIAN_PACKAGE_BUILD
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(@D)/debian_packages/hpsc-kmods) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_LKMS_BUILD_DIR)/debian_packages/hpsc-kmods) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/lib/modules; \
 	cp -r $(TARGET_DIR)/lib/modules/* $(P64H_DEB_DIR)/lib/modules/; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
