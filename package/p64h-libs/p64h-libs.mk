@@ -3,16 +3,13 @@
 # p64h-libs: Shared Libraries for PIC64-HPSC-HX SoC.
 #
 ################################################################################
+# If CROSS_LLVM_PATH not defined, replace with RISCV_PATH by sourcing env.rc
+CROSS_LLVM_PATH:=$(shell . ${BUILD_DIR}/p64h-"$$(cat ${BR2_EXTERNAL_MCHP_PATH}/package/p64h/p64h.mk | grep P64H_VERSION | sed 's/^.*= //')"/tools/bin/env.rc && echo ${RISCV_PATH})
 
-CROSS_LLVM_PATH:=$(RISCV_PATH)
-
-P64H_LIBS_SITE = $(P64H_TOPDIR)/install/libs
-P64H_LIBS_LICENSE = MIT
-P64H_LIBS_LICENSE_FILES = LICENSE
-
+P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
 # Copy debian_package build dependencies
 define P64H_LIBS_EXTRAS
-	$(call P64H_DEBIAN_PACKAGE_DEPS,$(@D))
+	$(call P64H_DEBIAN_PACKAGE_DEPS,$(P64H_LIBS_BUILD_DIR))
 endef
 
 ifeq ($(BR2_PACKAGE_P64H_LIBS_OPENBLAS),y)
