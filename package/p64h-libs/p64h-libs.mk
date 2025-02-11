@@ -3,8 +3,8 @@
 # p64h-libs: Shared Libraries for PIC64-HPSC-HX SoC.
 #
 ################################################################################
-# CROSS_LLVM_PATH:=$(shell . $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && echo $${RISCV_PATH})
-CROSS_LLVM_PATH:=$(shell cat $(BR2_EXTERNAL_MCHP_PATH)/package/p64h/p64h.mk | grep P64H_VERSION | sed 's/^.*://')
+# If CROSS_LLVM_PATH not defined, replace with RISCV_PATH by sourcing env.rc
+CROSS_LLVM_PATH:=$(shell . ${BUILD_DIR}/p64h-"$$(cat ${BR2_EXTERNAL_MCHP_PATH}/package/p64h/p64h.mk | grep P64H_VERSION | sed 's/^.*= //')"/tools/bin/env.rc && echo ${RISCV_PATH})
 
 P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
 # Copy debian_package build dependencies
@@ -44,7 +44,6 @@ endif
 
 ifeq ($(BR2_PACKAGE_P64H_LIBS_STD_DEVEL_LIBS),y)
 ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
-$(info LLVM PATH @@@@@ $(CROSS_LLVM_PATH))
 $(error CROSS_LLVM_PATH must be set to a valid path in order to build std-devel-libs)
 endif
 P64H_LIBS_LIST += std_devel_libs
