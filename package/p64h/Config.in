@@ -9,23 +9,23 @@ choice
     prompt "P64H Packages Source"
     depends on BR2_PACKAGE_P64H
 
-config BR2_P64H_PACKAGE_LATEST_VERSION
+config BR2_PACKAGE_P64H_LATEST_VERSION
     bool "Latest Version (p64h-v1.6.1)"
     help
       Downloads the latest tarball release of the p64h-linux-examples
       repository from https://github.com/pic64-hpsc-hx/p64h-linux-examples.
 
-config BR2_P64H_PACKAGE_BITBUCKET
+config BR2_PACKAGE_P64H_BITBUCKET
     bool "Bitbucket"
     help
       Downloads p64h-linux-examples source code from a custom Bitbucket repository.
 
-config BR2_P64H_PACKAGE_LOCALDIR
+config BR2_PACKAGE_P64H_LOCALDIR
     bool "Local Directory"
     help
       Copies p64h-linux-examples source code from a specified local directory.
 
-config BR2_P64H_PACKAGE_CUSTOM_VERSION
+config BR2_PACKAGE_P64H_CUSTOM_VERSION
     bool "Custom Version"
     help
       Downloads a custom tarball release of the p64h-linux-examples
@@ -33,27 +33,27 @@ config BR2_P64H_PACKAGE_CUSTOM_VERSION
 
 endchoice
 
-config BR2_P64H_PACKAGE_BITBUCKET_SOURCE
+config BR2_PACKAGE_P64H_BITBUCKET_SOURCE
     string "Bitbucket Repository URL"
-    depends on BR2_P64H_PACKAGE_BITBUCKET
+    depends on BR2_PACKAGE_P64H_BITBUCKET
     help
       URL of the custom Bitbucket repository for p64h-linux-examples.
 
-config BR2_P64H_PACKAGE_BITBUCKET_VERSION
+config BR2_PACKAGE_P64H_BITBUCKET_VERSION
     string "Bitbucket Repository Version"
-    depends on BR2_P64H_PACKAGE_BITBUCKET
+    depends on BR2_PACKAGE_P64H_BITBUCKET
     help
       Version (branch, commit hash, tag) of the Bitbucket repository to be used. 
 
-config BR2_P64H_PACKAGE_LOCALDIR_LOCATION
+config BR2_PACKAGE_P64H_LOCALDIR_LOCATION
     string "Local p64h-linux-examples path"
-    depends on BR2_P64H_PACKAGE_LOCALDIR
+    depends on BR2_PACKAGE_P64H_LOCALDIR
     help
       Path to the local p64h-linux-examples directory.
 
-config BR2_P64H_PACKAGE_CUSTOM_VERSION_VALUE
+config BR2_PACKAGE_P64H_CUSTOM_VERSION_VALUE
     string "P64H-linux-examples Custom Version"
-    depends on BR2_P64H_PACKAGE_CUSTOM_VERSION
+    depends on BR2_PACKAGE_P64H_CUSTOM_VERSION
     help
       Custom release version of p64h-linux-examples to be downloaded from 
       https://github.com/pic64-hpsc-hx/p64h-linux-examples.
