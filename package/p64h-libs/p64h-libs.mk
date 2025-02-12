@@ -3,8 +3,19 @@
 # p64h-libs: Shared Libraries for PIC64-HPSC-HX SoC.
 #
 ################################################################################
+# Find P64H_VERSION since the file p64h.mk may not have been sourced yet and P64H_VERSION may not yet be defined
+ifeq ($(BR2_P64H_PACKAGE_LATEST_VERSION),y)
+P64H_VERSION = p64h-v1.6.1
+else ifeq ($(BR2_P64H_PACKAGE_BITBUCKET),y)
+P64H_VERSION = $(call qstrip,$(BR2_P64H_PACKAGE_BITBUCKET_VERSION))
+else ifeq ($(BR2_P64H_PACKAGE_LOCALDIR),y)
+P64H_VERSION = custom
+else ifeq ($(BR2_P64H_PACKAGE_CUSTOM_VERSION),y)
+P64H_VERSION = $(call qstrip,$(BR2_P64H_PACKAGE_CUSTOM_VERSION_VALUE))
+endif
+
 # If CROSS_LLVM_PATH not defined, replace with RISCV_PATH by sourcing env.rc
-CROSS_LLVM_PATH:=$(shell . ${BUILD_DIR}/p64h-"$$(cat ${BR2_EXTERNAL_MCHP_PATH}/package/p64h/p64h.mk | grep P64H_VERSION | sed 's/^.*= //')"/tools/bin/env.rc && echo ${RISCV_PATH})
+CROSS_LLVM_PATH:=$(shell . ${BUILD_DIR}/p64h-${P64H_VERSION}/tools/bin/env.rc && echo $${RISCV_PATH})
 
 P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
 # Copy debian_package build dependencies
