@@ -4,14 +4,14 @@
 #
 ################################################################################
 # Find P64H_VERSION since the file p64h.mk may not have been sourced yet and P64H_VERSION may not yet be defined
-ifeq ($(BR2_P64H_PACKAGE_LATEST_VERSION),y)
+ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
 P64H_VERSION = p64h-v1.6.1
-else ifeq ($(BR2_P64H_PACKAGE_BITBUCKET),y)
-P64H_VERSION = $(call qstrip,$(BR2_P64H_PACKAGE_BITBUCKET_VERSION))
-else ifeq ($(BR2_P64H_PACKAGE_LOCALDIR),y)
+else ifeq ($(BR2_PACKAGE_P64H_BITBUCKET),y)
+P64H_VERSION = $(call qstrip,$(BR2_PACKAGE_P64H_BITBUCKET_VERSION))
+else ifeq ($(BR2_PACKAGE_P64H_LOCALDIR),y)
 P64H_VERSION = custom
-else ifeq ($(BR2_P64H_PACKAGE_CUSTOM_VERSION),y)
-P64H_VERSION = $(call qstrip,$(BR2_P64H_PACKAGE_CUSTOM_VERSION_VALUE))
+else ifeq ($(BR2_PACKAGE_P64H_CUSTOM_VERSION),y)
+P64H_VERSION = $(call qstrip,$(BR2_PACKAGE_P64H_CUSTOM_VERSION_VALUE))
 endif
 
 # If CROSS_LLVM_PATH not defined, replace with RISCV_PATH by sourcing env.rc
