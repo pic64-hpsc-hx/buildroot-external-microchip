@@ -5,6 +5,7 @@
 ################################################################################
 
 P64H_LKMS_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)/drivers
+P64H_LKMS_DEPENDENCIES = p64h
 P64H_LKMS_MODULE_LIST = 
 
 # Copy debian_package build dependencies

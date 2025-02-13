@@ -18,6 +18,8 @@ endif
 CROSS_LLVM_PATH:=$(shell . ${BUILD_DIR}/p64h-${P64H_VERSION}/tools/bin/env.rc && echo $${RISCV_PATH})
 
 P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
+P64H_LIBS_DEPENDENCIES = p64h
+
 # Copy debian_package build dependencies
 define P64H_LIBS_EXTRAS
 	$(call P64H_DEBIAN_PACKAGE_DEPS,$(P64H_LIBS_BUILD_DIR))

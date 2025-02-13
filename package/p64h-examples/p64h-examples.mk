@@ -5,7 +5,7 @@
 ################################################################################
 
 P64H_EXAMPLES_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)
-P64H_EXAMPLES_DEPENDENCIES = hwloc libzlib p64h
+P64H_EXAMPLES_DEPENDENCIES = p64h
 
 # Target directory for the installation
 P64H_EXAMPLES_TARGET_DIR = /opt/microchip
