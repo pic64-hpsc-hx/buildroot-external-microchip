@@ -14,7 +14,7 @@ BR2_TOOLCHAIN_EXTERNAL_OPENMP=y
 BR2_TOOLCHAIN_EXTERNAL_FORTRAN=y
 BR2_TOOLCHAIN_EXTERNAL_GCC_14_2=y
 BR2_TOOLCHAIN_EXTERNAL_GCC_VERSION_14=y
-BR2_TOOLCHAIN_EXTRA_LIBS="riscv64-unknown-linux-gnu-gdb riscv64-unknown-linux-gnu-gprof"
+BR2_TOOLCHAIN_EXTRA_LIBS="libarcher libBrokenLocale libc++abi libc_malloc_debug libc++ libiomp5 libitm libmemusage libnss_compat libnss_db libnss_hesiod libompd libpcprofile libthread_db"
 BR2_CCACHE=y
 BR2_PACKAGE_OVERRIDE_FILE="$(BR2_EXTERNAL_P64H_PACKAGE_OVERRIDE_FILE)"
 BR2_GLOBAL_PATCH_DIR="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/qemu/patches"
@@ -23,7 +23,6 @@ BR2_TARGET_GENERIC_ISSUE="Welcome to PIC64 HPSC/HX QEMU Buildroot"
 BR2_ROOTFS_DEVICE_CREATION_STATIC=y
 BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/qemu/overlay/"
 BR2_PACKAGE_BUSYBOX_CONFIG="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/qemu/busybox.config"
-BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/common-scripts/copy_toolchain_sysroot.sh"
 #
 # Linux Kernel
 #
