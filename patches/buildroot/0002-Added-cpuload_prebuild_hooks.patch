@@ -1,0 +1,18 @@
+diff --git a/cpuload.mk b/cpuload.mk
+index 648b17e59e..e2897dac19 100644
+--- a/cpuload.mk
++++ b/cpuload.mk
+@@ -9,4 +9,13 @@ CPULOAD_SITE = $(call github,kelvincheung,cpuload,v$(CPULOAD_VERSION))
+ CPULOAD_LICENSE = GPL-2.0
+ CPULOAD_LICENSE_FILES = COPYING
+
++define APPLY_GCC14_PATCH
++echo "Applying patches in cpuload for gcc14 support"
++patch -p1 -ft  -i ${BR2_EXTERNAL_MCHP_PATH}/board/microchip/p64h/patches/0004_fixed_error_read_cpu_stat.patch ${O}/build/cpuload-0.3/src/read_cpu_stat.c
++patch -p1 -ft  -i ${BR2_EXTERNAL_MCHP_PATH}/board/microchip/p64h/patches/0005_fixed_error_graph_cpu_load.patch ${O}/build/cpuload-0.3/src/graph_cpu_load.c
++
++endef
++
++CPULOAD_POST_EXTRACT_HOOKS = APPLY_GCC14_PATCH
++
+ $(eval $(autotools-package))
