@@ -3,19 +3,7 @@
 # p64h-libs: Shared Libraries for PIC64-HPSC-HX SoC.
 #
 ################################################################################
-# Find P64H_VERSION since the file p64h.mk may not have been sourced yet and P64H_VERSION may not yet be defined
-ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
-P64H_VERSION = p64h-v1.6.1
-else ifeq ($(BR2_PACKAGE_P64H_BITBUCKET),y)
-P64H_VERSION = $(call qstrip,$(BR2_PACKAGE_P64H_BITBUCKET_VERSION))
-else ifeq ($(BR2_PACKAGE_P64H_LOCALDIR),y)
-P64H_VERSION = custom
-else ifeq ($(BR2_PACKAGE_P64H_CUSTOM_VERSION),y)
-P64H_VERSION = $(call qstrip,$(BR2_PACKAGE_P64H_CUSTOM_VERSION_VALUE))
-endif
-
-# If CROSS_LLVM_PATH not defined, replace with RISCV_PATH by sourcing env.rc
-CROSS_LLVM_PATH:=$(shell . ${BUILD_DIR}/p64h-${P64H_VERSION}/tools/bin/env.rc && echo $${RISCV_PATH})
+CROSS_LLVM_PATH:=$(BR2_TOOLCHAIN_EXTERNAL_PATH)
 
 P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
 P64H_LIBS_DEPENDENCIES = p64h
