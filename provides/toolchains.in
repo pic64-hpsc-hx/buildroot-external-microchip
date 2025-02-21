@@ -1,0 +1,2 @@
+config BR2_TOOLCHAIN_EXTERNAL_P64H
+    bool "P64H Toolchain"
