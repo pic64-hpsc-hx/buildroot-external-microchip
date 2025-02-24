@@ -43,7 +43,10 @@ config BR2_PACKAGE_P64H_BITBUCKET_VERSION
     string "Bitbucket Repository Version"
     depends on BR2_PACKAGE_P64H_BITBUCKET
     help
-      Version (branch, commit hash, tag) of the Bitbucket repository to be used. 
+      The version of the Bitbucket repository to be used.
+      This may be a branch name, a commit hash, or a tag.
+      Setting this field will determine which version of the
+      BitBucket repository will be checked out by buildroot. 
 
 config BR2_PACKAGE_P64H_LOCALDIR_LOCATION
     string "Local p64h-linux-examples path"
@@ -59,19 +62,19 @@ config BR2_PACKAGE_P64H_CUSTOM_VERSION_VALUE
       https://github.com/pic64-hpsc-hx/p64h-linux-examples.
 
 if BR2_PACKAGE_P64H
-    menu "P64H-benchmarks" 
+    menu "P64H-Benchmarks" 
     source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
     endmenu
 
-    menu "P64H-examples"
+    menu "P64H-Examples"
     source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
     endmenu
 
-    menu "P64H-libs"
+    menu "P64H-Libs"
     source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
     endmenu
     
-    menu "P64H-drivers"
+    menu "P64H-Drivers"
     source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-lkms/Config.in"
     endmenu
 endif
