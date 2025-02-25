@@ -4,8 +4,24 @@
 #
 ################################################################################
 
-TOOLCHAIN_EXTERNAL_LIBS += libarcher.so* libBrokenLocale.so* libc++abi.so* libc_malloc_debug.so* libc++.so* libiomp5.so* libitm.so*\
- libmemusage.so* libnss_compat.so* libnss_db.so* libnss_hesiod.so* libompd.so* libpcprofile.so* libthread_db.so*
+ifeq ($(BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL),y)
+ifeq ($(call qstrip,$(RISCV_LLVM_PATH)),)
+$(error RISCV_LLVM_PATH must be set to a valid path in order to build llvm-devel)
+endif
+ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
+$(error CROSS_LLVM_PATH must be set to a valid path in order to build llvm-devel)
+endif
+endif
+
+ifeq ($(BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_STD_DEVEL_LIBS),y)
+ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
+$(error CROSS_LLVM_PATH must be set to a valid path in order to build std-devel-libs)
+endif
+endif
+
+define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_EXTRA_LIBS
+	$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/common-scripts/copy_toolchain_sysroot.sh
+endef
 
 define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_LLVM_DEVEL
 	cp -a  $(RISCV_LLVM_PATH)/* $(STAGING_DIR)/usr/
@@ -18,11 +34,13 @@ define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_STD_DEVEL_LIBS
 	cp -a  $(CROSS_LLVM_PATH)/riscv64-unknown-linux-gnu/include/c++ $(STAGING_DIR)/usr/include/
 endef
 
-ifeq ($(BR2_PACKAGE_P64H_LIBS_LLVM_DEVEL),y)
+TOOLCHAIN_EXTERNAL_P64H_POST_INSTALL_STAGING_HOOKS += BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_EXTRA_LIBS
+
+ifeq ($(BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL),y)
 TOOLCHAIN_EXTERNAL_P64H_POST_INSTALL_STAGING_HOOKS += BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_LLVM_DEVEL
 endif
 
-ifeq ($(BR2_PACKAGE_P64H_LIBS_STD_DEVEL_LIBS),y)
+ifeq ($(BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_STD_DEVEL_LIBS),y)
 TOOLCHAIN_EXTERNAL_P64H_POST_INSTALL_STAGING_HOOKS += BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_STD_DEVEL_LIBS
 endif
 
