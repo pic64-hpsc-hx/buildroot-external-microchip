@@ -33,23 +33,6 @@ ifeq ($(BR2_PACKAGE_P64H_LIBS_OPENMP),y)
 P64H_LIBS_LIST += openmp
 endif
 
-ifeq ($(BR2_PACKAGE_P64H_LIBS_LLVM_DEVEL),y)
-ifeq ($(call qstrip,$(RISCV_LLVM_PATH)),)
-$(error RISCV_LLVM_PATH must be set to a valid path in order to build llvm-devel)
-endif
-ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
-$(error CROSS_LLVM_PATH must be set to a valid path in order to build llvm-devel)
-endif
-P64H_LIBS_LIST += llvm_devel
-endif
-
-ifeq ($(BR2_PACKAGE_P64H_LIBS_STD_DEVEL_LIBS),y)
-ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
-$(error CROSS_LLVM_PATH must be set to a valid path in order to build std-devel-libs)
-endif
-P64H_LIBS_LIST += std_devel_libs
-endif
-
 # Invoke install stages
 define P64H_LIBS_INSTALL_TARGET_CMDS
 	$(foreach lib,$(P64H_LIBS_LIST), \
