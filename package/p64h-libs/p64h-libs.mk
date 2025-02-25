@@ -3,7 +3,6 @@
 # p64h-libs: Shared Libraries for PIC64-HPSC-HX SoC.
 #
 ################################################################################
-CROSS_LLVM_PATH:=$(BR2_TOOLCHAIN_EXTERNAL_PATH)
 
 P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
 P64H_LIBS_DEPENDENCIES = p64h
