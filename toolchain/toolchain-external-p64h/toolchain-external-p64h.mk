@@ -3,6 +3,7 @@
 # toolchain-external-p64h
 #
 ################################################################################
+CROSS_LLVM_PATH:=$(BR2_TOOLCHAIN_EXTERNAL_PATH)
 
 ifeq ($(BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL),y)
 ifeq ($(call qstrip,$(RISCV_LLVM_PATH)),)
