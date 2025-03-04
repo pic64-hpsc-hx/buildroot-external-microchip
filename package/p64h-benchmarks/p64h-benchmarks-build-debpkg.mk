@@ -5,7 +5,7 @@
 ################################################################################
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_COREMARK
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-coremark) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-coremark) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/coremark/coremark.exe $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/coremark/coremark.exe
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/coremark/coremark_8_threads.exe $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/coremark/coremark_8_threads.exe
@@ -13,21 +13,21 @@ define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_COREMARK
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_STREAM
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-stream) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-stream) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/STREAM/stream_c.exe $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/STREAM/stream_c.exe; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_HACC
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-hacc) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-hacc) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hacc/HACCKernels $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/hacc/HACCKernels; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_PERLIN
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-perlin) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-perlin) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/lib; \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/perlin/perlin $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/perlin/perlin; \
@@ -36,7 +36,7 @@ define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_PERLIN
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_SPACEBENCH
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-spacebench) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-spacebench) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/spacebench/spacebench $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/spacebench/spacebench; \
 	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/spacebench/run_benchmarks.sh $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/spacebench/run_benchmarks.sh; \
@@ -44,7 +44,7 @@ define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_SPACEBENCH
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_MICROBENCH
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-microbench) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-microbench) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -d -m 0755 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/microbench; \
 	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/microbench/run_benchmarks $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/microbench/run_benchmarks; \
@@ -55,7 +55,7 @@ define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_MICROBENCH
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_HPEC_CHALLENGE
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-hpec-challenge) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-hpec-challenge) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -d -m 0755 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/hpec_challenge/kernelBenchmarks
 	$(INSTALL) -D -m 0755 $(HPEC_BUILD_DIR)/run_benchmarks.sh $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/hpec_challenge/kernelBenchmarks/run_benchmarks.sh
@@ -75,7 +75,7 @@ define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_HPEC_CHALLENGE
 endef
 
 define P64H_BENCHMARKS_DEBIAN_PACKAGE_BUILD_HPCC
-	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/debian_packages/hpsc-hpc-challenge) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_BENCHMARKS_BUILD_DIR)/../../debian_packages/hpsc-hpc-challenge) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hpcc/hpcc $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/hpcc/hpcc
 	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/hpcc/_hpccinf.txt $(P64H_DEB_DIR)/$(P64H_BENCHMARKS_TARGET_DIR)/hpcc/hpccinf.txt
