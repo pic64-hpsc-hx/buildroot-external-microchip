@@ -10,7 +10,7 @@ choice
     depends on BR2_PACKAGE_P64H
 
 config BR2_PACKAGE_P64H_LATEST_VERSION
-    bool "Latest Version (p64h-v1.6.1)"
+    bool "Latest Github Release (p64h-v1.6.1)"
     help
       Downloads the latest tarball release of the p64h-linux-examples
       repository from https://github.com/pic64-hpsc-hx/p64h-linux-examples.
@@ -26,7 +26,7 @@ config BR2_PACKAGE_P64H_LOCALDIR
       Copies p64h-linux-examples source code from a specified local directory.
 
 config BR2_PACKAGE_P64H_CUSTOM_VERSION
-    bool "Custom Version"
+    bool "Custom Github Release"
     help
       Downloads a custom tarball release of the p64h-linux-examples
       repository from https://github.com/pic64-hpsc-hx/p64h-linux-examples.
