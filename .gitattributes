@@ -15,6 +15,7 @@
 /configs/p64h_hwemu_defconfig export-ignore
 /configs/p64h_hwemu_lite_defconfig export-ignore
 /configs/p64h_jenkins_defconfig export-ignore
+/configs/p64h_qemu_test_* export-ignore
 
 # Internal Patches
 /patches/buildroot export-ignore
