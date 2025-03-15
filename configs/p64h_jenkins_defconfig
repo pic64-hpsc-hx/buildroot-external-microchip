@@ -4,5 +4,3 @@ BR2_PACKAGE_P64H_BITBUCKET=y
 BR2_PACKAGE_P64H_LATEST_VERSION=n
 BR2_PACKAGE_P64H_BITBUCKET_SOURCE="https://bitbucket.microchip.com/scm/hpsc/p64h-linux-examples.git"
 BR2_PACKAGE_P64H_BITBUCKET_VERSION="HPSC-4478-building-Linux-6.12"
-BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://bitbucket.microchip.com/scm/l4m/linux.git"
-BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="linux-6.12-mchp"
