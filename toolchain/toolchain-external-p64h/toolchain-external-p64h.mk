@@ -23,7 +23,7 @@ endif
 endif
 
 define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_EXTRA_LIBS
-	$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/common-scripts/copy_toolchain_sysroot.sh
+	cp -a $(RISCV_PATH)/sysroot/lib/*.so* $(TARGET_DIR)/lib/
 endef
 
 define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_LLVM_DEVEL
