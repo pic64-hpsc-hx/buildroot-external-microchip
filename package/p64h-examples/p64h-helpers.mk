@@ -5,7 +5,7 @@
 ################################################################################
 
 # Default output directory for Debian package builds
-P64H_DEBPKG_OUTPUT_DIR ?= $(BUILD_DIR)/p64h-$(P64H_VERSION)/build/debian_packages
+P64H_DEBPKG_OUTPUT_DIR ?= $(BUILD_DIR)/p64h-debian_packages
 
 # Setup Debian package build environment
 define P64H_DEBIAN_PACKAGE_SETUP
