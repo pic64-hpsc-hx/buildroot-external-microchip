@@ -35,7 +35,7 @@ BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_CUSTOM_GIT=y
 # BR2_LINUX_KERNEL_CUSTOM_HG is not set
 # BR2_LINUX_KERNEL_CUSTOM_SVN is not set
-BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://bitbucket.microchip.com/scm/l4m/linux.git"
+BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://bitbucket-bby-mirror01.devops.microchip.com/scm/hpsc/linux.git"
 BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="linux-6.12-mchp"
 BR2_LINUX_KERNEL_VERSION="linux-6.12-mchp"
 BR2_LINUX_KERNEL_PATCH=""
