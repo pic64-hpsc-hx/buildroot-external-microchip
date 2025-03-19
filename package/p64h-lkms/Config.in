@@ -54,3 +54,9 @@ config BR2_PACKAGE_P64H_LKMS_WDT_DRIVER
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex watchdog driver.
+
+config BR2_PACKAGE_P64H_LKMS_HPT_DRIVER
+	bool "Enable P64H High Precision Timer driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex High Precision Timer driver.

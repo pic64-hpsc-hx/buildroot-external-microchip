@@ -27,3 +27,7 @@ endef
 define P64H_LKMS_INSTALL_P64H_WDT
 	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64hwdt $(TARGET_DIR)/etc/init.d/S03p64hwdt
 endef
+
+define P64H_LKMS_INSTALL_P64H_HPT
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)S03p64hhpt $(TARGET_DIR)/etc/init.d/S03p64hhpt
+endef
