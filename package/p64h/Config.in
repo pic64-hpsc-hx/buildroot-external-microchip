@@ -10,7 +10,7 @@ choice
     depends on BR2_PACKAGE_P64H
 
 config BR2_PACKAGE_P64H_LATEST_VERSION
-    bool "Latest Github Release (p64h-v1.6.1)"
+    bool "Latest Github Release"
     help
       Downloads the latest tarball release of the p64h-linux-examples
       repository from https://github.com/pic64-hpsc-hx/p64h-linux-examples.
