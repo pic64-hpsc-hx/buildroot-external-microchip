@@ -10,7 +10,7 @@ P64H_LICENSE_FILES = LICENSE
 ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
 # Requires SSH key since repo is private
 P64H_SITE = git@github.com:pic64-hpsc-hx/p64h-linux-examples.git
-P64H_VERSION = p64h_release
+P64H_VERSION = p64h-v1.6.1
 P64H_SITE_METHOD = git
 else ifeq ($(BR2_PACKAGE_P64H_BITBUCKET),y)
 P64H_SITE = $(call qstrip,$(BR2_PACKAGE_P64H_BITBUCKET_SOURCE))

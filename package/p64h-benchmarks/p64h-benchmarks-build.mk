@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-$(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR))
+$(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR) BUILDROOT_BUILD_DIR=$(BUILD_DIR))
 
 # COREMARK
 define P64H_BENCHMARKS_BUILD_COREMARK
