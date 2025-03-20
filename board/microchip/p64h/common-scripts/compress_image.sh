@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # compress the generated Image
-gzip -k "${BASE_DIR}/images/Image" 
+gzip -kf "${BASE_DIR}/images/Image" 
