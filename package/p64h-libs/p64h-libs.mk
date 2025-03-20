@@ -4,15 +4,12 @@
 #
 ################################################################################
 
-CROSS_LLVM_PATH:=$(RISCV_PATH)
-
-P64H_LIBS_SITE = $(P64H_TOPDIR)/install/libs
-P64H_LIBS_LICENSE = MIT
-P64H_LIBS_LICENSE_FILES = LICENSE
+P64H_LIBS_BUILD_DIR=$(BUILD_DIR)/p64h-$(P64H_VERSION)/install/libs
+P64H_LIBS_DEPENDENCIES = p64h
 
 # Copy debian_package build dependencies
 define P64H_LIBS_EXTRAS
-	$(call P64H_DEBIAN_PACKAGE_DEPS,$(@D))
+	$(call P64H_DEBIAN_PACKAGE_DEPS,$(P64H_LIBS_BUILD_DIR))
 endef
 
 ifeq ($(BR2_PACKAGE_P64H_LIBS_OPENBLAS),y)
@@ -33,23 +30,6 @@ endif
 
 ifeq ($(BR2_PACKAGE_P64H_LIBS_OPENMP),y)
 P64H_LIBS_LIST += openmp
-endif
-
-ifeq ($(BR2_PACKAGE_P64H_LIBS_LLVM_DEVEL),y)
-ifeq ($(call qstrip,$(RISCV_LLVM_PATH)),)
-$(error RISCV_LLVM_PATH must be set to a valid path in order to build llvm-devel)
-endif
-ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
-$(error CROSS_LLVM_PATH must be set to a valid path in order to build llvm-devel)
-endif
-P64H_LIBS_LIST += llvm_devel
-endif
-
-ifeq ($(BR2_PACKAGE_P64H_LIBS_STD_DEVEL_LIBS),y)
-ifeq ($(call qstrip,$(CROSS_LLVM_PATH)),)
-$(error CROSS_LLVM_PATH must be set to a valid path in order to build std-devel-libs)
-endif
-P64H_LIBS_LIST += std_devel_libs
 endif
 
 # Invoke install stages

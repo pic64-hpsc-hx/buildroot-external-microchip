@@ -1,0 +1,82 @@
+menu "PIC64-HPSC-HX Applications"
+
+config BR2_PACKAGE_P64H
+    bool "P64H"
+    help
+      Container for P64H packages. Includes p64h-benchmarks, p64h-examples, p64h-libs, and p64h-lkms.
+
+choice
+    prompt "P64H Packages Source"
+    depends on BR2_PACKAGE_P64H
+
+config BR2_PACKAGE_P64H_LATEST_VERSION
+    bool "Latest Github Release (p64h-v1.6.1)"
+    help
+      Downloads the latest tarball release of the p64h-linux-examples
+      repository from https://github.com/pic64-hpsc-hx/p64h-linux-examples.
+
+config BR2_PACKAGE_P64H_BITBUCKET
+    bool "Bitbucket"
+    help
+      Downloads p64h-linux-examples source code from a custom Bitbucket repository.
+
+config BR2_PACKAGE_P64H_LOCALDIR
+    bool "Local Directory"
+    help
+      Copies p64h-linux-examples source code from a specified local directory.
+
+config BR2_PACKAGE_P64H_CUSTOM_VERSION
+    bool "Custom Github Release"
+    help
+      Downloads a custom tarball release of the p64h-linux-examples
+      repository from https://github.com/pic64-hpsc-hx/p64h-linux-examples.
+
+endchoice
+
+config BR2_PACKAGE_P64H_BITBUCKET_SOURCE
+    string "Bitbucket Repository URL"
+    depends on BR2_PACKAGE_P64H_BITBUCKET
+    help
+      URL of the custom Bitbucket repository for p64h-linux-examples.
+
+config BR2_PACKAGE_P64H_BITBUCKET_VERSION
+    string "Bitbucket Repository Version"
+    depends on BR2_PACKAGE_P64H_BITBUCKET
+    help
+      The version of the Bitbucket repository to be used.
+      This may be a branch name, a commit hash, or a tag.
+      Setting this field will determine which version of the
+      BitBucket repository will be checked out by buildroot. 
+
+config BR2_PACKAGE_P64H_LOCALDIR_LOCATION
+    string "Local p64h-linux-examples path"
+    depends on BR2_PACKAGE_P64H_LOCALDIR
+    help
+      Path to the local p64h-linux-examples directory.
+
+config BR2_PACKAGE_P64H_CUSTOM_VERSION_VALUE
+    string "P64H-linux-examples Custom Version"
+    depends on BR2_PACKAGE_P64H_CUSTOM_VERSION
+    help
+      Custom release version of p64h-linux-examples to be downloaded from 
+      https://github.com/pic64-hpsc-hx/p64h-linux-examples.
+
+if BR2_PACKAGE_P64H
+    menu "P64H-Benchmarks" 
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
+    endmenu
+
+    menu "P64H-Examples"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
+    endmenu
+
+    menu "P64H-Libs"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
+    endmenu
+    
+    menu "P64H-Drivers"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-lkms/Config.in"
+    endmenu
+endif
+
+endmenu

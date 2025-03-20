@@ -12,6 +12,7 @@ source "$BR2_EXTERNAL_MCHP_PATH/package/plplot/Config.in"
 source "$BR2_EXTERNAL_MCHP_PATH/package/mpfs_examples/Config.in"
 source "$BR2_EXTERNAL_MCHP_PATH/package/hss-payload-generator/Config.in.host"
 source "$BR2_EXTERNAL_MCHP_PATH/package/mpfs_amp_examples/Config.in"
+source "$BR2_EXTERNAL_MCHP_PATH/toolchain/toolchain-external-p64h/Config.in.options"
 
 menu "WILC BT and WiFi Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/websocket/Config.in"
@@ -35,12 +36,7 @@ menu "EGT Applications"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/egt-media-extra/Config.in"
 endmenu
 
-menu "PIC64-HPSC-HX Applications"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-benchmarks/Config.in"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
-	source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-lkms/Config.in"
-endmenu
+source "$BR2_EXTERNAL_MCHP_PATH/package/p64h/Config.in"
 
 menu "Fonts"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/noto-fonts/Config.in"
