@@ -4,9 +4,8 @@
 #
 ################################################################################
 
-P64H_EXAMPLES_SITE = $(P64H_TOPDIR)
-P64H_EXAMPLES_LICENSE = MIT
-P64H_EXAMPLES_LICENSE_FILES = LICENSE
+P64H_EXAMPLES_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)
+P64H_EXAMPLES_DEPENDENCIES = p64h
 
 # Target directory for the installation
 P64H_EXAMPLES_TARGET_DIR = /opt/microchip

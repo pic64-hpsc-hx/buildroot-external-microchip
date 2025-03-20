@@ -3,6 +3,7 @@ comment "p64h-lkms needs a Linux kernel to be built"
 
 config BR2_PACKAGE_P64H_LKMS
 	bool "PIC64-HPSC-HX Kernel Drivers"
+	depends on BR2_PACKAGE_P64H
 	depends on BR2_LINUX_KERNEL
 	help
 	  Add custom Linux kernel drivers package for PIC64-HPSC-HX SoC.
@@ -47,3 +48,9 @@ config BR2_PACKAGE_P64H_LKMS_GPIO_DRIVER
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex GPIO driver.
+
+config BR2_PACKAGE_P64H_LKMS_WDT_DRIVER
+	bool "Enable P64H watchdog driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex watchdog driver.

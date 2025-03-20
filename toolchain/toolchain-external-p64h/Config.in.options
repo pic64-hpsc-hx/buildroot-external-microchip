@@ -1,0 +1,68 @@
+if BR2_TOOLCHAIN_EXTERNAL_P64H
+
+config BR2_TOOLCHAIN_EXTERNAL_GCC_14
+	bool
+	select BR2_TOOLCHAIN_GCC_AT_LEAST_13
+
+config BR2_TOOLCHAIN_EXTERNAL_PREFIX
+	default BR2_TOOLCHAIN_EXTERNAL_CUSTOM_PREFIX
+
+config BR2_PACKAGE_PROVIDES_TOOLCHAIN_EXTERNAL
+	default "toolchain-external-p64h"
+
+config BR2_TOOLCHAIN_EXTERNAL_PATH
+    default "$(RISCV_PATH)"
+
+config BR2_TOOLCHAIN_EXTERNAL_CUSTOM_PREFIX
+	default "riscv64-unknown-linux-gnu"
+
+menu "P64H Toolchain Libraries"
+
+	config BR2_TOOLCHAIN_EXTERNAL_P64H_COPY_TOOLCHAIN_SYSROOT
+		bool "Copy toolchain sysroot libraries"
+		default y
+		help 
+		If enabled, copies over all libraries from the toolchain sysroot to the target rootfs.
+
+	config BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL
+		bool "llvm-devel"
+		help
+		This package is used for cross-compiling PoCL on x86 host.
+		Install LLVM development toolchain to the staging environment, providing
+		tools necessary to compile programs which use LLVM. Does not modify the
+		target rootfs.
+
+		If enabled, NATIVE_RISCV_LLVM_PATH must be defined, providing
+		the path to the native RISC-V LLVM toolchain to install.
+		If different than the toolchain used by Buildroot, HOST_RISCV_LLVM_PATH may
+		be defined to provide the path to the LLVM cross-compiler toolchain to use
+		for installation.
+
+	config BR2_TOOLCHAIN_EXTERNAL_P64H_NATIVE_RISCV_LLVM_PATH
+		string "NATIVE_RISCV_LLVM_PATH"
+		depends on BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL
+		help
+		Path to the native RISC-V LLVM toolchain to use for installation. 
+		Must be set if llvm-devel is enabled.
+
+	config BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_STD_DEVEL_LIBS
+		bool "std-devel-libs"
+		help
+		Install standard libgcc and libstdc++ headers and libraries not included
+		by default by Buildroot into the staging environment. Does not modify the
+		target rootfs.
+
+		If different than the toolchain used by Buildroot, HOST_RISCV_LLVM_PATH may
+		be defined to provide the path to the LLVM cross-compiler toolchain to use
+		for installation.
+
+	config BR2_TOOLCHAIN_EXTERNAL_P64H_HOST_RISCV_LLVM_PATH
+		string "HOST_RISCV_LLVM_PATH"
+		default $(BR2_TOOLCHAIN_EXTERNAL_PATH)
+		depends on BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_STD_DEVEL_LIBS || BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL
+		help 
+		Path to the LLVM cross-compiler toolchain to use for installation.
+
+endmenu
+
+endif

@@ -4,44 +4,52 @@
 #
 ################################################################################
 
-$(eval BR_FLAGS := BUILDROOT_BUILD_DIR=$(BUILD_DIR))
+$(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR) BUILDROOT_BUILD_DIR=$(BUILD_DIR))
 
 # COREMARK
 define P64H_BENCHMARKS_BUILD_COREMARK
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ coremark.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) coremark.benchmark
 endef
 
 # STREAM
 define P64H_BENCHMARKS_BUILD_STREAM	
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ STREAM.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) STREAM.benchmark
 endef
 
 # HACC
 define P64H_BENCHMARKS_BUILD_HACC
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ hacc.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) hacc.benchmark
 endef
 
 # MICROBENCH
 define P64H_BENCHMARKS_BUILD_MICROBENCH
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ microbench.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) microbench.benchmark
 endef
 
 # HPCC
 define P64H_BENCHMARKS_BUILD_HPCC
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ hpcc.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) hpcc.benchmark
 endef
 
 # HPEC CHALLENGE
 define P64H_BENCHMARKS_BUILD_HPEC_CHALLENGE
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ hpec_challenge/kernelBenchmarks.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) hpec_challenge/kernelBenchmarks.benchmark
 endef
 
 # PERLIN
 define P64H_BENCHMARKS_BUILD_PERLIN
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ perlin.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) perlin.benchmark
 endef
 
 # SPACEBENCH
 define P64H_BENCHMARKS_BUILD_SPACEBENCH
-	$(MAKE) $(BR_FLAGS) -C $(@D)/examples/benchmarks/ spacebench.benchmark
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) spacebench.benchmark
 endef
