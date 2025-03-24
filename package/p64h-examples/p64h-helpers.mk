@@ -45,10 +45,3 @@ define P64H_DEBIAN_PACKAGE_BUILD
 	fi; \
 	rm -rf $(TEMP_DIR);
 endef
-
-# Copy debian_package build dependencies into package build directory
-define P64H_DEBIAN_PACKAGE_DEPS
-	rm -rf $(1)/debian_packages
-	mkdir -p $(1)/debian_packages
-	cp -r $(P64H_DEBPKG_SRC_DIR)/* $(1)/debian_packages
-endef

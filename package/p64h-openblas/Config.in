@@ -1,0 +1,8 @@
+config BR2_PACKAGE_P64H_OPENBLAS
+	bool "OpenBLAS"
+	depends on BR2_PACKAGE_P64H_LIBS
+	help
+	  Enable this option to include OpenBLAS,
+	  an optimized BLAS library for PIC64-HPSC-HX SoC.
+	  
+	  If unsure, leave this option enabled.

@@ -1,0 +1,9 @@
+config BR2_PACKAGE_P64H_OPENMPI
+	bool "OpenMPI"
+	depends on BR2_PACKAGE_P64H_LIBS
+	help
+	  Enable this option to include OpenMPI,
+	  a high-performance Message Passing Interface (MPI) library
+	  for parallel computing on the PIC64-HPSC-HX SoC.
+	  
+	  If unsure, leave this option enabled.
