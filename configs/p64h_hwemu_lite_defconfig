@@ -24,6 +24,7 @@ BR2_TARGET_GENERIC_ISSUE="Welcome to PIC64 HPSC/HX HWEMU-LITE Buildroot"
 BR2_ROOTFS_DEVICE_CREATION_STATIC=y
 BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/hwemu_lite/overlay/"
 BR2_PACKAGE_BUSYBOX_CONFIG="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/hwemu_lite/busybox.config"
+BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/common-scripts/compress_image.sh"
 #
 # Kernel
 #

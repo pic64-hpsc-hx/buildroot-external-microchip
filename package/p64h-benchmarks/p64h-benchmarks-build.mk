@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-$(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR))
+$(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR) BUILDROOT_BUILD_DIR=$(BUILD_DIR))
 
 # COREMARK
 define P64H_BENCHMARKS_BUILD_COREMARK
@@ -13,7 +13,7 @@ define P64H_BENCHMARKS_BUILD_COREMARK
 endef
 
 # STREAM
-define P64H_BENCHMARKS_BUILD_STREAM	
+define P64H_BENCHMARKS_BUILD_STREAM
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
 	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) STREAM.benchmark
 endef

@@ -70,7 +70,11 @@ $(eval $(kernel-module))
 
 # Post kernel installation stage
 define P64H_LKMS_DEBIAN_PACKAGE_BUILD
+<<<<<<< HEAD
 	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_LKMS_BUILD_DIR)/debian_packages/hpsc-kmods) \
+=======
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/hpsc-kmods) \
+>>>>>>> origin/2025.03-mchp+p64h
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/lib/modules; \
 	cp -r $(TARGET_DIR)/lib/modules/* $(P64H_DEB_DIR)/lib/modules/; \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)

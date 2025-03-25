@@ -1,9 +1,9 @@
 # The rules by which the pattern matches paths are the same as in .gitignore files (see gitignore[5]), with a few exceptions:
 #   - negative patterns are forbidden
-#   - patterns that match a directory do not recursively match paths inside that directory 
+#   - patterns that match a directory do not recursively match paths inside that directory
 #     (so using the trailing-slash path/ syntax is pointless in an attributes file; use path/** instead)
 # Reference: https://git-scm.com/docs/gitattributes
-# 
+#
 # To test out changes to this file; can you run the command below:
 # > git archive --prefix=hpsc-release/ --worktree-attributes HEAD > ../hpsc-release.tar
 
@@ -14,8 +14,6 @@
 # Files
 /configs/p64h_hwemu_defconfig export-ignore
 /configs/p64h_hwemu_lite_defconfig export-ignore
-/configs/p64h_jenkins_defconfig export-ignore
-/configs/p64h_qemu_test_* export-ignore
 
 # Internal Patches
 /patches/buildroot export-ignore

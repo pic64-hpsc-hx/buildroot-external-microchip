@@ -7,6 +7,11 @@
 HOST_RISCV_LLVM_PATH := $(BR2_TOOLCHAIN_EXTERNAL_P64H_HOST_RISCV_LLVM_PATH)
 NATIVE_RISCV_LLVM_PATH := $(BR2_TOOLCHAIN_EXTERNAL_P64H_NATIVE_RISCV_LLVM_PATH)
 
+# Temporary fix until buildroot-mchp supports GCC 14
+ifeq ($(BR2_TOOLCHAIN_EXTERNAL_GCC_14),y)
+BR2_TOOLCHAIN_GCC_AT_LEAST="14"
+endif
+
 ifeq ($(BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL),y)
 ifeq ($(call qstrip,$(NATIVE_RISCV_LLVM_PATH)),)
 $(error NATIVE_RISCV_LLVM_PATH must be set to a valid path in order to build llvm-devel)
@@ -23,7 +28,7 @@ endif
 endif
 
 define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_EXTRA_LIBS
-	$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/common-scripts/copy_toolchain_sysroot.sh
+	cp -a $(RISCV_PATH)/sysroot/lib/*.so* $(TARGET_DIR)/lib/
 endef
 
 define BR2_TOOLCHAIN_EXTERNAL_P64H_INSTALL_LLVM_DEVEL
