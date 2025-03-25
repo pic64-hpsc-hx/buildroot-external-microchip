@@ -1,0 +1,38 @@
+From 59b4e843aa0d20b212647a2cadb5882f9ad6bcec Mon Sep 17 00:00:00 2001
+From: Eric Zhu <Eric.Zhu@microchip.com>
+Date: Tue, 25 Mar 2025 07:37:37 -0700
+Subject: [PATCH] tools/bin: Add condition for overriding RISCV_PATH
+
+---
+ tools/bin/env.rc | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/tools/bin/env.rc b/tools/bin/env.rc
+index a0a7192..0af95f6 100644
+--- a/tools/bin/env.rc
++++ b/tools/bin/env.rc
+@@ -9,13 +9,16 @@ BIN_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+ OMPI_SRC_DIR=$TOP_DIR/ompi
+ OPENMPI_ARCHIVE_DIR=$TOP_DIR/install
+ 
+-if [ -f ${BIN_DIR}/env_local.rc ]; then
+-    . ${BIN_DIR}/env_local.rc
+-else
+-    echo "...env_local.rc not found - skipping"
++if [ -z "$RISCV_PATH" ]; then
++	if [ -f ${BIN_DIR}/env_local.rc ]; then
++		. ${BIN_DIR}/env_local.rc
++	else
++		echo "...env_local.rc not found - skipping"
++	fi
++
++	export RISCV_PATH=${TOOLS_BASE_DIR}/${TOOLS_DIR}/${RISCV_TOOLCHAIN_VER}
+ fi
+ 
+-export RISCV_PATH=${TOOLS_BASE_DIR}/${TOOLS_DIR}/${RISCV_TOOLCHAIN_VER}
+ if [ "${RISCV_CLANG_FLAGS}" == "" ]; then
+ RISCV_CLANG_FLAGS="-mcpu=sifive-x280 -march=rv64imafdch_zve64d_zicsr_zifencei_zic64b_zicbop_zicboz_ziccamoa_ziccif_ziccrse_zihintntl_zihintpause_zihpm_za64rs_zfh_zba_zbb_zbs_zkt_zvfh_smaia_zvl512b_xsfvfnrclipxfqf_xsfvfwmaccqqq_xsfvqmaccqoq -funsafe-math-optimizations -mabi=lp64d -mcmodel=medany"
+ fi
+-- 
+2.43.5
+

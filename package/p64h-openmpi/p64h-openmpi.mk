@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-P64H_OPENMPI_VERSION = main
-P64H_OPENMPI_SITE = https://bitbucket.microchip.com/scm/hpsc/p64h-openmpi.git
+P64H_OPENMPI_VERSION = p64h-v1.7.0_dev
+P64H_OPENMPI_SITE = git@github.com:pic64-hpsc-hx/p64h-openmpi.git
 P64H_OPENMPI_SITE_METHOD = git
 P64H_OPENMPI_LICENSE = MIT
 P64H_OPENMPI_LICENSE_FILES = LICENSE
@@ -14,8 +14,6 @@ P64H_OPENMPI_GIT_SUBMODULES = YES
 export OPENMPI_BUILD_DIR=$(BUILD_DIR)/p64h-openmpi-$(P64H_OPENMPI_VERSION)/install
 
 define P64H_OPENMPI_BUILD_CMDS
-	rm -f $(@D)/tools/bin/env_local.rc;
-	sed -i '/export RISCV_PATH/d' $(@D)/tools/bin/env.rc;
 	$(@D)/tools/bin/build.sh -j10
 endef
 

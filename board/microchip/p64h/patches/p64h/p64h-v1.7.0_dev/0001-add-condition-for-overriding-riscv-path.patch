@@ -1,17 +1,17 @@
-From df6e71f92dc86776053b0903c3958da5bde86c89 Mon Sep 17 00:00:00 2001
+From 42a4c7140a0eeacf0ae2a8e3cee59b151757dad3 Mon Sep 17 00:00:00 2001
 From: Eric Zhu <Eric.Zhu@microchip.com>
-Date: Mon, 24 Mar 2025 13:53:01 -0700
-Subject: [PATCH] tools/bin: Added condition for overriding RISCV_PATH
+Date: Tue, 25 Mar 2025 07:42:31 -0700
+Subject: [PATCH] tools/bin: Add condition for overriding RISCV_PATH
 
 ---
- tools/bin/env.rc | 32 ++++++++++++++++++--------------
- 1 file changed, 18 insertions(+), 14 deletions(-)
+ tools/bin/env.rc | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
 
 diff --git a/tools/bin/env.rc b/tools/bin/env.rc
-index e2a84ad..f771180 100755
+index e2a84ad..fbe6764 100755
 --- a/tools/bin/env.rc
 +++ b/tools/bin/env.rc
-@@ -8,23 +8,27 @@ BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+@@ -8,19 +8,21 @@ BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
  TOP_DIR=$(realpath "$BIN_DIR"/../..)
  export TOP_DIR
  
@@ -24,7 +24,6 @@ index e2a84ad..f771180 100755
 -fi
 -RISCV_TOOLCHAIN_VER=riscv64-unknown-linux-toolsuite-1.6.0
 +if [ -z "$RISCV_PATH" ]; then
-+
 +	. "$BIN_DIR/check_os_version.sh"
 +	TOOLS_DIR=P64hTools-1.6.0-x86_64-linux-$TOOL_VER
 +	if [[ -f $BIN_DIR/env_local.rc ]]; then
@@ -32,7 +31,6 @@ index e2a84ad..f771180 100755
 +	else
 +		echo "...env_local.rc not found - skipping"
 +	fi
-+
 +	RISCV_TOOLCHAIN_VER=riscv64-unknown-linux-toolsuite-1.6.0
  
 -# Override TOOLS_BASE_DIR to use your installed location for the Toolchain
@@ -42,17 +40,10 @@ index e2a84ad..f771180 100755
  
 -export RISCV_PATH=$TOOLS_BASE_DIR/$TOOLS_DIR/$RISCV_TOOLCHAIN_VER
 +	export RISCV_PATH=$TOOLS_BASE_DIR/$TOOLS_DIR/$RISCV_TOOLCHAIN_VER
++fi
  
--if [[ ! -d "$RISCV_PATH"/bin ]] && [[ -z "$SUPPRESS_TOOLCHAIN_WARNING" ]]; then
--	echo "WARNING: Tools directory $RISCV_PATH does not exist"
--	echo -e "\e[31mCompilation might fail. You can still use pre-compiled assets.\e[0m"
-+	if [[ ! -d "$RISCV_PATH"/bin ]] && [[ -z "$SUPPRESS_TOOLCHAIN_WARNING" ]]; then
-+		echo "WARNING: Tools directory $RISCV_PATH does not exist"
-+		echo -e "\e[31mCompilation might fail. You can still use pre-compiled assets.\e[0m"
-+	fi
- fi
- 
- BUILD_DIR=$TOP_DIR/build
+ if [[ ! -d "$RISCV_PATH"/bin ]] && [[ -z "$SUPPRESS_TOOLCHAIN_WARNING" ]]; then
+ 	echo "WARNING: Tools directory $RISCV_PATH does not exist"
 -- 
 2.43.5
 
