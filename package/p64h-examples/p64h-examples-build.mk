@@ -5,7 +5,7 @@
 ################################################################################
 
 define P64H_EXAMPLES_BUILD
-	ifeq ($(PLATFORM), hwemu); then \
+	ifeq ("$(PLATFORM)", "hwemu"); then \
 	P64H_HW_EMU = "-DP64H_HW_EMU=1"
 	endif
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
