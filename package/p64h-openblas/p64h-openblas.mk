@@ -4,21 +4,22 @@
 #
 ################################################################################
 
-P64H_OPENBLAS_VERSION = p64h-v1.7.0_dev
-P64H_OPENBLAS_SITE = git@github.com:pic64-hpsc-hx/openblas.git
+P64H_OPENBLAS_VERSION = v0.3.28
+P64H_OPENBLAS_SITE = https://github.com/OpenMathLib/OpenBLAS.git
 P64H_OPENBLAS_SITE_METHOD = git
 P64H_OPENBLAS_LICENSE = MIT
 P64H_OPENBLAS_LICENSE_FILES = LICENSE
-P64H_OPENBLAS_GIT_SUBMODULES = YES
 
-export OPENBLAS_BUILD_DIR=$(BUILD_DIR)/p64h-openblas-$(P64H_OPENBLAS_VERSION)/openblas/install
+export OPENBLAS_BUILD_DIR=$(BUILD_DIR)/p64h-openblas-$(P64H_OPENBLAS_VERSION)/install
 
 define P64H_OPENBLAS_BUILD_CMDS
-	$(@D)/tools/bin/build.sh -j10
+	export PATH=$(PATH):$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin && \
+	make -C $(@D) HOSTCC=gcc TARGET=x280 CC=riscv64-unknown-linux-gnu-clang FC=riscv64-unknown-linux-gnu-gfortran NUM_THREADS=10 CROSS_COMPILE=$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin/riscv64-unknown-linux-gnu-
+	make -C $(@D) HOSTCC=gcc TARGET=x280 CC=riscv64-unknown-linux-gnu-clang FC=riscv64-unknown-linux-gnu-gfortran NUM_THREADS=10 PREFIX=install install CROSS_COMPILE=$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin/riscv64-unknown-linux-gnu-
 endef
 
 define P64H_OPENBLAS_INSTALL_TARGET_CMDS
-	$(INSTALL) -D -m 0755 $(@D)/openblas/install/lib/libopenblas_x280p-r0.3.28.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.28.so;
+	$(INSTALL) -D -m 0755 $(@D)/install/lib/libopenblas_x280p-r0.3.28.so $(TARGET_DIR)/usr/lib/libopenblas_x280p-r0.3.28.so;
 	ln -fs libopenblas_x280p-r0.3.28.so $(TARGET_DIR)/usr/lib/libopenblas.so.0;
 endef
 

@@ -4,17 +4,31 @@
 #
 ################################################################################
 
-P64H_OPENMPI_VERSION = p64h-v1.7.0_dev
-P64H_OPENMPI_SITE = git@github.com:pic64-hpsc-hx/p64h-openmpi.git
+P64H_OPENMPI_VERSION = v4.0.0
+P64H_OPENMPI_SITE = https://github.com/open-mpi/ompi.git
 P64H_OPENMPI_SITE_METHOD = git
 P64H_OPENMPI_LICENSE = MIT
 P64H_OPENMPI_LICENSE_FILES = LICENSE
-P64H_OPENMPI_GIT_SUBMODULES = YES
 
 export OPENMPI_BUILD_DIR=$(BUILD_DIR)/p64h-openmpi-$(P64H_OPENMPI_VERSION)/install
 
+ifeq ($(RISCV_CLANG_FLAGS),)
+RISCV_CLANG_FLAGS=-mcpu=sifive-x280 -march=rv64imafdch_zve64d_zicsr_zifencei_zic64b_zicbop_zicboz_ziccamoa_ziccif_ziccrse_zihintntl_zihintpause_zihpm_za64rs_zfh_zba_zbb_zbs_zkt_zvfh_smaia_zvl512b_xsfvfnrclipxfqf_xsfvfwmaccqqq_xsfvqmaccqoq -funsafe-math-optimizations -mabi=lp64d -mcmodel=medany
+endif
+
+define P64H_OPENMPI_CONFIGURE_CMDS
+	export PATH=$(PATH):$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin && \
+	cd $(@D) && $(@D)/autogen.pl && \
+    $(@D)/configure --enable-orterun-prefix-by-default CC=riscv64-unknown-linux-gnu-clang CXX=riscv64-unknown-linux-gnu-clang++ \
+        --enable-script-wrapper-compilers --disable-mpi-fortran --enable-shared \
+        --disable-dlopen --host=riscv64-unknown-linux --prefix=$(@D)/install \
+        CFLAGS="$(RISCV_CLANG_FLAGS)" PERL=/usr/bin/perl CROSS_COMPILE=$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin/riscv64-unknown-linux-gnu-
+endef
+
 define P64H_OPENMPI_BUILD_CMDS
-	$(@D)/tools/bin/build.sh -j10
+	export PATH=$(PATH):$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin && \
+	make -C $(@D) -j10 && \
+	make -C $(@D) install
 endef
 
 define P64H_OPENMPI_INSTALL_TARGET_CMDS
