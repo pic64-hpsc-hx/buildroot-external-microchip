@@ -14,7 +14,7 @@ export OPENBLAS_BUILD_DIR=$(BUILD_DIR)/p64h-openblas-$(P64H_OPENBLAS_VERSION)/in
 
 define P64H_OPENBLAS_BUILD_CMDS
 	export PATH=$(PATH):$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin && \
-	make -C $(@D) HOSTCC=gcc TARGET=x280 CC=riscv64-unknown-linux-gnu-clang FC=riscv64-unknown-linux-gnu-gfortran NUM_THREADS=10 CROSS_COMPILE=$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin/riscv64-unknown-linux-gnu-
+	make -C $(@D) HOSTCC=gcc TARGET=x280 CC=riscv64-unknown-linux-gnu-clang FC=riscv64-unknown-linux-gnu-gfortran NUM_THREADS=10 CROSS_COMPILE=$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin/riscv64-unknown-linux-gnu- && \
 	make -C $(@D) HOSTCC=gcc TARGET=x280 CC=riscv64-unknown-linux-gnu-clang FC=riscv64-unknown-linux-gnu-gfortran NUM_THREADS=10 PREFIX=install install CROSS_COMPILE=$(BR2_TOOLCHAIN_EXTERNAL_PATH)/bin/riscv64-unknown-linux-gnu-
 endef
 
