@@ -18,6 +18,10 @@ ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM),y)
 P64H_EXAMPLES_APP_LIST += sharedmem
 endif
 
+ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_SPW),y)
+P64H_EXAMPLES_APP_LIST += spw
+endif
+
 ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_UTILS),y)
 P64H_EXAMPLES_APP_LIST += utils
 endif
@@ -29,9 +33,7 @@ endif
 # Invoke build stages
 define P64H_EXAMPLES_BUILD_CMDS
 	@mkdir -p $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR); \
-	$(foreach app,$(P64H_EXAMPLES_APP_LIST), \
-		$(call P64H_EXAMPLES_BUILD_$(call UPPERCASE,$(app))) \
-	)
+	$(call P64H_EXAMPLES_BUILD)
 endef
 
 # Invoke install stages

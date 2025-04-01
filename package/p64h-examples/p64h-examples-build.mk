@@ -4,15 +4,12 @@
 #
 ################################################################################
 
-define P64H_EXAMPLES_BUILD_HELLO
-	$(MAKE) CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(P64H_EXAMPLES_BUILD_DIR)/examples/hello;
-endef
+ifeq ($(PLATFORM),hwemu)
+P64H_HW_EMU = "-DP64H_HW_EMU=1"
+endif
 
-define P64H_EXAMPLES_BUILD_SHAREDMEM
-	$(MAKE) CC="$(TARGET_CC)" LD="$(TARGET_LD)" -C $(P64H_EXAMPLES_BUILD_DIR)/examples/sharedmem;
-endef
-
-define P64H_EXAMPLES_BUILD_UTILS
+define P64H_EXAMPLES_BUILD
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
-	cmake -G Ninja -DXTOOLCHAIN=clang -DCMAKE_BUILD_TYPE=Release -DP64H_HW_EMU=1 -B $(P64H_EXAMPLES_BUILD_DIR)/examples/utils $(P64H_EXAMPLES_BUILD_DIR)/examples && cd $(P64H_EXAMPLES_BUILD_DIR)/examples/utils && ninja all;
+	cmake -G Ninja -DXTOOLCHAIN=clang -DCMAKE_BUILD_TYPE=Release $(P64H_HW_EMU) -B $(P64H_EXAMPLES_BUILD_DIR)/examples/build $(P64H_EXAMPLES_BUILD_DIR)/examples && \
+	ninja -C $(P64H_EXAMPLES_BUILD_DIR)/examples/build all
 endef
