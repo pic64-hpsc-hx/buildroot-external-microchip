@@ -8,11 +8,6 @@ P64H_LKMS_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)/drivers
 P64H_LKMS_DEPENDENCIES = p64h
 P64H_LKMS_MODULE_LIST =
 
-# Copy debian_package build dependencies
-define P64H_LKMS_EXTRAS
-	$(call P64H_DEBIAN_PACKAGE_DEPS,$(P64H_LKMS_BUILD_DIR))
-endef
-
 ifeq ($(BR2_PACKAGE_P64H_LKMS_UIO_SHAREDMEM_DRIVER),y)
 P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/uio_sharedmem
 P64H_LKMS_MODULE_LIST += uio_sharedmem
@@ -79,7 +74,6 @@ endef
 # Generate post kernel module installation extra stages (used to build debian packages)
 # Note: This must be registered after $(eval $(kernel-module)) macro infra
 ifeq ($(P64H_DEBPKG_BUILD),1)
-P64H_LKMS_POST_RSYNC_HOOKS += P64H_LKMS_EXTRAS
 $(eval P64H_LKMS_POST_INSTALL_TARGET_HOOKS += P64H_LKMS_DEBIAN_PACKAGE_BUILD);
 endif
 

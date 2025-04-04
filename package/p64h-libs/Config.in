@@ -10,24 +10,9 @@ config BR2_PACKAGE_P64H_LIBS
 
 	  If unsure, leave this option enabled.
 
-config BR2_PACKAGE_P64H_LIBS_OPENBLAS
-	bool "OpenBLAS"
-	depends on BR2_PACKAGE_P64H_LIBS
-	help
-	  Enable this option to include OpenBLAS,
-	  an optimized BLAS library for PIC64-HPSC-HX SoC.
-	  
-	  If unsure, leave this option enabled.
+source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-openblas/Config.in"
 
-config BR2_PACKAGE_P64H_LIBS_OPENMPI
-	bool "OpenMPI"
-	depends on BR2_PACKAGE_P64H_LIBS
-	help
-	  Enable this option to include OpenMPI,
-	  a high-performance Message Passing Interface (MPI) library
-	  for parallel computing on the PIC64-HPSC-HX SoC.
-	  
-	  If unsure, leave this option enabled.
+source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-openmpi/Config.in"
 
 config BR2_PACKAGE_P64H_LIBS_LIBGFORTRAN
 	bool "libgfortran"

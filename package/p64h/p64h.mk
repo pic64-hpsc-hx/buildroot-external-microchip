@@ -8,9 +8,8 @@ P64H_LICENSE = MIT
 P64H_LICENSE_FILES = LICENSE
 
 ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
-# Requires SSH key since repo is private
-P64H_SITE = git@github.com:pic64-hpsc-hx/p64h-linux-examples.git
-P64H_VERSION = p64h-v1.6.1
+P64H_SITE = https://github.com/pic64-hpsc-hx/p64h-linux-examples.git
+P64H_VERSION = p64h-v1.7.0_dev
 P64H_SITE_METHOD = git
 else ifeq ($(BR2_PACKAGE_P64H_BITBUCKET),y)
 P64H_SITE = $(call qstrip,$(BR2_PACKAGE_P64H_BITBUCKET_SOURCE))
@@ -27,10 +26,8 @@ P64H_SITE_METHOD = git
 endif
 
 define P64H_BUILD_CMDS
-    $(@D)/tools/bin/build.sh -W 
+    $(@D)/tools/bin/build.sh -W --without-debian
 endef
-
-
 
 # Files to exclude from rsync when sourcing from localdir
 P64H_OVERRIDE_SRCDIR_RSYNC_EXCLUSIONS = \
