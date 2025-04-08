@@ -5,6 +5,12 @@ config BR2_PACKAGE_P64H
     help
       Container for P64H packages. Includes p64h-benchmarks, p64h-examples, p64h-libs, and p64h-lkms.
 
+config BR2_PACKAGE_P64H_PLATFORM
+    string "Platform"
+    depends on BR2_PACKAGE_P64H
+    help
+      Platform for which the package should be built. If unsure, leave at default value.
+
 choice
     prompt "P64H Packages Source"
     depends on BR2_PACKAGE_P64H
