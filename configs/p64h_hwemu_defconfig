@@ -29,7 +29,7 @@ BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_MCHP_PATH)/board/microchip/p64h/com
 #
 BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_CUSTOM_GIT=y
-BR2_LINUX_KERNEL_CUSTOM_REPO_URL="ssh://git@bitbucket-bby-mirror01.devops.microchip.com/hpsc/linux.git"
+BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://github.com/pic64-hpsc-hx/linux.git"
 BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="linux-6.12-mchp"
 BR2_LINUX_KERNEL_VERSION="linux-6.12-mchp"
 BR2_LINUX_KERNEL_PATCH=""
