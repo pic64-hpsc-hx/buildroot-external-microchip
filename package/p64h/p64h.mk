@@ -6,6 +6,7 @@
 
 P64H_LICENSE = MIT
 P64H_LICENSE_FILES = LICENSE
+export P64H_PLATFORM = $(call qstrip,$(BR2_PACKAGE_P64H_PLATFORM))
 
 ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
 P64H_SITE = https://github.com/pic64-hpsc-hx/p64h-linux-examples.git
