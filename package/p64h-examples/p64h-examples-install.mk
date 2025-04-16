@@ -15,7 +15,7 @@ define P64H_EXAMPLES_INSTALL_SHAREDMEM
 endef
 
 define P64H_EXAMPLES_INSTALL_UTILS
-	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/utils/utils  $(TARGET_DIR)/usr/bin
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/utils/p64h_util  $(TARGET_DIR)/usr/bin
 	ln -fs $(TARGET_DIR)/usr/bin/utils  $(TARGET_DIR)/usr/bin/p64h_cp
 endef
 
