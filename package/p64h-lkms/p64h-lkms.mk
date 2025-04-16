@@ -44,8 +44,10 @@ P64H_LKMS_MODULE_LIST += p64h_wdt
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_LKMS_HPT_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += p64h_hpt
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_hpt
+P64H_LKMS_MODULE_LIST += p64h_hpt
 endif
+
 
 # Fixup Linux Kernel configuration
 define P64H_LKMS_LINUX_CONFIG_FIXUPS
