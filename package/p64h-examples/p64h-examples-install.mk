@@ -24,6 +24,12 @@ define P64H_EXAMPLES_INSTALL_SPW
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/spw/spw $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/spw
 endef
 
+define P64H_EXAMPLES_INSTALL_TFLITE_RUNTIME
+        rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/tflite_runtime
+        $(INSTALL) -v -m755 -d $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example 
+        $(INSTALL) -m 0755 $(wildcard $(P64H_EXAMPLES_BUILD_DIR)/examples/tflite_runtime/*) -t $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example 
+endef
+
 define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
 	$(INSTALL) -m 0644 $(P64H_EXAMPLES_PKGDIR)build_vars.txt $(TARGET_DIR)/etc/init.d/build_vars.txt
 	$(INSTALL) -m 0755 $(P64H_EXAMPLES_PKGDIR)S97buildvars $(TARGET_DIR)/etc/init.d/S97buildvars

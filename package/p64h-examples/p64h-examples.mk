@@ -30,6 +30,8 @@ ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION),y)
 P64H_EXAMPLES_APP_LIST += test_automation
 endif
 
+P64H_EXAMPLES_APP_LIST += tflite_runtime
+
 # Invoke build stages
 define P64H_EXAMPLES_BUILD_CMDS
 	@mkdir -p $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR); \
