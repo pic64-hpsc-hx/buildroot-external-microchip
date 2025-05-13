@@ -16,12 +16,18 @@ endef
 
 define P64H_EXAMPLES_INSTALL_UTILS
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/utils/p64h_util  $(TARGET_DIR)/usr/bin
-	ln -fs $(TARGET_DIR)/usr/bin/utils  $(TARGET_DIR)/usr/bin/p64h_cp
+	ln -fs $(TARGET_DIR)/usr/bin/p64h_util  $(TARGET_DIR)/usr/bin/p64h_cp
 endef
 
 define P64H_EXAMPLES_INSTALL_SPW
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/spw
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/spw/spw $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/spw
+endef
+
+define P64H_EXAMPLES_INSTALL_TFLITE_RUNTIME
+        rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/tflite_runtime
+        $(INSTALL) -v -m755 -d $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example 
+        $(INSTALL) -m 0755 $(wildcard $(P64H_EXAMPLES_BUILD_DIR)/examples/tflite_runtime/*) -t $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example 
 endef
 
 define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
