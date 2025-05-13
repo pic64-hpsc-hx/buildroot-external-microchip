@@ -41,6 +41,6 @@ P64H_OVERRIDE_SRCDIR_RSYNC_EXCLUSIONS = \
 	--include /install/share \
 	--exclude /install/share/third_party \
 	--exclude /install/share/tools \
-	--exclude /install/* \
+	--exclude /install/*
 
 $(eval $(generic-package))
