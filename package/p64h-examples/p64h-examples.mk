@@ -31,6 +31,7 @@ P64H_EXAMPLES_APP_LIST += test_automation
 endif
 
 P64H_EXAMPLES_APP_LIST += tflite_runtime
+P64H_EXAMPLES_APP_LIST += sysc_rpmi
 
 # Invoke build stages
 define P64H_EXAMPLES_BUILD_CMDS
