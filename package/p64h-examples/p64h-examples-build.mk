@@ -9,5 +9,5 @@ P64H_HW_EMU = "-DP64H_HW_EMU=1"
 endif
 
 define P64H_EXAMPLES_BUILD
-	$(P64H_EXAMPLES_BUILD_DIR)/tools/bin/build.sh --build-examples
+	$(P64H_EXAMPLES_BUILD_DIR)/tools/bin/build.sh --build-examples -p $(BR2_PACKAGE_P64H_PLATFORM)
 endef
