@@ -32,7 +32,7 @@ endef
 
 define P64H_EXAMPLES_INSTALL_SYSC_RPMI
         rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/sysc_rpmi
-        $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/sysc_rpmi/sysc_rpmi $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/sysc_rpmi
+        $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/sysc_rpmi/sysc_rpmi $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/sysc_rpmi
 endef
 
 define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
