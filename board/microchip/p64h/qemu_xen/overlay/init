@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin
+
+mount -t devtmpfs  devtmpfs  /dev
+mount -t proc      proc      /proc
+mount -t sysfs     sysfs     /sys
+mount -t tmpfs     tmpfs     /tmp
+
+echo Welcome to HPSC terminal
+
+PROFILE=/etc/profile
+
+[ -e $PROFILE ]  &&  sh -c /etc/profile || sh
