@@ -1,3 +1,0 @@
-#!/bin/busybox sh
-./bin/testenv
-sh

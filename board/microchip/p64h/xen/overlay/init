@@ -7,8 +7,6 @@ mount -t proc      proc      /proc
 mount -t sysfs     sysfs     /sys
 mount -t tmpfs     tmpfs     /tmp
 
-echo Welcome to HPSC terminal
+echo Welcome to P64H terminal
 
-PROFILE=/etc/profile
-
-[ -e $PROFILE ]  &&  sh -c /etc/profile || sh
+sh
