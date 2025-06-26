@@ -1,6 +1,4 @@
 BR2_riscv=y
-# if you want to run gdb inside qemu or protium then don't strip debugging symbols
-#BR2_STRIP_strip=n
 BR2_STRIP_strip=y
 BR2_CCACHE=y
 BR2_PACKAGE_OVERRIDE_FILE="$(BR2_EXTERNAL_P64H_PACKAGE_OVERRIDE_FILE)"
