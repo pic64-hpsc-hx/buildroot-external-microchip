@@ -1,15 +1,15 @@
 #!/bin/sh
 
-DRIVER="uio_mesa"
+DRIVER="microchip-p64h_hpt"
 
 start() {
 	printf 'Load kernel module %s: ' "$DRIVER"
-	modprobe uio_mesa
+	modprobe p64h_hpt
 	status=$?
 	if [ "$status" -eq 0 ]; then
-		echo "uio_mesa loaded"
+		echo "p64h_hpt loaded"
 	else
-		echo "uio_mesa failed to load"
+		echo "p64h_hpt failed to load"
 	fi
 	return "$status"
 }

@@ -23,12 +23,6 @@ config BR2_PACKAGE_P64H_LKMS_P64H_UIO_DRIVER
 	  Enable support to P64H Application Complex UIO Generic Device
 	  driver used to memory map any memory or peripheral in user space.
 
-config BR2_PACKAGE_P64H_LKMS_UIO_MESA_DRIVER
-	bool "Enable uio mesa driver"
-	depends on BR2_PACKAGE_P64H_LKMS
-	help
-	  Enable support for P64H Application Complex UIO MESA driver.
-
 config BR2_PACKAGE_P64H_LKMS_APPDMA_DRIVER
 	bool "Enable appdma driver"
 	depends on BR2_PACKAGE_P64H_LKMS
@@ -54,3 +48,9 @@ config BR2_PACKAGE_P64H_LKMS_WDT_DRIVER
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex watchdog driver.
+
+config BR2_PACKAGE_P64H_LKMS_HPT_DRIVER
+	bool "Enable P64H High Precision Timer driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex High Precision Timer driver.
