@@ -1,0 +1,12 @@
+diff --git a/drivers/mailbox/mailbox-mchp-ipc-sbi.c b/drivers/mailbox/mailbox-mchp-ipc-sbi.c
+index c0147a970858..3296b37870aa 100644
+--- a/drivers/mailbox/mailbox-mchp-ipc-sbi.c
++++ b/drivers/mailbox/mailbox-mchp-ipc-sbi.c
+@@ -550,6 +550,7 @@ static struct mbox_chan *mchp_ipc_mbox_xlate(struct mbox_controller *controller,
+ 
+ static const struct of_device_id mchp_ipc_of_match[] = {
+ 	{.compatible = "microchip,sbi-ipc", },
++        {.compatible = "microchip,p64h-ipc",},
+ 	{}
+ };
+ 
