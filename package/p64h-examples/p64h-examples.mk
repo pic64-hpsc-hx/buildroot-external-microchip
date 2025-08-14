@@ -31,7 +31,7 @@ P64H_EXAMPLES_APP_LIST += test_automation
 endif
 
 ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION_QEMU),y)
-P64H_EXAMPLES_APP_LIST += test_automation
+P64H_EXAMPLES_APP_LIST += test_automation_qemu
 endif
 
 P64H_EXAMPLES_APP_LIST += tflite_runtime
