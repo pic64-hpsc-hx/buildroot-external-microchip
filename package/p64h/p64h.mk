@@ -39,9 +39,8 @@ P64H_OVERRIDE_SRCDIR_RSYNC_EXCLUSIONS = \
 	--include /install/libs/openblas \
 	--include /install/libs/openmpi \
 	--include /install/share \
-	--exclude /install/share/drivers \
 	--exclude /install/share/third_party \
 	--exclude /install/share/tools \
-	--exclude /install/* \
+	--exclude /install/*
 
 $(eval $(generic-package))
