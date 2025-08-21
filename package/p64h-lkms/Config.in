@@ -54,3 +54,9 @@ config BR2_PACKAGE_P64H_LKMS_HPT_DRIVER
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex High Precision Timer driver.
+
+config BR2_PACKAGE_P64H_LKMS_PCIE_DRIVER
+	bool "Enable P64H PCIe driver"
+	depends on BR2_PACKAGE_P64H_LKMS
+	help
+	  Enable support for P64H Application Complex PCIe bridge controller driver.
