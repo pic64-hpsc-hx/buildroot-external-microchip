@@ -1,4 +1,4 @@
-config BR2_PACKAGE_TEST_TOOLS
+config BR2_PACKAGE_P64H_TEST_TOOLS
     bool "Test automation tools"
     select BR2_PACKAGE_PYTHON3
     select BR2_PACKAGE_PYTHON3_PYC_ONLY
