@@ -52,7 +52,3 @@ define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
 	$(INSTALL) -m 0644 $(P64H_EXAMPLES_BUILD_DIR)/examples/app_runner/* $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/app_runner/
 endef
 
-define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION_QEMU
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/apprunner_uart
-	$(INSTALL) -m 0644 $(P64H_EXAMPLES_BUILD_DIR)/examples/app_runner/uart_file_transfer.py $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/apprunner_uart/uart_file_transfer.py
-endef
