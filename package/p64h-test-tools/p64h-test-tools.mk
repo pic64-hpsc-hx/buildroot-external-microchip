@@ -1,6 +1,6 @@
 ########################################################################################
 #
-# p64h-test-automation: Test tools that are required for running Test automation scripts
+# p64h-test-tools: Test tools that are required for running Test automation scripts
 #
 ########################################################################################
 P64H_TEST_TOOLS_VERSION = 1.0
@@ -10,9 +10,6 @@ P64H_EXAMPLES_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)
 
 # Target directory for the installation
 P64H_TEST_TOOLS_TARGET_DIR = /opt/microchip
-
-# Add the dependency here:
-P64H_TEST_TOOLS_DEPENDENCIES = p64h-examples
 
 define P64H_TEST_TOOLS_INSTALL_TARGET_CMDS
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_TEST_TOOLS_TARGET_DIR)/apprunner_uart
