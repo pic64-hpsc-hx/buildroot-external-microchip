@@ -45,3 +45,11 @@ config BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION
 	select BR2_PACKAGE_PYTHON3
 	help
 	  Utilities for helping to automate tests on the PIC64-HPSC-HX SoC.
+
+config BR2_PACKAGE_P64H_EXAMPLES_IPC_TEST
+	bool "Test IPC driver"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	select BR2_PACKAGE_P64H_LKMS
+	select BR2_PACKAGE_P64H_LKMS_IPC_DRIVER
+	help
+	  IPC test application for P64H-IPC driver

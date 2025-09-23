@@ -58,7 +58,7 @@ menu "P64H Toolchain Libraries"
 
 	config BR2_TOOLCHAIN_EXTERNAL_P64H_HOST_RISCV_LLVM_PATH
 		string "HOST_RISCV_LLVM_PATH"
-		default $(BR2_TOOLCHAIN_EXTERNAL_PATH)
+		default "$(BR2_TOOLCHAIN_EXTERNAL_PATH)"
 		depends on BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_STD_DEVEL_LIBS || BR2_TOOLCHAIN_EXTERNAL_P64H_LIBS_LLVM_DEVEL
 		help
 		Path to the LLVM cross-compiler toolchain to use for installation.

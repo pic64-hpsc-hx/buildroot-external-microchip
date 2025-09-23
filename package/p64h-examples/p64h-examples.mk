@@ -30,6 +30,10 @@ ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION),y)
 P64H_EXAMPLES_APP_LIST += test_automation
 endif
 
+ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_IPC_TEST),y)
+P64H_EXAMPLES_APP_LIST += ipc_test
+endif
+
 P64H_EXAMPLES_APP_LIST += tflite_runtime
 P64H_EXAMPLES_APP_LIST += sysc_rpmi
 

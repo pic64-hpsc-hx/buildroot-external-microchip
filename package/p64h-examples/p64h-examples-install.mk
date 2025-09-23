@@ -24,6 +24,11 @@ define P64H_EXAMPLES_INSTALL_SPW
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/spw/spw $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/spw
 endef
 
+define P64H_EXAMPLES_INSTALL_IPC_TEST
+	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/ipc_test/ipc_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
+endef
+
 define P64H_EXAMPLES_INSTALL_TFLITE_RUNTIME
         rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/tflite_runtime
         $(INSTALL) -v -m755 -d $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example 
