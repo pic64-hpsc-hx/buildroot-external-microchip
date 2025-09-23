@@ -1,11 +1,19 @@
---- a/src/read_cpu_stat.c	2024-11-15 21:54:17.217242000 -0800
-+++ b/src/read_cpu_stat.c.patch	2024-11-15 21:54:09.986297000 -0800
-@@ -46,7 +46,7 @@
- 	fclose(file);
- 
- 	if (cpu > cpus -1) {
--		error("too many cpus");
-+		perror("too many cpus");
- 		exit(1);
- 	}
- 
+*** cpuload-0.3/src/read_cpu_stat.c
+--- cpuload-0.3/src/read_cpu_stat.c
+***************
+*** 46,52 ****
+  	fclose(file);
+  
+  	if (cpu > cpus -1) {
+! 		error("too many cpus");
+  		exit(1);
+  	}
+  
+--- 46,52 ----
+  	fclose(file);
+  
+  	if (cpu > cpus -1) {
+! 		perror("too many cpus");
+  		exit(1);
+  	}
+  

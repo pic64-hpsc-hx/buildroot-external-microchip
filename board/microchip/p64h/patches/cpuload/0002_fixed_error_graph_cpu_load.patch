@@ -1,20 +1,36 @@
---- a/src/graph_cpu_load.c	2012-07-27 01:37:09.000000000 -0700
-+++ b/src/graph_cpu_load.c.patch	2024-11-15 21:55:30.215501000 -0800
-@@ -132,7 +132,7 @@
- 	graph_last_x = graph_last_y = -1;
- 
- 	if (graph_data_index >= MAX_GRAPH_DATA - 2)
--		error("Too many graph data.");
-+		perror("Too many graph data.");
- 
- 	graph_data[graph_data_index++] = DATUM_COLOR;
- 	graph_data[graph_data_index++] = color;
-@@ -145,7 +145,7 @@
- void graph_add_point(int size, int amount)
- {
- 	if (graph_data_index >= MAX_GRAPH_DATA - 4)
--		error("Too many graph data.");
-+		perror("Too many graph data.");
- 
- 	graph_data[graph_data_index++] = DATUM_SIZE;
- 	graph_data[graph_data_index++] = size;
+*** cpuload-0.3/src/graph_cpu_load.c
+--- cpuload-0.3/src/graph_cpu_load.c
+***************
+*** 132,138 ****
+  	graph_last_x = graph_last_y = -1;
+  
+  	if (graph_data_index >= MAX_GRAPH_DATA - 2)
+! 		error("Too many graph data.");
+  
+  	graph_data[graph_data_index++] = DATUM_COLOR;
+  	graph_data[graph_data_index++] = color;
+--- 132,138 ----
+  	graph_last_x = graph_last_y = -1;
+  
+  	if (graph_data_index >= MAX_GRAPH_DATA - 2)
+! 		perror("Too many graph data.");
+  
+  	graph_data[graph_data_index++] = DATUM_COLOR;
+  	graph_data[graph_data_index++] = color;
+***************
+*** 145,151 ****
+  void graph_add_point(int size, int amount)
+  {
+  	if (graph_data_index >= MAX_GRAPH_DATA - 4)
+! 		error("Too many graph data.");
+  
+  	graph_data[graph_data_index++] = DATUM_SIZE;
+  	graph_data[graph_data_index++] = size;
+--- 145,151 ----
+  void graph_add_point(int size, int amount)
+  {
+  	if (graph_data_index >= MAX_GRAPH_DATA - 4)
+! 		perror("Too many graph data.");
+  
+  	graph_data[graph_data_index++] = DATUM_SIZE;
+  	graph_data[graph_data_index++] = size;
