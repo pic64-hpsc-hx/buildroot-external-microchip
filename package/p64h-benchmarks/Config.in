@@ -1,6 +1,7 @@
 config BR2_PACKAGE_P64H_BENCHMARKS
 	bool "PIC64-HPSC-HX Benchmarks"
 	depends on BR2_PACKAGE_P64H
+        select BR2_PACKAGE_HWLOC
 	help
 	  Linux benchmarks applications for PIC64-HPSC-HX SoC.
 
