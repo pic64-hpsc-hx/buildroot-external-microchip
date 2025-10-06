@@ -23,9 +23,9 @@ endef
 
 # Build Tflite runtime Python example Debian package
 define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_TFLITE_RUNTIME
-        $(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/p64h-tflite-runtime-example) \
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/p64h-tflite-runtime-example) \
 	$(INSTALL) -v -m755 -d $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example; \
-        $(INSTALL) -m 0755 $(wildcard $(P64H_EXAMPLES_BUILD_DIR)/examples/tflite_runtime/*) -t $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example; \
-        $(call P64H_DEBIAN_PACKAGE_BUILD)
+	$(INSTALL) -m 0755 $(wildcard $(P64H_EXAMPLES_BUILD_DIR)/examples/tflite_runtime/*) -t $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example; \
+	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 

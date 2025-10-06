@@ -1,0 +1,11 @@
+diff --git a/Config.in b/Config.in
+index cca08c0..34963d9 100644
+--- a/Config.in
++++ b/Config.in
+@@ -47,3 +47,6 @@ source "$BR2_EXTERNAL_MCHP_PATH/system/Config.in"
+ source "$BR2_EXTERNAL_MCHP_PATH/package/libosmscout/Config.in"
+ 
+ source "$BR2_EXTERNAL_MCHP_PATH/package/video-capture-at91/Config.in"
++
++
++source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-test-tools/Config.in"

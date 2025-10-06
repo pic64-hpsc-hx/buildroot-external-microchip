@@ -31,3 +31,7 @@ endef
 define P64H_LKMS_INSTALL_P64H_IPC
 	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03p64hipc $(TARGET_DIR)/etc/init.d/S03p64hipc
 endef
+
+define P64H_LKMS_INSTALL_P64H_PCIE
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03p64hpcie $(TARGET_DIR)/etc/init.d/S03p64hpcie
+endef

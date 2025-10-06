@@ -48,6 +48,11 @@ P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_ipc
 P64H_LKMS_MODULE_LIST += p64h_ipc_demo
 endif
 
+ifeq ($(BR2_PACKAGE_P64H_LKMS_PCIE_DRIVER),y)
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_pcie_cxl
+P64H_LKMS_MODULE_LIST += p64h_pcie
+endif
+
 
 # Fixup Linux Kernel configuration
 define P64H_LKMS_LINUX_CONFIG_FIXUPS
