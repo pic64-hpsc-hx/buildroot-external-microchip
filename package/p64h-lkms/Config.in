@@ -55,12 +55,12 @@ config BR2_PACKAGE_P64H_LKMS_HPT_DRIVER
 	help
 	  Enable support for P64H Application Complex High Precision Timer driver.
 
-config BR2_PACKAGE_P64H_LKMS_IPC_DRIVER
+config BR2_PACKAGE_P64H_LKMS_IPC_DEMO_DRIVER
 	bool "Enable P64H Inter Processor Communication(IPC) driver"
 	depends on BR2_PACKAGE_P64H_LKMS
 	help
 	  Enable support for P64H Application Complex IPC driver.
-	  
+
 config BR2_PACKAGE_P64H_LKMS_PCIE_DRIVER
 	bool "Enable P64H PCIe driver"
 	depends on BR2_PACKAGE_P64H_LKMS

@@ -1,15 +1,15 @@
 #!/bin/sh
 
-DRIVER="microchip-p64h_ipc"
+DRIVER="microchip-p64h_ipc_demo"
 
 start() {
 	printf 'Load kernel module %s: ' "$DRIVER"
 	modprobe p64h_ipc_demo
 	status=$?
 	if [ "$status" -eq 0 ]; then
-		echo "p64h_ipc loaded"
+		echo "p64h_ipc_demo loaded"
 	else
-		echo "p64h_ipc failed to load"
+		echo "p64h_ipc_demo failed to load"
 	fi
 	return "$status"
 }
