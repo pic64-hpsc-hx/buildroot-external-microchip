@@ -9,7 +9,7 @@ P64H_LICENSE_FILES = LICENSE
 export P64H_PLATFORM = $(call qstrip,$(BR2_PACKAGE_P64H_PLATFORM))
 
 ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
-P64H_SITE = https://kulwant78774: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@github.com/pic64-hpsc-hx/p64h-linux-examples.git
+P64H_SITE = https://github.com/pic64-hpsc-hx/p64h-linux-examples.git
 P64H_VERSION = p64h-v1.7.0_dev
 P64H_SITE_METHOD = git
 else ifeq ($(BR2_PACKAGE_P64H_BITBUCKET),y)

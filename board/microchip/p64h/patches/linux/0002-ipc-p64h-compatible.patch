@@ -1,3 +1,16 @@
+diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+index 71dc047df5b7..07a5a8c28fca 100644
+--- a/drivers/mailbox/Kconfig
++++ b/drivers/mailbox/Kconfig
+@@ -169,7 +169,7 @@ config POLARFIRE_SOC_MAILBOX
+ 	tristate "PolarFire SoC (MPFS) Mailbox"
+ 	depends on HAS_IOMEM
+ 	depends on MFD_SYSCON
+-	depends on ARCH_MICROCHIP_POLARFIRE || COMPILE_TEST
++	depends on ARCH_MICROCHIP_POLARFIRE || COMPILE_TEST || ARCH_MICROCHIP_POLARFIRE
+ 	depends on MFD_SYSCON
+ 	help
+ 	  This driver adds support for the PolarFire SoC (MPFS) mailbox controller.
 diff --git a/drivers/mailbox/mailbox-mchp-ipc-sbi.c b/drivers/mailbox/mailbox-mchp-ipc-sbi.c
 index a6e52009a424..2dcd494a88f4 100644
 --- a/drivers/mailbox/mailbox-mchp-ipc-sbi.c
