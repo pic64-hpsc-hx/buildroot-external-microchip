@@ -1,3 +1,17 @@
+From dc6ab95f80e6f2a67f315a928e51cec1064790bb Mon Sep 17 00:00:00 2001
+From: Kulwant <kulwant.singh2@microchip.com>
+Date: Mon, 2 Feb 2026 15:16:17 -0800
+Subject: [PATCH] mtd: nand: raw: add Microchip P64H NAND controller driver
+
+---
+ drivers/mtd/nand/raw/Kconfig               |    6 +
+ drivers/mtd/nand/raw/Makefile              |    1 +
+ drivers/mtd/nand/raw/p64h-nand/Makefile    |    4 +
+ drivers/mtd/nand/raw/p64h-nand/p64h_nand.c | 3042 ++++++++++++++++++++
+ 4 files changed, 3053 insertions(+)
+ create mode 100755 drivers/mtd/nand/raw/p64h-nand/Makefile
+ create mode 100755 drivers/mtd/nand/raw/p64h-nand/p64h_nand.c
+
 diff --git a/drivers/mtd/nand/raw/Kconfig b/drivers/mtd/nand/raw/Kconfig
 index d0aaccf72d78..25cad3248329 100644
 --- a/drivers/mtd/nand/raw/Kconfig
@@ -28,8 +42,8 @@ index d0b0e6b83568..767bea2fd891 100644
  nand-objs := nand_base.o nand_legacy.o nand_bbt.o nand_timings.o nand_ids.o
  nand-objs += nand_onfi.o
 diff --git a/drivers/mtd/nand/raw/p64h-nand/Makefile b/drivers/mtd/nand/raw/p64h-nand/Makefile
-new file mode 100644
-index 000000000000..7aa9375f4aa5
+new file mode 100755
+index 000000000000..fad7d2e78c75
 --- /dev/null
 +++ b/drivers/mtd/nand/raw/p64h-nand/Makefile
 @@ -0,0 +1,4 @@
@@ -37,12 +51,13 @@ index 000000000000..7aa9375f4aa5
 +## SPDX-License-Identifier: MIT
 +
 +obj-$(CONFIG_MTD_NAND_P64H) := p64h_nand.o
+\ No newline at end of file
 diff --git a/drivers/mtd/nand/raw/p64h-nand/p64h_nand.c b/drivers/mtd/nand/raw/p64h-nand/p64h_nand.c
-new file mode 100644
-index 000000000000..2877bdc50466
+new file mode 100755
+index 000000000000..6d0905d93d4a
 --- /dev/null
 +++ b/drivers/mtd/nand/raw/p64h-nand/p64h_nand.c
-@@ -0,0 +1,3070 @@
+@@ -0,0 +1,3042 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * Cadence NAND flash controller driver
@@ -833,6 +848,7 @@ index 000000000000..2877bdc50466
 +		cadence_nand_clear_nvm_ss_interrupt(cdns_ctrl);
 +		result = IRQ_HANDLED;
 +	}
++	
 +	spin_unlock(&cdns_ctrl->irq_lock);
 +
 +	return result;
@@ -859,11 +875,7 @@ index 000000000000..2877bdc50466
 +	time_left = wait_for_completion_timeout(&cdns_ctrl->complete, timeout);
 +
 +	*irq_status = cdns_ctrl->irq_status;
-+	//time_left = wait_for_completion_timeout(&cdns_ctrl->complete, timeout);
-+	//if (!*irq_status)
-+	//	 time_left = wait_for_completion_timeout(&cdns_ctrl->complete, timeout);
-+	//*irq_status = cdns_ctrl->irq_status;
-+	//
++
 +	if (time_left == 0) {
 +		/* Timeout error. */
 +		dev_err(cdns_ctrl->dev, "timeout occurred:\n");
@@ -961,30 +973,6 @@ index 000000000000..2877bdc50466
 +		cdns_ctrl->caps2.is_phy_type_dll = true;
 +}
 +
-+// static void cadence_nand_cdma_desc_print(struct cadence_nand_cdma_desc *desc)
-+// {
-+//     printk("cdma_desc contents:\n");
-+//     printk("  next_pointer      : 0x%016llx\n",
-+//            (unsigned long long)desc->next_pointer);
-+//     printk("  flash_pointer     : 0x%08x\n", desc->flash_pointer);
-+//     printk("  bank              : 0x%04x\n", desc->bank);
-+//     printk("  rsvd0             : 0x%04x\n", desc->rsvd0);
-+//     printk("  command_type      : 0x%04x\n", desc->command_type);
-+//     printk("  rsvd1             : 0x%04x\n", desc->rsvd1);
-+//     printk("  command_flags     : 0x%04x\n", desc->command_flags);
-+//     printk("  rsvd2             : 0x%04x\n", desc->rsvd2);
-+//     printk("  memory_pointer    : 0x%016llx\n",
-+//            (unsigned long long)desc->memory_pointer);
-+//     printk("  status            : 0x%08x\n", desc->status);
-+//     printk("  rsvd3             : 0x%08x\n", desc->rsvd3);
-+//     printk("  sync_flag_pointer : 0x%016llx\n",
-+//            (unsigned long long)desc->sync_flag_pointer);
-+//     printk("  sync_arguments    : 0x%08x\n", desc->sync_arguments);
-+//     printk("  rsvd4             : 0x%08x\n", desc->rsvd4);
-+//     printk("  ctrl_data_ptr     : 0x%016llx\n",
-+//            (unsigned long long)desc->ctrl_data_ptr);
-+// }
-+
 +/* Prepare CDMA descriptor. */
 +static void cadence_nand_cdma_desc_prepare(struct cdns_nand_ctrl *cdns_ctrl,
 +					   char nf_mem, u32 flash_ptr,
@@ -1012,7 +1000,6 @@ index 000000000000..2877bdc50466
 +
 +	cdma_desc->command_type = ctype;
 +	cdma_desc->ctrl_data_ptr = ctrl_data_ptr;
-+	// cadence_nand_cdma_desc_print(cdma_desc);
 +}
 +
 +static u8 cadence_nand_check_desc_error(struct cdns_nand_ctrl *cdns_ctrl,
