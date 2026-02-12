@@ -27,7 +27,7 @@ P64H_SITE_METHOD = git
 endif
 
 define P64H_BUILD_CMDS
-    $(@D)/tools/bin/build.sh -W --without-debian
+    $(@D)/tools/bin/build.sh -W --without-debian --skip-buildroot -br p64h
 endef
 
 # Files to exclude from rsync when sourcing from localdir
