@@ -57,6 +57,16 @@ For PolarFire SoC configurations, as an example, we use `icicle_defconfig`.
 The resulting bootloader, kernel, and root filesystem will be put in the
 'output/images' directory.  There is also a complete `sdcard.img`.
 
+For Pic64-HPSC-HX configurations, as an example, we use `p64h_defconfig`.
+
+    git clone https://github.com/linux4microchip/buildroot-external-microchip.git
+    git clone https://github.com/buildroot/buildroot.git -b 2025.08.2
+    export RISCV_PATH=<path-to-your-toolchain>
+    export PATH=$PATH:$RISCV_PATH/bin
+    cd buildroot
+    BR2_EXTERNAL=../buildroot-external-microchip/ make p64h_defconfig
+    make
+    
 #### Optionally Configure Packages and Kernel
 
 Userspace packages and the Linux kernel, for example, can be optionally selected
