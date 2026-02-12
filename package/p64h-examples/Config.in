@@ -10,6 +10,12 @@ config BR2_PACKAGE_P64H_EXAMPLES_HELLO
 	help
 	  Hello World application for PIC64-HPSC-HX SoC.
 
+config BR2_PACKAGE_P64H_EXAMPLES_RPMI_RAS
+	bool "rpmi ras"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	help
+	  RPMI RAS example application for PIC64-HPSC-HX SoC.
+
 config BR2_PACKAGE_P64H_EXAMPLES_UIO_SHAREDMEM
 	bool "uio sharedmem"
 	depends on BR2_PACKAGE_P64H_EXAMPLES

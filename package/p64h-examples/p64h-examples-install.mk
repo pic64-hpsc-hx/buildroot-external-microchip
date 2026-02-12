@@ -36,7 +36,7 @@ endef
 
 define P64H_EXAMPLES_INSTALL_IPC_TEST
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
-	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/examples/build/ipc_test/ipc_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/ipc_test/ipc_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
 endef
 
 define P64H_EXAMPLES_INSTALL_TFLITE_RUNTIME
@@ -47,7 +47,12 @@ endef
 
 define P64H_EXAMPLES_INSTALL_SYSC_RPMI
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/sysc_rpmi
-	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/sysc_rpmi/sysc_rpmi $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/sysc_rpmi
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/sysc_rpmi/sysc_rpmi $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/sysc_rpmi
+endef
+
+define P64H_EXAMPLES_INSTALL_RPMI_RAS
+	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmi_ras
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmi_ras/rpmi_ras $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmi_ras
 endef
 
 define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
