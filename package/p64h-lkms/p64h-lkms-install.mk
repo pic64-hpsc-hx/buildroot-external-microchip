@@ -35,3 +35,9 @@ endef
 define P64H_LKMS_INSTALL_P64H_PCIE
 	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03p64hpcie $(TARGET_DIR)/etc/init.d/S03p64hpcie
 endef
+
+
+define P64H_LKMS_INSTALL_P64H_MDIO
+        $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03p64hmdio $(TARGET_DIR)/etc/init.d/S03p64hmdio
+endef
+
