@@ -1,0 +1,23 @@
+#!/bin/sh
+
+DRIVER="microchip-p64h_mdio"
+
+start() {
+	printf 'Load kernel module %s: ' "$DRIVER"
+	modprobe p64h_mdio
+	status=$?
+	if [ "$status" -eq 0 ]; then
+		echo "p64h_mdio loaded"
+	else
+		echo "p64h_mdio failed to load"
+	fi
+	return "$status"
+}
+
+case "$1" in
+	start)
+		"$1";;
+	*)
+		echo "Usage: $0 {start}"
+		exit 1
+esac
