@@ -39,6 +39,11 @@ define P64H_EXAMPLES_INSTALL_IPC_TEST
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/ipc_test/ipc_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
 endef
 
+define P64H_EXAMPLES_INSTALL_CACHE_UIO_TEST
+	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/cache_uio_test/cache_uio_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
+endef
+
 define P64H_EXAMPLES_INSTALL_TFLITE_RUNTIME
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/tflite_runtime
 	$(INSTALL) -v -m755 -d $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/python/p64h-tflite-runtime-example
@@ -54,6 +59,7 @@ define P64H_EXAMPLES_INSTALL_RPMI_RAS
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmi_ras
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmi_ras/rpmi_ras $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmi_ras
 endef
+
 
 define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
 	$(INSTALL) -m 0644 $(P64H_EXAMPLES_PKGDIR)/build_vars.txt $(TARGET_DIR)/etc/init.d/build_vars.txt
