@@ -71,3 +71,9 @@ config BR2_PACKAGE_P64H_EXAMPLES_IPC_TEST
 	select BR2_PACKAGE_P64H_LKMS_IPC_DRIVER
 	help
 	  IPC test application for P64H-IPC driver
+
+config BR2_PACKAGE_P64H_EXAMPLES_CACHE_UIO_TEST
+	bool "Test cache uio"
+	depends on BR2_PACKAGE_P64H_EXAMPLES
+	help
+	  Cache uio test application for PIC64-HPSC-HX SoC
