@@ -9,7 +9,8 @@ define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_HELLO
 	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/hpsc-hello) \
 	mkdir -p -m 0775 $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/hello/hello $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
-	$(INSTALL) -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/sysc_rpmi/sysc_rpmi $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/sysc_rpmi/sysc_rpmi $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+        $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmi_ras/rpmi_ras $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
 
