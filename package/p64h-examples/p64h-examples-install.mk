@@ -40,6 +40,11 @@ define P64H_EXAMPLES_INSTALL_COAP_PING
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_ping/coap_ping $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/coap_ping
 endef
 
+define P64H_EXAMPLES_INSTALL_COAP_PROXY
+rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/coap_proxy
+    $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_proxy/coap_proxy $(TARGET_DIR)/usr/bin/coap_proxy
+endef
+
 define P64H_EXAMPLES_INSTALL_LMS_DUMP
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/lms_dump
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/lms_dump/lms_dump $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/lms_dump
