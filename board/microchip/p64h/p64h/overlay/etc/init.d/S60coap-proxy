@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DAEMON="coap_proxy"
-DAEMON_PATH="/usr/bin/coap_proxy"
+DAEMON_PATH="/opt/microchip/coap_proxy"
 PID_FILE="/var/run/coap_proxy.pid"
 
 start() {
