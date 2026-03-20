@@ -78,7 +78,7 @@ config BR2_PACKAGE_P64H_EXAMPLES_CACHE_UIO_TEST
 	help
 	  Cache uio test application for PIC64-HPSC-HX SoC
 
-config BR2_PACKAGE_P64H_COAP_PROXY
+config BR2_PACKAGE_P64H_EXAMPLES_COAP_PROXY
     bool "p64h coap proxy"
     help
       CoAP proxy daemon for relaying CoAP messages
