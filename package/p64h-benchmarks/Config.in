@@ -5,6 +5,12 @@ config BR2_PACKAGE_P64H_BENCHMARKS
 	help
 	  Linux benchmarks applications for PIC64-HPSC-HX SoC.
 
+config BR2_PACKAGE_P64H_BENCHMARKS_ATOMICS
+	bool "atomics"
+	depends on BR2_PACKAGE_P64H_BENCHMARKS
+	help
+	  Atomics benchmark for PIC64-HPSC-HX SoC.
+
 config BR2_PACKAGE_P64H_BENCHMARKS_COREMARK
 	bool "coremark"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
@@ -62,6 +68,18 @@ config BR2_PACKAGE_P64H_BENCHMARKS_SPACEBENCH
 	select BR2_PACKAGE_P64H_LIBS_OPENMP
 	help
 	  Spacebench benchmark for PIC64-HPSC-HX SoC.
+
+config BR2_PACKAGE_P64H_BENCHMARKS_ROOFLINE
+	bool "roofline"
+	depends on BR2_PACKAGE_P64H_BENCHMARKS
+	help
+	  Empirical Roofline Tool benchmark for PIC64-HPSC-HX SoC.
+
+config BR2_PACKAGE_P64H_BENCHMARKS_HPFEC
+	bool "hpfec"
+	depends on BR2_PACKAGE_P64H_BENCHMARKS
+	help
+	  HPFEC benchmark for PIC64-HPSC-HX SoC.
 
 config BR2_PACKAGE_P64H_BENCHMARKS_STREAM
 	bool "STREAM"

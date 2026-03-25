@@ -4,6 +4,17 @@
 #
 ################################################################################
 
+# ATOMICS
+define P64H_BENCHMARKS_INSTALL_ATOMICS
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/arch_riscv64.memory_latency.C.pthread.0.read.0_amo_ldadd $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics/arch_riscv64.memory_latency.C.pthread.0.read.0_amo_ldadd
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/autorun.sh $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics/autorun.sh
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/hugepages_setup.sh $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics/hugepages_setup.sh
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/run_atomics_hugepages.sh $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics/run_atomics_hugepages.sh
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/run_read_test.sh $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics/run_read_test.sh
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/PARAMETERS $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/atomics/PARAMETERS
+endef
+
 # COREMARK
 define P64H_BENCHMARKS_INSTALL_COREMARK
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/coremark/coremark.exe $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/coremark/coremark.exe
@@ -73,4 +84,16 @@ define P64H_BENCHMARKS_INSTALL_HPCC
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hpcc/hpcc $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpcc/hpcc
 	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/hpcc/_hpccinf.txt $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpcc/hpccinf.txt
 	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/hpcc/run_hpcc $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpcc/run_hpcc
+endef
+
+# ROOFLINE
+define P64H_BENCHMARKS_INSTALL_ROOFLINE
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/roofline
+	cp -a $(P64H_BENCHMARKS_BUILD_DIR)/roofline/Empirical_Roofline_Tool-1.1.0 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/roofline/Empirical_Roofline_Tool-1.1.0
+endef
+
+# HPFEC
+define P64H_BENCHMARKS_INSTALL_HPFEC
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec
+	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/bench
 endef

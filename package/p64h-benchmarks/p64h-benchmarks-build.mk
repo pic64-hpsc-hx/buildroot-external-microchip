@@ -6,6 +6,12 @@
 
 $(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR) BUILDROOT_BUILD_DIR=$(BUILD_DIR))
 
+# ATOMICS
+define P64H_BENCHMARKS_BUILD_ATOMICS
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) atomics.benchmark
+endef
+
 # COREMARK
 define P64H_BENCHMARKS_BUILD_COREMARK
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
@@ -52,4 +58,16 @@ endef
 define P64H_BENCHMARKS_BUILD_SPACEBENCH
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
 	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) spacebench.benchmark
+endef
+
+# ROOFLINE
+define P64H_BENCHMARKS_BUILD_ROOFLINE
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) roofline.benchmark
+endef
+
+# HPFEC
+define P64H_BENCHMARKS_BUILD_HPFEC
+	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
+	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) hpfec.benchmark
 endef
