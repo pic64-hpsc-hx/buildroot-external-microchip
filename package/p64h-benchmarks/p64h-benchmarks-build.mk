@@ -69,5 +69,5 @@ endef
 # HPFEC
 define P64H_BENCHMARKS_BUILD_HPFEC
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
-	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) hpfec.benchmark
+	$(MAKE) $(BR_FLAGS) EIGEN_PATH=$(STAGING_DIR)/usr/include/eigen3 -C $(P64H_BENCHMARKS_BUILD_DIR) hpfec.benchmark
 endef
