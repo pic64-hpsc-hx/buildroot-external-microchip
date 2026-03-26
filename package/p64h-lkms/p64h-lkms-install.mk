@@ -41,6 +41,6 @@ define P64H_LKMS_INSTALL_P64H_MDIO
         $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03p64hmdio $(TARGET_DIR)/etc/init.d/S03p64hmdio
 endef
 
-define P64H_LKMS_INSTALL_X280_L2_PF
-        $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03x280_l2_pf $(TARGET_DIR)/etc/init.d/S03x280_l2_pf
+define P64H_LKMS_INSTALL_X288_L2PF
+        $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03x288_l2pf $(TARGET_DIR)/etc/init.d/S03x288_l2pf
 endef

@@ -58,9 +58,9 @@ P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_mdio
 P64H_LKMS_MODULE_LIST += p64h_mdio
 endif
 
-ifeq ($(BR2_PACKAGE_P64H_LKMS_X280_L2_PF_DRIVER),y)
-P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/x280_l2_pf
-P64H_LKMS_MODULE_LIST += x280_l2_pf
+ifeq ($(BR2_PACKAGE_P64H_LKMS_X288_L2PF_DRIVER),y)
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/x288_l2pf
+P64H_LKMS_MODULE_LIST += x288_l2pf
 endif
 
 # Fixup Linux Kernel configuration
