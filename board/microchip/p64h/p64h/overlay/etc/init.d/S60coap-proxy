@@ -6,8 +6,10 @@ PID_FILE="/var/run/coap_proxy.pid"
 
 start() {
     printf 'Starting %s: ' "$DAEMON"
-    $DAEMON_PATH &
-    echo $! > $PID_FILE
+    start-stop-daemon --start \
+        --quiet \
+        --exec "$DAEMON_PATH" \
+        -- -d
     status=$?
     if [ "$status" -eq 0 ]; then
         echo "$DAEMON started"
@@ -19,12 +21,14 @@ start() {
 
 stop() {
     printf 'Stopping %s: ' "$DAEMON"
-    if [ -f $PID_FILE ]; then
-        kill $(cat $PID_FILE) 2>/dev/null
-        rm -f $PID_FILE
-        echo "$DAEMON stopped"
+    start-stop-daemon --stop \
+        --quiet \
+        --exec "$DAEMON_PATH"
+    status=$?
+    if [ "$status" -eq 0 ]; then
+        echo "OK"
     else
-        echo "$DAEMON not running"
+        echo "FAILED or not running"
     fi
     return 0
 }
