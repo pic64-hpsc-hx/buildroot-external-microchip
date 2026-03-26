@@ -20,8 +20,8 @@ l2pf_init() {
 		base_addr=$(hexdump -e '"0x"' -e '8/1 "%02x""\n"' reg | head -1)
 
 		echo "Set L2 Prefetcher values for node $(basename $node) "
-		devmem $base_addr w $val1
-		devmem $(($base_addr + 4)) w $val2
+		# devmem $base_addr w $val1
+		# devmem $(($base_addr + 4)) w $val2
 
 		echo "Read back L2 Prefetcher values "
 		devmem $base_addr

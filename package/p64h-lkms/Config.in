@@ -73,3 +73,8 @@ config BR2_PACKAGE_P64H_LKMS_MDIO_DRIVER
         help
           Enable support for P64H Application Complex MDIO controller driver.
 
+config BR2_PACKAGE_P64H_LKMS_X280_L2_PF_DRIVER
+        bool "Enable X280 L2 Perfetcher driver"
+        depends on BR2_PACKAGE_P64H_LKMS
+        help
+          Enable support for P64H Application Complex X280 L2 Perfetcher driver.
