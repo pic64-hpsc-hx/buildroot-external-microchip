@@ -4,6 +4,15 @@
 #
 ################################################################################
 
+define P64H_EXAMPLES_INSTALL
+rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation
+$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/time_validation/time_validation $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation
+rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/appdma_test
+$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/appdma_test/appdma_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)//appdma_test
+rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
+$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/cache_uio_test/cache_uio_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
+endef
+
 define P64H_EXAMPLES_INSTALL_HELLO
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/hpsc_hello
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/hello/hello $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/hpsc_hello

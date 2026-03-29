@@ -65,6 +65,7 @@ endef
 
 # Invoke install stages
 define P64H_EXAMPLES_INSTALL_TARGET_CMDS
+	$(call P64H_EXAMPLES_INSTALL)
 	@$(foreach app,$(P64H_EXAMPLES_APP_LIST), \
 		$(call P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(app))); \
 	)
