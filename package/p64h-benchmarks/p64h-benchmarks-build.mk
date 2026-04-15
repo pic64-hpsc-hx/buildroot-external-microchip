@@ -10,6 +10,12 @@ $(eval BR_FLAGS := ROOTFS_BUILD_DIR=$(BUILD_DIR) BUILDROOT_BUILD_DIR=$(BUILD_DIR
 define P64H_BENCHMARKS_BUILD_ATOMICS
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
 	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) atomics.benchmark
+	mkdir -p $(STAGING_DIR)/opt/microchip/benchmarks/atomics
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/run_atomics_hugepages.sh $(STAGING_DIR)/opt/microchip/benchmarks/atomics/run_atomics_hugepages.sh
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/hugepages_setup.sh $(STAGING_DIR)/opt/microchip/benchmarks/atomics/hugepages_setup.sh
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/run_read_test.sh $(STAGING_DIR)/opt/microchip/benchmarks/atomics/run_read_test.sh
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/arch_riscv64.memory_latency.C.pthread.0.read.0_amo_ldadd $(STAGING_DIR)/opt/microchip/benchmarks/atomics/arch_riscv64.memory_latency.C.pthread.0.read.0_amo_ldadd
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/atomics/atomics_exe_pkg/PARAMETERS $(STAGING_DIR)/opt/microchip/benchmarks/atomics/PARAMETERS
 endef
 
 # COREMARK
@@ -64,10 +70,17 @@ endef
 define P64H_BENCHMARKS_BUILD_ROOFLINE
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
 	$(MAKE) $(BR_FLAGS) -C $(P64H_BENCHMARKS_BUILD_DIR) roofline.benchmark
+	mkdir -p $(STAGING_DIR)/opt/microchip/benchmarks/roofline
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/roofline/config.microchip.hpsc.01.new $(STAGING_DIR)/opt/microchip/benchmarks/roofline/config.microchip.hpsc.01.new
+	cp -a $(P64H_BENCHMARKS_BUILD_DIR)/roofline/Empirical_Roofline_Tool-1.1.0 $(STAGING_DIR)/opt/microchip/benchmarks/roofline/Empirical_Roofline_Tool-1.1.0
 endef
 
 # HPFEC
 define P64H_BENCHMARKS_BUILD_HPFEC
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
 	$(MAKE) $(BR_FLAGS) EIGEN_PATH=$(STAGING_DIR)/usr/include/eigen3 -C $(P64H_BENCHMARKS_BUILD_DIR) hpfec.benchmark
+	mkdir -p $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data
+	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/bench
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/image.img $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data/image.img
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/nav-packets-short.txt $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data/nav-packets-short.txt
 endef
