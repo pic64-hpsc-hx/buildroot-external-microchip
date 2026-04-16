@@ -72,6 +72,8 @@ config BR2_PACKAGE_P64H_BENCHMARKS_SPACEBENCH
 config BR2_PACKAGE_P64H_BENCHMARKS_ROOFLINE
 	bool "roofline"
 	depends on BR2_PACKAGE_P64H_BENCHMARKS
+	select BR2_PACKAGE_GNUPLOT
+	select BR2_PACKAGE_GHOSTSCRIPT
 	help
 	  Empirical Roofline Tool benchmark for PIC64-HPSC-HX SoC.
 
