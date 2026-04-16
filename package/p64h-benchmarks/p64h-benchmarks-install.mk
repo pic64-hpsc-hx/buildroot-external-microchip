@@ -89,11 +89,14 @@ endef
 # ROOFLINE
 define P64H_BENCHMARKS_INSTALL_ROOFLINE
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/roofline
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/roofline/config.microchip.hpsc.01.new $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/roofline/config.microchip.hpsc.01.new
 	cp -a $(P64H_BENCHMARKS_BUILD_DIR)/roofline/Empirical_Roofline_Tool-1.1.0 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/roofline/Empirical_Roofline_Tool-1.1.0
 endef
 
 # HPFEC
 define P64H_BENCHMARKS_INSTALL_HPFEC
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data
 	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/bench
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/image.img $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data/image.img
+	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/nav-packets-short.txt $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data/nav-packets-short.txt
 endef
