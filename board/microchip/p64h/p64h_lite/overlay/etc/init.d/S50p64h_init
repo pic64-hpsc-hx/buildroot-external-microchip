@@ -1,0 +1,29 @@
+#!/bin/sh
+
+init_platform() {
+
+	# mount devtmpfs to /dev if not already mounted to support disks
+	mount -t devtmpfs devtmpfs /dev
+
+	#setup IP
+	udhcpc -i eth0 -b &
+	
+}
+
+
+auto_run() {
+  if [ -f "/app/autorun.sh" ]; then
+      /bin/sh /app/autorun.sh
+  fi
+}
+
+
+case "$1" in
+	start|restart|reload)
+		init_platform;;
+	stop)
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart|reload}"
+		exit 1
+esac
