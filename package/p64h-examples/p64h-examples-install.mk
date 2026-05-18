@@ -69,6 +69,11 @@ define P64H_EXAMPLES_INSTALL_RPMI_RAS
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmi_ras/rpmi_ras $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmi_ras
 endef
 
+define P64H_EXAMPLES_INSTALL_RPMID
+	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmid
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmid/rpmid $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmid
+endef
+
 
 define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
 	$(INSTALL) -m 0644 $(P64H_EXAMPLES_PKGDIR)/build_vars.txt $(TARGET_DIR)/etc/init.d/build_vars.txt
