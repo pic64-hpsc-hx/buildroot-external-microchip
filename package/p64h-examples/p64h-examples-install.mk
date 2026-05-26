@@ -71,7 +71,7 @@ endef
 
 define P64H_EXAMPLES_INSTALL_RPMID
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmid
-	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmid/rpmid $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmid
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/install/bin/riscv64/rpmid $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/rpmid
 endef
 
 
