@@ -56,7 +56,6 @@ endif
 
 P64H_EXAMPLES_APP_LIST += tflite_runtime
 P64H_EXAMPLES_APP_LIST += sysc_rpmi
-P64H_EXAMPLES_APP_LIST += rpmid
 P64H_EXAMPLES_APP_LIST += sysc_rpmid
 
 # Invoke build stages
