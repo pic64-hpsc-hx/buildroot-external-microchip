@@ -1,0 +1,14 @@
+config BR2_PACKAGE_P64H_RPMID
+	bool "PIC64-HPSC-HX RPMI Daemon (sysc_rpmid)"
+	depends on BR2_PACKAGE_P64H
+	help
+	  RPMI daemon (sysc_rpmid) for PIC64-HPSC-HX SoC AppC Linux.
+
+	  sysc_rpmid bridges the SYSC RPMI shared-memory transport to
+	  TCP (default port 5685) and CoAP/UDP (default port 5683)
+	  listeners, so host tools (e.g. dev_cfg --rpmi-tcp) can drive
+	  RPMI requests over the network.
+
+	  This is a long-running utility, packaged separately from the
+	  example binaries in P64H_EXAMPLES so it can be installed on
+	  systems that do not need the example set.

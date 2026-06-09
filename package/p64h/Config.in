@@ -76,6 +76,10 @@ if BR2_PACKAGE_P64H
     source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-examples/Config.in"
     endmenu
 
+    menu "P64H-RPMID"
+    source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-rpmid/Config.in"
+    endmenu
+
     menu "P64H-Libs"
     source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-libs/Config.in"
     endmenu
