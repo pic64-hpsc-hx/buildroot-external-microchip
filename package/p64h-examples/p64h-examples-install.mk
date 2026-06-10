@@ -7,6 +7,8 @@
 define P64H_EXAMPLES_INSTALL
 rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation
 $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/time_validation/time_validation $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation
+rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/p64h_timer_example
+$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/p64h_timer_example/p64h_timer_example $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/p64h_timer_example
 rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/appdma_test
 $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/appdma_test/appdma_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)//appdma_test
 rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
@@ -36,6 +38,11 @@ endef
 define P64H_EXAMPLES_INSTALL_COAP_PING
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/coap_ping
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_ping/coap_ping $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/coap_ping
+endef
+
+define P64H_EXAMPLES_INSTALL_COAP_PROXY
+rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/coap_proxy
+    $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_proxy/coap_proxy $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/coap_proxy
 endef
 
 define P64H_EXAMPLES_INSTALL_LMS_DUMP

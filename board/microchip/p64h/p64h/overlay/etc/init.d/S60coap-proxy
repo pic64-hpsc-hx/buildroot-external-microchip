@@ -1,0 +1,48 @@
+#!/bin/sh
+
+DAEMON="coap_proxy"
+DAEMON_PATH="/opt/microchip/coap_proxy"
+PID_FILE="/var/run/coap_proxy.pid"
+
+start() {
+    printf 'Starting %s: ' "$DAEMON"
+    start-stop-daemon --start \
+        --quiet \
+        --exec "$DAEMON_PATH" \
+        -- -d
+    status=$?
+    if [ "$status" -eq 0 ]; then
+        echo "$DAEMON started"
+    else
+        echo "$DAEMON failed to start"
+    fi
+    return "$status"
+}
+
+stop() {
+    printf 'Stopping %s: ' "$DAEMON"
+    start-stop-daemon --stop \
+        --quiet \
+        --exec "$DAEMON_PATH"
+    status=$?
+    if [ "$status" -eq 0 ]; then
+        echo "OK"
+    else
+        echo "FAILED or not running"
+    fi
+    return 0
+}
+
+restart() {
+    stop
+    sleep 1
+    start
+}
+
+case "$1" in
+    start|stop|restart)
+        "$1";;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
