@@ -1,5 +1,5 @@
 diff --git a/drivers/net/phy/mscc/mscc_main.c b/drivers/net/phy/mscc/mscc_main.c
-index 19983b206405..246da21c1a32 100644
+index 6f74ce0ab1aa..cab5e9a1698f 100644
 --- a/drivers/net/phy/mscc/mscc_main.c
 +++ b/drivers/net/phy/mscc/mscc_main.c
 @@ -2202,6 +2202,138 @@ static int vsc85xx_read_status(struct phy_device *phydev)
@@ -23,7 +23,7 @@ index 19983b206405..246da21c1a32 100644
 +        if (reg&0xf0)
 +                return 0;
 +
-+        phy_base_write(phydev, 18, 0x80F0);
++	phy_base_write(phydev, 18, 0x80F0);
 +
 +        while (timeout){
 +                reg = phy_base_read(phydev, 18);
@@ -141,19 +141,7 @@ index 19983b206405..246da21c1a32 100644
  static int vsc8514_probe(struct phy_device *phydev)
  {
  	struct vsc8531_private *vsc8531;
-@@ -2335,11 +2467,6 @@ static int vsc85xx_probe(struct phy_device *phydev)
- 	return vsc85xx_dt_led_modes_get(phydev, default_mode);
- }
- 
--static void vsc85xx_remove(struct phy_device *phydev)
--{
--	vsc8584_ptp_deinit(phydev);
--}
--
- /* Microsemi VSC85xx PHYs */
- static struct phy_driver vsc85xx_driver[] = {
- {
-@@ -2586,15 +2713,14 @@ static struct phy_driver vsc85xx_driver[] = {
+@@ -2581,8 +2713,8 @@ static struct phy_driver vsc85xx_driver[] = {
  	.phy_id_mask	= 0xfffffff0,
  	/* PHY_GBIT_FEATURES */
  	.soft_reset	= &genphy_soft_reset,
@@ -164,14 +152,7 @@ index 19983b206405..246da21c1a32 100644
  	.aneg_done	= &genphy_aneg_done,
  	.read_status	= &vsc85xx_read_status,
  	.handle_interrupt = &vsc8584_handle_interrupt,
- 	.config_intr    = &vsc85xx_config_intr,
- 	.suspend	= &genphy_suspend,
- 	.resume		= &genphy_resume,
--	.remove		= &vsc85xx_remove,
- 	.probe		= &vsc8574_probe,
- 	.set_wol	= &vsc85xx_wol_set,
- 	.get_wol	= &vsc85xx_wol_get,
-@@ -2611,16 +2737,15 @@ static struct phy_driver vsc85xx_driver[] = {
+@@ -2605,9 +2737,9 @@ static struct phy_driver vsc85xx_driver[] = {
  	.name		= "Microsemi GE VSC8574 SyncE",
  	.phy_id_mask	= 0xfffffff0,
  	/* PHY_GBIT_FEATURES */
@@ -184,34 +165,3 @@ index 19983b206405..246da21c1a32 100644
  	.aneg_done	= &genphy_aneg_done,
  	.read_status	= &vsc85xx_read_status,
  	.handle_interrupt = vsc85xx_handle_interrupt,
- 	.config_intr    = &vsc85xx_config_intr,
- 	.suspend	= &genphy_suspend,
- 	.resume		= &genphy_resume,
--	.remove		= &vsc85xx_remove,
- 	.probe		= &vsc8574_probe,
- 	.set_wol	= &vsc85xx_wol_set,
- 	.get_wol	= &vsc85xx_wol_get,
-@@ -2646,7 +2771,6 @@ static struct phy_driver vsc85xx_driver[] = {
- 	.config_intr    = &vsc85xx_config_intr,
- 	.suspend	= &genphy_suspend,
- 	.resume		= &genphy_resume,
--	.remove		= &vsc85xx_remove,
- 	.probe		= &vsc8584_probe,
- 	.get_tunable	= &vsc85xx_get_tunable,
- 	.set_tunable	= &vsc85xx_set_tunable,
-@@ -2670,7 +2794,6 @@ static struct phy_driver vsc85xx_driver[] = {
- 	.config_intr    = &vsc85xx_config_intr,
- 	.suspend	= &genphy_suspend,
- 	.resume		= &genphy_resume,
--	.remove		= &vsc85xx_remove,
- 	.probe		= &vsc8584_probe,
- 	.get_tunable	= &vsc85xx_get_tunable,
- 	.set_tunable	= &vsc85xx_set_tunable,
-@@ -2694,7 +2817,6 @@ static struct phy_driver vsc85xx_driver[] = {
- 	.config_intr    = &vsc85xx_config_intr,
- 	.suspend	= &genphy_suspend,
- 	.resume		= &genphy_resume,
--	.remove		= &vsc85xx_remove,
- 	.probe		= &vsc8584_probe,
- 	.get_tunable	= &vsc85xx_get_tunable,
- 	.set_tunable	= &vsc85xx_set_tunable,
