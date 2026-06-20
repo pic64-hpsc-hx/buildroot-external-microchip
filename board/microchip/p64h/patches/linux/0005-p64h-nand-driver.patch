@@ -43,7 +43,7 @@ new file mode 100755
 index 000000000000..60f7d1076942
 --- /dev/null
 +++ b/drivers/mtd/nand/raw/p64h-nand/p64h_nand.c
-@@ -0,0 +1,3036 @@
+@@ -0,0 +1,3055 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * Cadence NAND flash controller driver
@@ -1403,6 +1403,7 @@ index 000000000000..60f7d1076942
 +
 +	writel_relaxed(t->phy_ctrl, cdns_ctrl->reg + PHY_CTRL);
 +
++
 +	if (cdns_ctrl->caps2.is_phy_type_dll) {
 +		writel_relaxed(0, cdns_ctrl->reg + PHY_TSEL);
 +		writel_relaxed(2, cdns_ctrl->reg + PHY_DQ_TIMING);
@@ -1430,9 +1431,12 @@ index 000000000000..60f7d1076942
 +
 +	cadence_nand_set_timings(cdns_ctrl, &cdns_chip->timings);
 +
++	cdns_ctrl->curr_corr_str_idx = 0xf; /* Invalid index to force update of ECC strength. */
 +	cadence_nand_set_ecc_strength(cdns_ctrl, cdns_chip->corr_str_idx);
 +
 +	cadence_nand_set_erase_detection(cdns_ctrl, true, chip->ecc.strength);
++
++	cadence_nand_set_skip_bytes_conf(cdns_ctrl, 0, 0, 0);
 +
 +	cdns_ctrl->curr_trans_type = -1;
 +	cdns_ctrl->selected_chip = chip;
@@ -1701,6 +1705,7 @@ index 000000000000..60f7d1076942
 +			oob = cdns_ctrl->buf + mtd->writesize;
 +
 +		cadence_nand_prepare_data_size(chip, TT_MAIN_OOB_AREA_EXT);
++
 +		status = cadence_nand_cdma_transfer(
 +			cdns_ctrl, cdns_chip->cs[chip->cur_cs], page, buf, oob,
 +			mtd->writesize, cdns_chip->avail_oob_size,
@@ -2516,6 +2521,20 @@ index 000000000000..60f7d1076942
 +	reg |= FIELD_PREP(ASYNC_TOGGLE_TIMINGS_TRP, trp_cnt);
 +	reg |= FIELD_PREP(ASYNC_TOGGLE_TIMINGS_TWH, twh_cnt);
 +	reg |= FIELD_PREP(ASYNC_TOGGLE_TIMINGS_TWP, twp_cnt);
++
++    if(reg != 0x9090909) {
++        t->async_toggle_timings = 0x9090909;
++        t->timings0 = 0x4f631727;
++        t->timings1 = 0x28300063;
++        t->timings2 = 0xc7030d;
++        t->dll_phy_ctrl = 0x01030707;
++		t->phy_ctrl = 0x000040a0;
++        t->phy_dqs_timing = 0x110004;
++        t->phy_gate_lpbk_ctrl = 0x680000;
++		dev_info(cdns_ctrl->dev, "Using default timings\n");
++        return 0;
++    }
++
 +	t->async_toggle_timings = reg;
 +	dev_dbg(cdns_ctrl->dev, "ASYNC_TOGGLE_TIMINGS_SDR\t%x\n", reg);
 +
