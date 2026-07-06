@@ -1,23 +1,80 @@
 #!/bin/sh
+#
+# Load the P64H watchdog driver and start the hardware watchdog daemon.
+#
 
-DRIVER="microchip-p64h_watchdog"
+DRIVER="p64h_wdt"
+WATCHDOG_DEV="/dev/watchdog0"
+PIDFILE="/var/run/watchdog.pid"
+# Watchdog sysfs directory (e.g. /sys/class/watchdog/watchdog0) exposing the
+# timings the driver programmed.
+WATCHDOG_SYS="/sys/class/watchdog/${WATCHDOG_DEV##*/}"
+# -F: run in foreground so start-stop-daemon owns the pidfile. The -T (hardware
+# reboot timeout) and -t (feed interval) values are read from sysfs at start
+# time -- see start() -- so they always track what the driver actually set.
+WATCHDOG_OPTS="-F"
 
 start() {
-	printf 'Load kernel module %s: ' "$DRIVER"
-	modprobe p64h_wdt
-	status=$?
-	if [ "$status" -eq 0 ]; then
-		echo "p64h_wdt loaded"
+	printf 'Loading kernel module %s: ' "$DRIVER"
+	if modprobe "$DRIVER"; then
+		echo "OK"
 	else
-		echo "p64h_wdt failed to load"
+		echo "FAIL"
+		return 1
 	fi
-	return "$status"
+
+	# devtmpfs is mounted at sysinit, so the node appears as soon as the
+	# driver registers; allow a brief moment just in case.
+	[ -e "$WATCHDOG_DEV" ] || sleep 1
+	if [ ! -e "$WATCHDOG_DEV" ]; then
+		echo "watchdog device $WATCHDOG_DEV not present"
+		return 1
+	fi
+
+	# Derive -T (hardware reboot timeout) and -t (feed interval) from the
+	# driver's sysfs attributes instead of hardcoding them. These attributes
+	# only exist once the module is loaded and the device is registered.
+	timeout=$(cat "${WATCHDOG_SYS}/timeout" 2>/dev/null)
+	pretimeout=$(cat "${WATCHDOG_SYS}/pretimeout" 2>/dev/null)
+	if [ -z "$timeout" ] || [ -z "$pretimeout" ]; then
+		echo "cannot read watchdog timings from ${WATCHDOG_SYS}"
+		return 1
+	fi
+	WATCHDOG_ARGS="${WATCHDOG_OPTS} -T ${timeout} -t ${pretimeout} ${WATCHDOG_DEV}"
+
+	printf 'Starting watchdog daemon: '
+	start-stop-daemon -S -b -m -q -p "$PIDFILE" -x /sbin/watchdog -- $WATCHDOG_ARGS
+	if [ $? -eq 0 ]; then
+		echo "OK"
+	else
+		echo "FAIL"
+		return 1
+	fi
+}
+
+stop() {
+	printf 'Stopping watchdog daemon: '
+	start-stop-daemon -K -q -p "$PIDFILE"
+	[ $? -eq 0 ] && echo "OK" || echo "FAIL"
+	rm -f "$PIDFILE"
 }
 
 case "$1" in
 	start)
-		"$1";;
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart|reload)
+		stop
+		sleep 1
+		start
+		;;
 	*)
-		echo "Usage: $0 {start}"
+		echo "Usage: $0 {start|stop|restart}"
 		exit 1
+		;;
 esac
+
+exit $?
