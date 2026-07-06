@@ -78,3 +78,8 @@ config BR2_PACKAGE_P64H_LKMS_X288_L2PF_DRIVER
         depends on BR2_PACKAGE_P64H_LKMS
         help
           Enable support for P64H Application Complex X288 L2 Perfetcher driver.
+config BR2_PACKAGE_P64H_LKMS_TFPGA_SPI_MEM_DRIVER
+        bool "Enable tfpga spi memory driver"
+        depends on BR2_PACKAGE_P64H_LKMS
+        help
+          Enable support for TFPGA spi memory mtd driver.

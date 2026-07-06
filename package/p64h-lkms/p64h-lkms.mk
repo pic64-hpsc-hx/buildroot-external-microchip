@@ -63,6 +63,12 @@ P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/x288_l2pf
 P64H_LKMS_MODULE_LIST += x288_l2pf
 endif
 
+
+ifeq ($(BR2_PACKAGE_P64H_LKMS_TFPGA_SPI_MEM_DRIVER),y)
+P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_tfpga_spi_mem
+P64H_LKMS_MODULE_LIST += p64h_tfpga_spi_mem
+endif
+
 # Fixup Linux Kernel configuration
 define P64H_LKMS_LINUX_CONFIG_FIXUPS
 	$(call KCONFIG_ENABLE_OPT,CONFIG_MODULES)
