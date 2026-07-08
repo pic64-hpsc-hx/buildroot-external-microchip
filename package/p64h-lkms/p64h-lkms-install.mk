@@ -44,3 +44,7 @@ endef
 define P64H_LKMS_INSTALL_X288_L2PF
         $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03x288_l2pf $(TARGET_DIR)/etc/init.d/S03x288_l2pf
 endef
+
+define P64H_LKMS_INSTALL_TFPGA_SPI_MEM
+        $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03tfpga_spi_mem $(TARGET_DIR)/etc/init.d/S03tfpga_spi_mem
+endef
