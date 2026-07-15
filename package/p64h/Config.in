@@ -2,9 +2,8 @@ menu "PIC64-HPSC-HX Applications"
 
 config BR2_PACKAGE_P64H
     bool "P64H"
-    select BR2_PACKAGE_P64H_RPMID
     help
-      Container for P64H packages. Includes p64h-benchmarks, p64h-examples, p64h-libs, p64h-rpmid, and p64h-lkms.
+      Container for P64H packages. Includes p64h-benchmarks, p64h-examples, p64h-libs, and p64h-lkms.
 
 config BR2_PACKAGE_P64H_PLATFORM
     string "Platform"
