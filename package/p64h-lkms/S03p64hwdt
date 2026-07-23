@@ -10,8 +10,9 @@ PIDFILE="/var/run/watchdog.pid"
 # timings the driver programmed.
 WATCHDOG_SYS="/sys/class/watchdog/${WATCHDOG_DEV##*/}"
 # -F: run in foreground so start-stop-daemon owns the pidfile. The -T (hardware
-# reboot timeout) and -t (feed interval) values are read from sysfs at start
-# time -- see start() -- so they always track what the driver actually set.
+# reboot timeout) and -t (ping interval, set to half the timeout) values are
+# derived at start time -- see start() -- so they always track what the driver
+# actually set.
 WATCHDOG_OPTS="-F"
 
 start() {
@@ -35,12 +36,12 @@ start() {
 	# driver's sysfs attributes instead of hardcoding them. These attributes
 	# only exist once the module is loaded and the device is registered.
 	timeout=$(cat "${WATCHDOG_SYS}/timeout" 2>/dev/null)
-	pretimeout=$(cat "${WATCHDOG_SYS}/pretimeout" 2>/dev/null)
-	if [ -z "$timeout" ] || [ -z "$pretimeout" ]; then
-		echo "cannot read watchdog timings from ${WATCHDOG_SYS}"
+	if [ -z "$timeout" ]; then
+		echo "cannot read watchdog timeout from ${WATCHDOG_SYS}"
 		return 1
 	fi
-	WATCHDOG_ARGS="${WATCHDOG_OPTS} -T ${timeout} -t ${pretimeout} ${WATCHDOG_DEV}"
+	ping=$(( timeout / 2 ))
+	WATCHDOG_ARGS="${WATCHDOG_OPTS} -T ${timeout} -t ${ping} ${WATCHDOG_DEV}"
 
 	printf 'Starting watchdog daemon: '
 	start-stop-daemon -S -b -m -q -p "$PIDFILE" -x /sbin/watchdog -- $WATCHDOG_ARGS
