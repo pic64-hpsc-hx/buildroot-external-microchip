@@ -11,3 +11,8 @@ config BR2_PACKAGE_P64H_TEST_TOOLS
     select BR2_PACKAGE_E2FSPROGS
     help
       Utilities for helping to automate tests on the PIC64-HPSC-HX SoC.
+config BR2_PACKAGE_P64H_TEST_TOOLS_TFPGA_SPI_MEM_DRIVER
+    bool "Enable tfpga spi memory driver"	
+    depends on BR2_PACKAGE_P64H_TEST_TOOLS
+    help
+      Enable support for TFPGA spi memory mtd driver.
