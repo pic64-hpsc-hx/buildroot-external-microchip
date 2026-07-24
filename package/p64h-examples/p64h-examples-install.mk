@@ -82,3 +82,7 @@ define P64H_EXAMPLES_INSTALL_TEST_AUTOMATION
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/app_runner
 	$(INSTALL) -m 0644 $(P64H_EXAMPLES_BUILD_DIR)/examples/app_runner/* $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/app_runner/
 endef
+
+define P64H_EXAMPLES_INSTALL_P64H_TFPGA_SPI_MEM
+        $(INSTALL) -m 0755 -D $(P64H_EXAMPLES_PKGDIR)/S03p64h_tfpga_spi_mem $(TARGET_DIR)/etc/init.d/S03p64h_tfpga_spi_mem
+endef

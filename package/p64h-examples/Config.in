@@ -64,6 +64,11 @@ config BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION
 	help
 	  Utilities for helping to automate tests on the PIC64-HPSC-HX SoC.
 
+config BR2_PACKAGE_P64H_EXAMPLES_TFPGA_SPI_MEM_DRIVER
+    bool "Enable tfpga spi memory driver"
+    help
+      Enable support for TFPGA spi memory mtd driver 
+
 config BR2_PACKAGE_P64H_EXAMPLES_IPC_TEST
 	bool "Test IPC driver"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
