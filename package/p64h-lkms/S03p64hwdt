@@ -24,9 +24,6 @@ start() {
 		return 1
 	fi
 
-	# devtmpfs is mounted at sysinit, so the node appears as soon as the
-	# driver registers; allow a brief moment just in case.
-	[ -e "$WATCHDOG_DEV" ] || sleep 1
 	if [ ! -e "$WATCHDOG_DEV" ]; then
 		echo "watchdog device $WATCHDOG_DEV not present"
 		return 1
