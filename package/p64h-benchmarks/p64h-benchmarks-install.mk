@@ -94,9 +94,19 @@ define P64H_BENCHMARKS_INSTALL_ROOFLINE
 endef
 
 # HPFEC
+# The hpfec source (examples/benchmarks/hpfec) is excluded from some
+# p64h-linux-examples releases (e.g. the public GitHub p64h-v*_dev tags), in
+# which case the build step already skips it (see p64h-linux-examples'
+# examples/benchmarks/makefile "benchmark-skipping" check). Mirror that
+# tolerance here instead of unconditionally installing a binary that was
+# never built.
 define P64H_BENCHMARKS_INSTALL_HPFEC
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data
-	$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/bench
-	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/image.img $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data/image.img
-	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/nav-packets-short.txt $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data/nav-packets-short.txt
+	if [ -f $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench ]; then \
+		$(INSTALL) -d -m 0755 $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data; \
+		$(INSTALL) -D -m 0755 -s --strip-program=$(TARGET_STRIP) $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/bench; \
+		$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/image.img $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data/image.img; \
+		$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/nav-packets-short.txt $(TARGET_DIR)$(P64H_BENCHMARKS_TARGET_DIR)/hpfec/data/nav-packets-short.txt; \
+	else \
+		echo "p64h-benchmarks: skipping hpfec install -- source not present in this checkout"; \
+	fi
 endef
