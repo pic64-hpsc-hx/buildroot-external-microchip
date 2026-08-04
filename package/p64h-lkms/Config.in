@@ -67,12 +67,6 @@ config BR2_PACKAGE_P64H_LKMS_PCIE_DRIVER
 	help
 	  Enable support for P64H Application Complex PCIe bridge controller driver.
 
-config BR2_PACKAGE_P64H_LKMS_MDIO_DRIVER
-        bool "Enable P64H MDIO driver"
-        depends on BR2_PACKAGE_P64H_LKMS
-        help
-          Enable support for P64H Application Complex MDIO controller driver.
-
 config BR2_PACKAGE_P64H_LKMS_X288_L2PF_DRIVER
         bool "Enable X288 L2 Perfetcher driver"
         depends on BR2_PACKAGE_P64H_LKMS
