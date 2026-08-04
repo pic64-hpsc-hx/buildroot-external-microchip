@@ -23,14 +23,6 @@ config BR2_PACKAGE_P64H_LKMS_P64H_UIO_DRIVER
 	  Enable support to P64H Application Complex UIO Generic Device
 	  driver used to memory map any memory or peripheral in user space.
 
-config BR2_PACKAGE_P64H_LKMS_APPDMA_DRIVER
-	bool "Enable appdma driver"
-	depends on BR2_PACKAGE_P64H_LKMS
-	help
-	  Enable support for P64H Application Complex DMA driver.
-
-	  Based on Synopsys DesignWare AXI DMA controller DW-AXI-DMAC with minimal changes
-
 config BR2_PACKAGE_P64H_LKMS_XSPI_DRIVER
 	bool "Enable P64H xspi driver"
 	depends on BR2_PACKAGE_P64H_LKMS
