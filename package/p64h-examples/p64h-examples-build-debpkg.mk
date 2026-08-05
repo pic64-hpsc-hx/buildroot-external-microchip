@@ -41,3 +41,11 @@ define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_COAP_PROXY
     $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_proxy/coap_proxy $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
     $(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
+
+# Build CoAP ping Debian package
+define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_COAP_PING
+    $(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/p64h-coap-ping) \
+    mkdir -p -m 0755 $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+    $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_ping/coap_ping $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+    $(call P64H_DEBIAN_PACKAGE_BUILD)
+endef
