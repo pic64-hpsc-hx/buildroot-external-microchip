@@ -13,7 +13,7 @@ define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_HELLO
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/rpmi/rpmi_ras/rpmi_ras $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/time_validation/time_validation $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/p64h_timer_example/p64h_timer_example $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
-	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/appdma_test/appdma_test $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/appdma_test/appdma_basics_test $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/cache_uio_test/cache_uio_test $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
 	$(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
@@ -39,5 +39,13 @@ define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_COAP_PROXY
     $(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/p64h-coap-proxy) \
     mkdir -p -m 0755 $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
     $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_proxy/coap_proxy $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+    $(call P64H_DEBIAN_PACKAGE_BUILD)
+endef
+
+# Build CoAP ping Debian package
+define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_COAP_PING
+    $(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/p64h-coap-ping) \
+    mkdir -p -m 0755 $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+    $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_ping/coap_ping $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
     $(call P64H_DEBIAN_PACKAGE_BUILD)
 endef

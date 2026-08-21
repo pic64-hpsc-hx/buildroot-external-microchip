@@ -10,7 +10,7 @@ export P64H_PLATFORM = $(call qstrip,$(BR2_PACKAGE_P64H_PLATFORM))
 
 ifeq ($(BR2_PACKAGE_P64H_LATEST_VERSION),y)
 P64H_SITE = https://github.com/pic64-hpsc-hx/p64h-linux-examples.git
-P64H_VERSION = p64h-v1.8.0_dev
+P64H_VERSION = p64h-v2.2.0_dev
 P64H_SITE_METHOD = git
 else ifeq ($(BR2_PACKAGE_P64H_BITBUCKET),y)
 P64H_SITE = $(call qstrip,$(BR2_PACKAGE_P64H_BITBUCKET_SOURCE))

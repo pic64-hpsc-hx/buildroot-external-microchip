@@ -76,11 +76,18 @@ define P64H_BENCHMARKS_BUILD_ROOFLINE
 endef
 
 # HPFEC
+# hpfec.benchmark already skips gracefully when examples/benchmarks/hpfec is
+# absent (excluded from some p64h-linux-examples releases). Mirror that here
+# instead of unconditionally installing a binary that was never built.
 define P64H_BENCHMARKS_BUILD_HPFEC
 	. $(BUILD_DIR)/p64h-$(P64H_VERSION)/tools/bin/env.rc && \
 	$(MAKE) $(BR_FLAGS) EIGEN_PATH=$(STAGING_DIR)/usr/include/eigen3 -C $(P64H_BENCHMARKS_BUILD_DIR) hpfec.benchmark
-	mkdir -p $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data
-	$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/bench
-	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/image.img $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data/image.img
-	$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/nav-packets-short.txt $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data/nav-packets-short.txt
+	if [ -f $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench ]; then \
+		mkdir -p $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data; \
+		$(INSTALL) -D -m 0755 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/bench $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/bench; \
+		$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/image.img $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data/image.img; \
+		$(INSTALL) -D -m 0644 $(P64H_BENCHMARKS_BUILD_DIR)/hpfec/alhat/Composite/data/nav-packets-short.txt $(STAGING_DIR)/opt/microchip/benchmarks/hpfec/data/nav-packets-short.txt; \
+	else \
+		echo "p64h-benchmarks: skipping hpfec staging install -- source not present in this checkout"; \
+	fi
 endef

@@ -5,12 +5,20 @@
 ################################################################################
 
 define P64H_EXAMPLES_INSTALL
-rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation
-$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/time_validation/time_validation $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation
+# The time_validation source (examples/time_validation) is excluded from some
+# p64h-linux-examples releases (e.g. the public GitHub p64h-v*_dev tags), in
+# which case it's never built. Skip installing it rather than unconditionally
+# failing on a binary that doesn't exist.
+if [ -f $(P64H_EXAMPLES_BUILD_DIR)/build/examples/time_validation/time_validation ]; then \
+	rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation; \
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/time_validation/time_validation $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/time_validation; \
+else \
+	echo "p64h-examples: skipping time_validation install -- source not present in this checkout"; \
+fi
 rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/p64h_timer_example
 $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/p64h_timer_example/p64h_timer_example $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/p64h_timer_example
-rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/appdma_test
-$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/appdma_test/appdma_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)//appdma_test
+rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/appdma_basics_test
+$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/appdma_test/appdma_basics_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)//appdma_basics_test
 rm -fr $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
 $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/cache_uio_test/cache_uio_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/cache_uio_test
 endef
@@ -25,9 +33,17 @@ define P64H_EXAMPLES_INSTALL_SHAREDMEM
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/sharedmem/sharedmem $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/hpsc_sharedmem
 endef
 
+# The utils source (examples/utils) is excluded from some p64h-linux-examples
+# releases (e.g. the public GitHub p64h-v*_dev tags), in which case it's never
+# built. Skip installing it rather than unconditionally failing on a binary
+# that doesn't exist.
 define P64H_EXAMPLES_INSTALL_UTILS
-	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/utils/p64h_util  $(TARGET_DIR)/usr/bin
-	ln -fs $(TARGET_DIR)/usr/bin/p64h_util  $(TARGET_DIR)/usr/bin/p64h_cp
+	if [ -f $(P64H_EXAMPLES_BUILD_DIR)/build/examples/utils/p64h_util ]; then \
+		$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/utils/p64h_util  $(TARGET_DIR)/usr/bin; \
+		ln -fs $(TARGET_DIR)/usr/bin/p64h_util  $(TARGET_DIR)/usr/bin/p64h_cp; \
+	else \
+		echo "p64h-examples: skipping utils install -- source not present in this checkout"; \
+	fi
 endef
 
 define P64H_EXAMPLES_INSTALL_SPW
