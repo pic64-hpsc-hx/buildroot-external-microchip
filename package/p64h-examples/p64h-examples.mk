@@ -6,6 +6,7 @@
 
 P64H_EXAMPLES_BUILD_DIR = $(BUILD_DIR)/p64h-$(P64H_VERSION)
 P64H_EXAMPLES_DEPENDENCIES = p64h
+P64H_EXAMPLES_MODULE_LIST =
 
 # Target directory for the installation
 P64H_EXAMPLES_TARGET_DIR = /opt/microchip
@@ -42,7 +43,7 @@ ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_TEST_AUTOMATION),y)
 P64H_EXAMPLES_APP_LIST += test_automation
 endif
 
-ifeq ($(BR2_PACKAGE_P64H_TEST_TOOLS_TFPGA_SPI_MEM_DRIVER),y)
+ifeq ($(BR2_PACKAGE_P64H_EXAMPLES_TFPGA_SPI_MEM_DRIVER),y)
 P64H_EXAMPLES_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_tfpga_spi_mem
 P64H_EXAMPLES_MODULE_LIST += p64h_tfpga_spi_mem
 endif
@@ -75,6 +76,13 @@ define P64H_EXAMPLES_INSTALL_TARGET_CMDS
 		$(call P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(app))); \
 	)
 endef
+
+# Post build installation stages (per module)
+$(foreach d,$(P64H_EXAMPLES_MODULE_LIST), \
+	$(eval P64H_EXAMPLES_POST_BUILD_HOOKS += P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(d))); \
+)
+
+$(eval $(kernel-module))
 
 # Generate post installation extra stages (used to build debian packages)
 ifeq ($(P64H_DEBPKG_BUILD),1)
