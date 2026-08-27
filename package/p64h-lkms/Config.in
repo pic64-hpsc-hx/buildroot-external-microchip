@@ -64,3 +64,16 @@ config BR2_PACKAGE_P64H_LKMS_X288_L2PF_DRIVER
         depends on BR2_PACKAGE_P64H_LKMS
         help
           Enable support for P64H Application Complex X288 L2 Perfetcher driver.
+
+config BR2_PACKAGE_P64H_LKMS_PIE_DRIVER
+        bool "Enable P64H PIE driver"
+        depends on BR2_PACKAGE_P64H_LKMS
+        help
+          Enable support for P64H Application Complex Packet Insert Extract
+          (PIE) driver.
+
+config BR2_PACKAGE_P64H_LKMS_RDMA_DRIVER
+        bool "Enable P64H RDMA driver"
+        depends on BR2_PACKAGE_P64H_LKMS
+        help
+          Enable support for P64H Application Complex RDMA driver.
