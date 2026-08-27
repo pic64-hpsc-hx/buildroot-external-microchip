@@ -63,6 +63,9 @@ P64H_LKMS_MODULE_SUBDIRS += ../p64h-$(P64H_VERSION)/drivers/p64h_rdma
 P64H_LKMS_MODULE_LIST += grvf_rdma
 endif
 
+# For p64h_pcie which needs to include headers in drivers/
+P64H_LKMS_MODULE_MAKE_OPTS += KERNELDIR=$(LINUX_DIR)
+
 # Fixup Linux Kernel configuration
 define P64H_LKMS_LINUX_CONFIG_FIXUPS
 	$(call KCONFIG_ENABLE_OPT,CONFIG_MODULES)
