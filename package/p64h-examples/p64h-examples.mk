@@ -81,8 +81,9 @@ endef
 $(foreach d,$(P64H_EXAMPLES_MODULE_LIST), \
 	$(eval P64H_EXAMPLES_POST_BUILD_HOOKS += P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(d))); \
 )
-
-$(eval $(kernel-module))
+ifneq ($(strip $(P64H_EXAMPLES_MODULE_LIST)),)
+	$(eval $(kernel-module))
+endif
 
 # Generate post installation extra stages (used to build debian packages)
 ifeq ($(P64H_DEBPKG_BUILD),1)
