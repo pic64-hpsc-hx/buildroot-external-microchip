@@ -78,11 +78,11 @@ define P64H_EXAMPLES_INSTALL_TARGET_CMDS
 endef
 
 # Post build installation stages (per module)
-$(foreach d,$(P64H_EXAMPLES_MODULE_LIST), \
-	$(eval P64H_EXAMPLES_POST_BUILD_HOOKS += P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(d))); \
-)
 ifneq ($(strip $(P64H_EXAMPLES_MODULE_LIST)),)
-	$(eval $(kernel-module))
+    $(foreach d,$(P64H_EXAMPLES_MODULE_LIST), \
+        $(eval P64H_EXAMPLES_POST_BUILD_HOOKS += P64H_EXAMPLES_INSTALL_$(call UPPERCASE,$(d))); \
+    )
+    $(eval $(kernel-module))
 endif
 
 # Generate post installation extra stages (used to build debian packages)
