@@ -1,8 +1,0 @@
-# CMA must stay enabled alongside CONFIG_PREEMPT_RT. All CMA reservations on
-# p64h are made once at boot and held for the lifetime of the system, so the
-# unbounded compaction/migration latency that normally argues against CMA on
-# an RT kernel is never hit at runtime.
-CONFIG_CMA=y
-CONFIG_CMA_SYSFS=y
-CONFIG_DMA_CMA=y
-CONFIG_CMA_SIZE_MBYTES=0
