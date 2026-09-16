@@ -37,6 +37,7 @@ menu "EGT Applications"
 endmenu
 
 source "$BR2_EXTERNAL_MCHP_PATH/package/p64h/Config.in"
+source "$BR2_EXTERNAL_MCHP_PATH/package/p64h-rdma-core/Config.in"
 
 menu "Fonts"
 	source "$BR2_EXTERNAL_MCHP_PATH/package/noto-fonts/Config.in"
