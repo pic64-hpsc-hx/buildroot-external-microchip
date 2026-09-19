@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Apply BFQ scheduler to eMMC block devices permanently.
+# BFQ splits available I/O bandwidth fairly among competing
+# processes based on weight, ensuring a large file copy or
+# system update cannot hog the entire disk.
+# It prioritizes interactive tasks and time-sensitive operations
+# so your desktop or user interface remains fluid and responsive
+# even under heavy disk load. 
+#
+
+case "$1" in
+  start)
+    echo "Setting up eMMC I/O scheduler to BFQ..."
+    for dev in /sys/block/mmcblk*; do
+      if [ -d "$dev/queue" ]; then
+        echo "bfq" > "$dev/queue/scheduler"
+      fi
+    done
+    ;;
+  stop)
+    ;;
+  restart|reload)
+    "$0" start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0
