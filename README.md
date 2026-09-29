@@ -60,7 +60,7 @@ The resulting bootloader, kernel, and root filesystem will be put in the
 For Pic64-HPSC-HX configurations, as an example, we use `p64h_defconfig`.
 
     git clone https://github.com/linux4microchip/buildroot-external-microchip.git
-    git clone https://github.com/buildroot/buildroot.git -b 2025.08.2
+    git clone https://github.com/buildroot/buildroot.git -b 2026.08
     export RISCV_PATH=<path-to-your-toolchain>
     export PATH=$PATH:$RISCV_PATH/bin
     cd buildroot
