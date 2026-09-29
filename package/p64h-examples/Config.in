@@ -73,7 +73,7 @@ config BR2_PACKAGE_P64H_EXAMPLES_IPC_TEST
 	bool "Test IPC driver"
 	depends on BR2_PACKAGE_P64H_EXAMPLES
 	select BR2_PACKAGE_P64H_LKMS
-	select BR2_PACKAGE_P64H_LKMS_IPC_DRIVER
+	select BR2_PACKAGE_P64H_LKMS_IPC_DEMO_DRIVER
 	help
 	  IPC test application for P64H-IPC driver
 

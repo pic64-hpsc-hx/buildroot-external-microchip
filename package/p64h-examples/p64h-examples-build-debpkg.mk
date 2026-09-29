@@ -57,3 +57,12 @@ define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_COAP_PING
     $(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/coap_ping/coap_ping $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
     $(call P64H_DEBIAN_PACKAGE_BUILD)
 endef
+
+# Build IPC demo Debian package (ipc_test + ipc_split_test)
+define P64H_EXAMPLES_DEBIAN_PACKAGE_BUILD_IPC_TEST
+	$(call P64H_DEBIAN_PACKAGE_SETUP,$(P64H_DEBPKG_SRC_DIR)/p64h-ipc) \
+	mkdir -p -m 0755 $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/ipc_test/ipc_test $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/ipc_test/ipc_split_test $(P64H_DEB_DIR)/$(P64H_EXAMPLES_TARGET_DIR); \
+	$(call P64H_DEBIAN_PACKAGE_BUILD)
+endef
