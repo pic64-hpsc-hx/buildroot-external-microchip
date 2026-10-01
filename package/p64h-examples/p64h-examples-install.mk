@@ -66,10 +66,6 @@ define P64H_EXAMPLES_INSTALL_LMS_DUMP
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/lms_dump/lms_dump $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/lms_dump
 endef
 
-# examples/ipc_test builds two binaries from one directory: ipc_test forks a
-# sender/receiver pair inside a single Linux instance, ipc_split_test performs
-# one role per invocation so the two ends can live on different splits. Install
-# both -- a split configuration cannot be exercised with ipc_test alone.
 define P64H_EXAMPLES_INSTALL_IPC_TEST
 	rm -rf $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
 	$(INSTALL) -D -m 0755 $(P64H_EXAMPLES_BUILD_DIR)/build/examples/ipc_test/ipc_test $(TARGET_DIR)$(P64H_EXAMPLES_TARGET_DIR)/ipc_test
