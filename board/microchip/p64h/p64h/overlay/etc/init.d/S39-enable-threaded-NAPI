@@ -18,7 +18,7 @@
 
 # list of affected interface - if you have more add them into IFACES list
 IFACES="eth0 eth1 eth2 eth3"
-FORCE_THREADED_NAPI="${FORCE_THREADED_NAPI:-0}"  # 1 = apply even if kernel is not PREEMPT_RT
+FORCE_THREADED_NAPI="${FORCE_THREADED_NAPI:-1}"  # 1 = apply even if kernel is not PREEMPT_RT
 
 is_preempt_rt()
 {
@@ -69,9 +69,7 @@ enable_threaded_napi()
     fi
 
     # Apply threaded NAPI
-    if echo 1 > "$attr"; then
-        echo "$iface: threaded NAPI enabled"
-    else
+    if ! echo 1 > "$attr"; then
         echo "$iface: failed to enable threaded NAPI" >&2
         rc=1
     fi
