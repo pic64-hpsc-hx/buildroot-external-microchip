@@ -2,18 +2,6 @@
 
 FORCE_THREADED_NAPI="${FORCE_THREADED_NAPI:-1}"  # 1 = apply even if kernel is not PREEMPT_RT
 
-is_preempt_rt()
-{
-    if [ -r /sys/kernel/realtime ] &&
-       [ "$(cat /sys/kernel/realtime 2>/dev/null)" = "1" ]; then
-        return 0
-    fi
-    case "$(uname -v 2>/dev/null)" in
-        *PREEMPT_RT*|*PREEMPT-RT*) return 0 ;;
-    esac
-    return 1
-}
-
 enable_threaded_napi()
 {
     iface="$1"
@@ -33,11 +21,9 @@ enable_threaded_napi()
         echo "$iface: failed to enable threaded NAPI" >&2
         return 1
     fi
-
-    return 0
 }
 
-if is_preempt_rt || [ "$FORCE_THREADED_NAPI" -eq 1 ]; then
+if [ "$FORCE_THREADED_NAPI" -eq 1 ]; then
     enable_threaded_napi "$IFACE"
 fi
 
