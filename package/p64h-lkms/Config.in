@@ -75,5 +75,6 @@ config BR2_PACKAGE_P64H_LKMS_PIE_DRIVER
 config BR2_PACKAGE_P64H_LKMS_RDMA_DRIVER
         bool "Enable P64H RDMA driver"
         depends on BR2_PACKAGE_P64H_LKMS
+        select BR2_PACKAGE_P64H_LKMS_PIE_DRIVER
         help
           Enable support for P64H Application Complex RDMA driver.
