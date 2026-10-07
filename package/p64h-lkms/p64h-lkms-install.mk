@@ -45,5 +45,5 @@ define P64H_LKMS_INSTALL_P64H_PIE
 endef
 
 define P64H_LKMS_INSTALL_GRVF_RDMA
-	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03grvf_rdma $(TARGET_DIR)/etc/init.d/S03grvf_rdma
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S05grvf_rdma $(TARGET_DIR)/etc/init.d/S05grvf_rdma
 endef
