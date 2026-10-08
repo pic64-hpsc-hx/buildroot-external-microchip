@@ -39,3 +39,11 @@ endef
 define P64H_LKMS_INSTALL_X288_L2PF
         $(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03x288_l2pf $(TARGET_DIR)/etc/init.d/S03x288_l2pf
 endef
+
+define P64H_LKMS_INSTALL_P64H_PIE
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S03p64h_pie $(TARGET_DIR)/etc/init.d/S03p64h_pie
+endef
+
+define P64H_LKMS_INSTALL_GRVF_RDMA
+	$(INSTALL) -m 0755 -D $(P64H_LKMS_PKGDIR)/S05grvf_rdma $(TARGET_DIR)/etc/init.d/S05grvf_rdma
+endef
