@@ -1,0 +1,4 @@
+# Disable PREEMPT_RT but keep a fully preemptible kernel (PREEMPT).
+# Applied on top of the p64h kernel defconfig.
+# CONFIG_PREEMPT_RT is not set
+CONFIG_PREEMPT=y
